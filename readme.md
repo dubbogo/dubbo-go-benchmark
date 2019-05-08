@@ -5,13 +5,33 @@
 ## 使用方式
 
 ### 调用方式
-sh start.sh -c 10 -n 100 -p dubbo
+
+脚本参数含义：
 
 参数|含义|取值范围
 -------------|-------------|-------------
 c|并发client|大于0的int值
 n|请求总数|大于0的int值
 p|测试协议|dubbo or jsonrpc
+
+#### 1.客户端和服务端在同一台机器上
+
+sh start.sh -c 10 -n 100 -p dubbo
+
+#### 2.客户端和服务端在不同一台机器上，包括多个服务端在不同机器上
+
+server: 
+
+1)需要配置server.yml参数
+
+2)执行脚本 sh start_server.sh  -p dubbo
+
+client: 
+
+1)需要配置client.yml参数
+
+2)执行脚本 sh start_client.sh  -c 10 -n 100
+
 
 
 ### 输出报表含义
