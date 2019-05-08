@@ -138,12 +138,12 @@ func main() {
 	min, _ := stats.Min(totalD2)
 	p99, _ := stats.Percentile(totalD2, 99.9)
 
-	log.Info("sent     requests    : %d\n", n*m)
-	log.Info("received requests    : %d\n", atomic.LoadUint64(&trans))
-	log.Info("received requests_OK : %d\n", atomic.LoadUint64(&transOK))
-	log.Info("throughput  (TPS)    : %d\n", int64(n*m)*1000000000/totalT)
-	log.Info("mean: %.f ns, median: %.f ns, max: %.f ns, min: %.f ns, p99.9: %.f ns\n", mean, median, max, min, p99)
-	log.Info("mean: %d ms, median: %d ms, max: %d ms, min: %d ms, p99: %d ms\n", int64(mean/1000000), int64(median/1000000), int64(max/1000000), int64(min/1000000), int64(p99/1000000))
+	fmt.Println("sent     requests    : %d\n", n*m)
+	fmt.Println("received requests    : %d\n", atomic.LoadUint64(&trans))
+	fmt.Println("received requests_OK : %d\n", atomic.LoadUint64(&transOK))
+	fmt.Println("throughput  (TPS)    : %d\n", int64(n*m)*1000000000/totalT)
+	fmt.Println("mean: %.f ns, median: %.f ns, max: %.f ns, min: %.f ns, p99.9: %.f ns\n", mean, median, max, min, p99)
+	fmt.Println("mean: %d ms, median: %d ms, max: %d ms, min: %d ms, p99: %d ms\n", int64(mean/1000000), int64(median/1000000), int64(max/1000000), int64(min/1000000), int64(p99/1000000))
 
 }
 
