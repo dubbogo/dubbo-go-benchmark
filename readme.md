@@ -1,8 +1,8 @@
-#go-for-apache-dubbo-benchmark
+# go-for-apache-dubbo-benchmark
 
 参考自 https://github.com/rpcx-ecosystem/rpcx-benchmark
 
-##使用方式
+## 使用方式
 
 ### 调用方式
 sh start.sh -c 10 -n 100 -p dubbo
