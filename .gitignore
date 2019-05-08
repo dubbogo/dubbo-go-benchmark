@@ -15,6 +15,10 @@
 
 .idea
 
+logs/
+dubbo/logs/
+jsonrpc/logs/
+
 jsonrpc/pid
 dubbo/pid
 *.iml
