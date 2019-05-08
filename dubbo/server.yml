@@ -63,7 +63,7 @@ protocol_conf:
     fail_fast_timeout: "5s"
     session_timeout: "20s"
     getty_session_param:
-      compress_encoding: false
+      compress_encoding: true
       tcp_no_delay: true
       tcp_keep_alive: true
       keep_alive_period: "120s"
