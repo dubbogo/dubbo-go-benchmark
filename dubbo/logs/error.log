@@ -1,0 +1,95 @@
+[2019/05/08 14:18:04 CST] [EROR] [rpc_service.go:github.com/dubbo/go-for-apache-dubbo/config.suiteMethod:203] method Service of mtype func(*main.UserProvider) string has wrong number of in parameters 1; needs exactly 3/4
+[2019/05/08 14:18:04 CST] [EROR] [rpc_service.go:github.com/dubbo/go-for-apache-dubbo/config.suiteMethod:203] method Version of mtype func(*main.UserProvider) string has wrong number of in parameters 1; needs exactly 3/4
+[2019/05/08 14:18:04 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:18:04 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:18:04 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:18:04 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:18:04 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:18:04 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:18:04 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:18:04 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:18:04 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:18:04 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:18:04 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:18:04 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:18:08 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:18:08 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:18:08 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 14:18:08 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:18:08 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:18:08 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:18:08 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:18:08 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:18:08 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 14:18:08 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:18:08 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:18:08 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 14:18:08 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:18:08 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:18:08 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:18:08 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:18:08 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:18:08 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 14:18:08 CST] [EROR] [registry.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*ZkRegistry).registerTempZookeeperNode:406] RegisterTempNode(root{/dubbo/com.ikurento.user.UserProvider/consumers}, node{consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D51097%26protocol%3Ddubbo%26retries%3D0%26timestamp%3D1557296288%26version%3D}) = error{zk: node already exists
+/Users/hunter/go/pkg/mod/github.com/dubbo/go-for-apache-dubbo@v0.0.0-20190507201542-5edf3cc97a43/registry/zookeeper/zk_client.go:300: }
+[2019/05/08 14:18:08 CST] [EROR] [protocol.go:github.com/dubbo/go-for-apache-dubbo/registry/protocol.(*RegistryProtocol).Refer:74] consumer service dubbo://:@:/com.ikurento.user.UserProvider?&group=&module=dubbogo user-info client&owner=ZX&timestamp=1557296288&name=BDTService&interface=com.ikurento.user.UserProvider&cluster=failover&version=&async=false&application=BDTService&organization=ikurento.com&loadbalance=&retries=0&app.version=0.0.1&environment=dev&methods.GetUser.loadbalance=&methods.GetUser.retries=3 register registry zookeeper://:@127.0.0.1:2181?&group=&registry.role=0&registry=zookeeper&registry.timeout=3s error, error message is registerTempZookeeperNode(path:/dubbo/com.ikurento.user.UserProvider/consumers, url:consumer://10.32.20.124/com.ikurento.user.UserProvider?app.version=0.0.1&application=BDTService&async=false&category=consumers&cluster=failover&dubbo=dubbogo-consumer-2.6.0&environment=dev&group=&interface=com.ikurento.user.UserProvider&ip=10.32.20.124&loadbalance=&methods.GetUser.loadbalance=&methods.GetUser.retries=3&module=dubbogo+user-info+client&name=BDTService&organization=ikurento.com&owner=ZX&pid=51097&protocol=dubbo&retries=0&timestamp=1557296288&version=): RegisterTempNode(root{/dubbo/com.ikurento.user.UserProvider/consumers}, node{consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D51097%26protocol%3Ddubbo%26retries%3D0%26timestamp%3D1557296288%26version%3D}): zk: node already exists
+[2019/05/08 14:18:29 CST] [EROR] [session.go:github.com/AlexStocks/getty.(*session).handleTCPPackage:609] {server:TCP_SERVER:1:127.0.0.1:20000<->127.0.0.1:60339}, [session.conn.read] = error{EOF
+/Users/hunter/go/pkg/mod/github.com/!alex!stocks/getty@v0.0.0-20190331201845-1ca64ac5a589/conn.go:255: }
+[2019/05/08 14:18:29 CST] [EROR] [session.go:github.com/AlexStocks/getty.(*session).handleTCPPackage:609] {server:TCP_SERVER:2:127.0.0.1:20000<->127.0.0.1:60340}, [session.conn.read] = error{EOF
+/Users/hunter/go/pkg/mod/github.com/!alex!stocks/getty@v0.0.0-20190331201845-1ca64ac5a589/conn.go:255: }
+[2019/05/08 14:18:29 CST] [EROR] [session.go:github.com/AlexStocks/getty.(*session).handleTCPPackage:609] {server:TCP_SERVER:4:127.0.0.1:20000<->127.0.0.1:60345}, [session.conn.read] = error{EOF
+/Users/hunter/go/pkg/mod/github.com/!alex!stocks/getty@v0.0.0-20190331201845-1ca64ac5a589/conn.go:255: }
+[2019/05/08 14:18:29 CST] [EROR] [session.go:github.com/AlexStocks/getty.(*session).handleTCPPackage:609] {server:TCP_SERVER:3:127.0.0.1:20000<->127.0.0.1:60343}, [session.conn.read] = error{EOF
+/Users/hunter/go/pkg/mod/github.com/!alex!stocks/getty@v0.0.0-20190331201845-1ca64ac5a589/conn.go:255: }
+[2019/05/08 14:18:29 CST] [EROR] [session.go:github.com/AlexStocks/getty.(*session).handlePackage.func1:552] {server:TCP_SERVER:2:127.0.0.1:20000<->127.0.0.1:60340}, [session.handlePackage] error{EOF
+/Users/hunter/go/pkg/mod/github.com/!alex!stocks/getty@v0.0.0-20190331201845-1ca64ac5a589/conn.go:255: 
+/Users/hunter/go/pkg/mod/github.com/!alex!stocks/getty@v0.0.0-20190331201845-1ca64ac5a589/session.go:652: }
+[2019/05/08 14:18:29 CST] [EROR] [session.go:github.com/AlexStocks/getty.(*session).handlePackage.func1:552] {server:TCP_SERVER:3:127.0.0.1:20000<->127.0.0.1:60343}, [session.handlePackage] error{EOF
+/Users/hunter/go/pkg/mod/github.com/!alex!stocks/getty@v0.0.0-20190331201845-1ca64ac5a589/conn.go:255: 
+/Users/hunter/go/pkg/mod/github.com/!alex!stocks/getty@v0.0.0-20190331201845-1ca64ac5a589/session.go:652: }
+[2019/05/08 14:18:29 CST] [EROR] [session.go:github.com/AlexStocks/getty.(*session).handlePackage.func1:552] {server:TCP_SERVER:1:127.0.0.1:20000<->127.0.0.1:60339}, [session.handlePackage] error{EOF
+/Users/hunter/go/pkg/mod/github.com/!alex!stocks/getty@v0.0.0-20190331201845-1ca64ac5a589/conn.go:255: 
+/Users/hunter/go/pkg/mod/github.com/!alex!stocks/getty@v0.0.0-20190331201845-1ca64ac5a589/session.go:652: }
+[2019/05/08 14:18:29 CST] [EROR] [session.go:github.com/AlexStocks/getty.(*session).handlePackage.func1:552] {server:TCP_SERVER:4:127.0.0.1:20000<->127.0.0.1:60345}, [session.handlePackage] error{EOF
+/Users/hunter/go/pkg/mod/github.com/!alex!stocks/getty@v0.0.0-20190331201845-1ca64ac5a589/conn.go:255: 
+/Users/hunter/go/pkg/mod/github.com/!alex!stocks/getty@v0.0.0-20190331201845-1ca64ac5a589/session.go:652: }
+[2019/05/08 14:30:29 CST] [EROR] [session.go:github.com/AlexStocks/getty.(*session).handleTCPPackage:609] {server:TCP_SERVER:6:127.0.0.1:20000<->127.0.0.1:60810}, [session.conn.read] = error{EOF
+/Users/hunter/go/pkg/mod/github.com/!alex!stocks/getty@v0.0.0-20190331201845-1ca64ac5a589/conn.go:255: }
+[2019/05/08 14:30:29 CST] [EROR] [session.go:github.com/AlexStocks/getty.(*session).handleTCPPackage:609] {server:TCP_SERVER:5:127.0.0.1:20000<->127.0.0.1:60809}, [session.conn.read] = error{EOF
+/Users/hunter/go/pkg/mod/github.com/!alex!stocks/getty@v0.0.0-20190331201845-1ca64ac5a589/conn.go:255: }
+[2019/05/08 14:30:29 CST] [EROR] [session.go:github.com/AlexStocks/getty.(*session).handlePackage.func1:552] {server:TCP_SERVER:5:127.0.0.1:20000<->127.0.0.1:60809}, [session.handlePackage] error{EOF
+/Users/hunter/go/pkg/mod/github.com/!alex!stocks/getty@v0.0.0-20190331201845-1ca64ac5a589/conn.go:255: 
+/Users/hunter/go/pkg/mod/github.com/!alex!stocks/getty@v0.0.0-20190331201845-1ca64ac5a589/session.go:652: }
+[2019/05/08 14:30:29 CST] [EROR] [session.go:github.com/AlexStocks/getty.(*session).handlePackage.func1:552] {server:TCP_SERVER:6:127.0.0.1:20000<->127.0.0.1:60810}, [session.handlePackage] error{EOF
+/Users/hunter/go/pkg/mod/github.com/!alex!stocks/getty@v0.0.0-20190331201845-1ca64ac5a589/conn.go:255: 
+/Users/hunter/go/pkg/mod/github.com/!alex!stocks/getty@v0.0.0-20190331201845-1ca64ac5a589/session.go:652: }

@@ -1,0 +1,1198 @@
+[2019/05/08 13:25:31 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.init.0:44] [consumerInit] &errors.errorString{s:"ioutil.ReadFile(file:/Users/hunter/01-GitProject/go_workspace/go-for-apache-dubbo/go-for-apache-dubbo-benchmark/dubbo-go-jsonrpc/client.yml) = error:open /Users/hunter/01-GitProject/go_workspace/go-for-apache-dubbo/go-for-apache-dubbo-benchmark/dubbo-go-jsonrpc/client.yml: no such file or directory"}
+[2019/05/08 13:25:31 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.Load:216] consumerConfig is nil!
+[2019/05/08 13:25:31 CST] [EROR] [rpc_service.go:github.com/dubbo/go-for-apache-dubbo/config.suiteMethod:203] method Service of mtype func(*main.UserProvider) string has wrong number of in parameters 1; needs exactly 3/4
+[2019/05/08 13:25:31 CST] [EROR] [rpc_service.go:github.com/dubbo/go-for-apache-dubbo/config.suiteMethod:203] method Version of mtype func(*main.UserProvider) string has wrong number of in parameters 1; needs exactly 3/4
+[2019/05/08 13:25:31 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 13:25:31 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 13:25:31 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 13:25:31 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:25:31 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:25:31 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 13:25:31 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:25:31 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:25:31 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 13:25:31 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 13:25:31 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 13:25:31 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 13:25:31 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:25:31 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:25:31 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 13:25:31 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:25:31 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:25:31 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 13:25:49 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.init.0:44] [consumerInit] &errors.errorString{s:"ioutil.ReadFile(file:/Users/hunter/01-GitProject/go_workspace/go-for-apache-dubbo/go-for-apache-dubbo-benchmark/dubbo-go-jsonrpc/client.yml) = error:open /Users/hunter/01-GitProject/go_workspace/go-for-apache-dubbo/go-for-apache-dubbo-benchmark/dubbo-go-jsonrpc/client.yml: no such file or directory"}
+[2019/05/08 13:25:49 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.Load:216] consumerConfig is nil!
+[2019/05/08 13:27:47 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.init.0:44] [consumerInit] &errors.errorString{s:"ioutil.ReadFile(file:/Users/hunter/01-GitProject/go_workspace/go-for-apache-dubbo/go-for-apache-dubbo-benchmark/dubbo-go-jsonrpc/client.yml) = error:open /Users/hunter/01-GitProject/go_workspace/go-for-apache-dubbo/go-for-apache-dubbo-benchmark/dubbo-go-jsonrpc/client.yml: no such file or directory"}
+[2019/05/08 13:27:48 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.Load:216] consumerConfig is nil!
+[2019/05/08 13:27:48 CST] [EROR] [rpc_service.go:github.com/dubbo/go-for-apache-dubbo/config.suiteMethod:203] method Service of mtype func(*main.UserProvider) string has wrong number of in parameters 1; needs exactly 3/4
+[2019/05/08 13:27:48 CST] [EROR] [rpc_service.go:github.com/dubbo/go-for-apache-dubbo/config.suiteMethod:203] method Version of mtype func(*main.UserProvider) string has wrong number of in parameters 1; needs exactly 3/4
+[2019/05/08 13:27:48 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 13:27:48 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 13:27:48 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 13:27:48 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:27:48 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:27:48 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 13:27:48 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:27:48 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:27:48 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 13:27:48 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 13:27:48 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 13:27:48 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 13:27:48 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:27:48 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:27:48 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 13:27:48 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:27:48 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:27:48 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 13:27:57 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.init.0:44] [consumerInit] &errors.errorString{s:"ioutil.ReadFile(file:/Users/hunter/01-GitProject/go_workspace/go-for-apache-dubbo/go-for-apache-dubbo-benchmark/dubbo-go-jsonrpc/client.yml) = error:open /Users/hunter/01-GitProject/go_workspace/go-for-apache-dubbo/go-for-apache-dubbo-benchmark/dubbo-go-jsonrpc/client.yml: no such file or directory"}
+[2019/05/08 13:28:17 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 13:28:18 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 13:28:18 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 13:28:18 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:28:18 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:28:18 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 13:28:18 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:28:18 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:28:18 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 13:28:18 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:28:18 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:28:18 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 13:28:18 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 13:28:18 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 13:28:18 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 13:28:18 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:28:18 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:28:18 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 13:28:18 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:28:18 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:28:18 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 13:28:18 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:28:18 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:28:18 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 13:28:18 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).RegisterTemp:299] conn.Create("/dubbo/com.ikurento.user.UserProvider/consumers/consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D44842%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557293297%26version%3D", zk.FlagEphemeral) = error(zk: node already exists)
+
+[2019/05/08 13:28:18 CST] [EROR] [registry.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*ZkRegistry).registerTempZookeeperNode:406] RegisterTempNode(root{/dubbo/com.ikurento.user.UserProvider/consumers}, node{consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D44842%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557293297%26version%3D}) = error{zk: node already exists
+/Users/hunter/go/pkg/mod/github.com/dubbo/go-for-apache-dubbo@v0.0.0-20190507201542-5edf3cc97a43/registry/zookeeper/zk_client.go:300: }
+[2019/05/08 13:28:18 CST] [EROR] [protocol.go:github.com/dubbo/go-for-apache-dubbo/registry/protocol.(*RegistryProtocol).Refer:74] consumer service jsonrpc://:@:/com.ikurento.user.UserProvider?&environment=dev&cluster=failover&application=BDTService&organization=ikurento.com&app.version=0.0.1&owner=ZX&interface=com.ikurento.user.UserProvider&retries=0&methods.GetUser.loadbalance=&timestamp=1557293297&group=&version=&module=dubbogo user-info client&loadbalance=&async=false&name=BDTService&methods.GetUser.retries=3 register registry zookeeper://:@127.0.0.1:2181?&group=&registry.role=0&registry=zookeeper&registry.timeout=3s error, error message is registerTempZookeeperNode(path:/dubbo/com.ikurento.user.UserProvider/consumers, url:consumer://10.32.20.124/com.ikurento.user.UserProvider?app.version=0.0.1&application=BDTService&async=false&category=consumers&cluster=failover&dubbo=dubbogo-consumer-2.6.0&environment=dev&group=&interface=com.ikurento.user.UserProvider&ip=10.32.20.124&loadbalance=&methods.GetUser.loadbalance=&methods.GetUser.retries=3&module=dubbogo+user-info+client&name=BDTService&organization=ikurento.com&owner=ZX&pid=44842&protocol=jsonrpc&retries=0&timestamp=1557293297&version=): RegisterTempNode(root{/dubbo/com.ikurento.user.UserProvider/consumers}, node{consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D44842%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557293297%26version%3D}): zk: node already exists
+[2019/05/08 13:28:28 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 13:28:28 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 13:28:28 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 13:28:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:28:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:28:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 13:28:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:28:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:28:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 13:28:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:28:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:28:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 13:28:28 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 13:28:28 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 13:28:28 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 13:28:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:28:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:28:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 13:28:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:28:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:28:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 13:28:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:28:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:28:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 13:28:28 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).RegisterTemp:299] conn.Create("/dubbo/com.ikurento.user.UserProvider/consumers/consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D44863%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557293308%26version%3D", zk.FlagEphemeral) = error(zk: node already exists)
+
+[2019/05/08 13:28:28 CST] [EROR] [registry.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*ZkRegistry).registerTempZookeeperNode:406] RegisterTempNode(root{/dubbo/com.ikurento.user.UserProvider/consumers}, node{consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D44863%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557293308%26version%3D}) = error{zk: node already exists
+/Users/hunter/go/pkg/mod/github.com/dubbo/go-for-apache-dubbo@v0.0.0-20190507201542-5edf3cc97a43/registry/zookeeper/zk_client.go:300: }
+[2019/05/08 13:28:28 CST] [EROR] [protocol.go:github.com/dubbo/go-for-apache-dubbo/registry/protocol.(*RegistryProtocol).Refer:74] consumer service jsonrpc://:@:/com.ikurento.user.UserProvider?&timestamp=1557293308&cluster=failover&retries=0&organization=ikurento.com&module=dubbogo user-info client&methods.GetUser.loadbalance=&methods.GetUser.retries=3&name=BDTService&owner=ZX&loadbalance=&environment=dev&interface=com.ikurento.user.UserProvider&group=&version=&async=false&application=BDTService&app.version=0.0.1 register registry zookeeper://:@127.0.0.1:2181?&group=&registry.role=0&registry=zookeeper&registry.timeout=3s error, error message is registerTempZookeeperNode(path:/dubbo/com.ikurento.user.UserProvider/consumers, url:consumer://10.32.20.124/com.ikurento.user.UserProvider?app.version=0.0.1&application=BDTService&async=false&category=consumers&cluster=failover&dubbo=dubbogo-consumer-2.6.0&environment=dev&group=&interface=com.ikurento.user.UserProvider&ip=10.32.20.124&loadbalance=&methods.GetUser.loadbalance=&methods.GetUser.retries=3&module=dubbogo+user-info+client&name=BDTService&organization=ikurento.com&owner=ZX&pid=44863&protocol=jsonrpc&retries=0&timestamp=1557293308&version=): RegisterTempNode(root{/dubbo/com.ikurento.user.UserProvider/consumers}, node{consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D44863%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557293308%26version%3D}): zk: node already exists
+[2019/05/08 13:37:27 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 13:37:27 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 13:37:27 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 13:37:27 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:37:27 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:37:27 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 13:37:27 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:37:27 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:37:27 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 13:37:27 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:37:27 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:37:27 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 13:37:27 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 13:37:27 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 13:37:27 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 13:37:27 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:37:27 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:37:27 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 13:37:27 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:37:27 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:37:27 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 13:37:27 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:37:27 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:37:27 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 13:37:27 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).RegisterTemp:299] conn.Create("/dubbo/com.ikurento.user.UserProvider/consumers/consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D46039%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557293847%26version%3D", zk.FlagEphemeral) = error(zk: node already exists)
+
+[2019/05/08 13:37:27 CST] [EROR] [registry.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*ZkRegistry).registerTempZookeeperNode:406] RegisterTempNode(root{/dubbo/com.ikurento.user.UserProvider/consumers}, node{consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D46039%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557293847%26version%3D}) = error{zk: node already exists
+/Users/hunter/go/pkg/mod/github.com/dubbo/go-for-apache-dubbo@v0.0.0-20190507201542-5edf3cc97a43/registry/zookeeper/zk_client.go:300: }
+[2019/05/08 13:37:27 CST] [EROR] [protocol.go:github.com/dubbo/go-for-apache-dubbo/registry/protocol.(*RegistryProtocol).Refer:74] consumer service jsonrpc://:@:/com.ikurento.user.UserProvider?&organization=ikurento.com&app.version=0.0.1&owner=ZX&environment=dev&application=BDTService&async=false&module=dubbogo user-info client&methods.GetUser.loadbalance=&interface=com.ikurento.user.UserProvider&group=&retries=0&cluster=failover&loadbalance=&version=&name=BDTService&methods.GetUser.retries=3&timestamp=1557293847 register registry zookeeper://:@127.0.0.1:2181?&group=&registry.role=0&registry=zookeeper&registry.timeout=3s error, error message is registerTempZookeeperNode(path:/dubbo/com.ikurento.user.UserProvider/consumers, url:consumer://10.32.20.124/com.ikurento.user.UserProvider?app.version=0.0.1&application=BDTService&async=false&category=consumers&cluster=failover&dubbo=dubbogo-consumer-2.6.0&environment=dev&group=&interface=com.ikurento.user.UserProvider&ip=10.32.20.124&loadbalance=&methods.GetUser.loadbalance=&methods.GetUser.retries=3&module=dubbogo+user-info+client&name=BDTService&organization=ikurento.com&owner=ZX&pid=46039&protocol=jsonrpc&retries=0&timestamp=1557293847&version=): RegisterTempNode(root{/dubbo/com.ikurento.user.UserProvider/consumers}, node{consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D46039%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557293847%26version%3D}): zk: node already exists
+[2019/05/08 13:41:55 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 13:41:55 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 13:41:55 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 13:41:55 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:41:55 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:41:55 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 13:41:55 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:41:55 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:41:55 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 13:41:55 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:41:55 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:41:55 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 13:41:55 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 13:41:55 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 13:41:55 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 13:41:55 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:41:55 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:41:55 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 13:41:55 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:41:55 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:41:55 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 13:41:55 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:41:55 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:41:55 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 13:41:55 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).RegisterTemp:299] conn.Create("/dubbo/com.ikurento.user.UserProvider/consumers/consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D46528%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557294115%26version%3D", zk.FlagEphemeral) = error(zk: node already exists)
+
+[2019/05/08 13:41:55 CST] [EROR] [registry.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*ZkRegistry).registerTempZookeeperNode:406] RegisterTempNode(root{/dubbo/com.ikurento.user.UserProvider/consumers}, node{consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D46528%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557294115%26version%3D}) = error{zk: node already exists
+/Users/hunter/go/pkg/mod/github.com/dubbo/go-for-apache-dubbo@v0.0.0-20190507201542-5edf3cc97a43/registry/zookeeper/zk_client.go:300: }
+[2019/05/08 13:41:55 CST] [EROR] [protocol.go:github.com/dubbo/go-for-apache-dubbo/registry/protocol.(*RegistryProtocol).Refer:74] consumer service jsonrpc://:@:/com.ikurento.user.UserProvider?&application=BDTService&organization=ikurento.com&name=BDTService&module=dubbogo user-info client&group=&app.version=0.0.1&methods.GetUser.loadbalance=&methods.GetUser.retries=3&timestamp=1557294115&cluster=failover&version=&owner=ZX&environment=dev&interface=com.ikurento.user.UserProvider&loadbalance=&retries=0&async=false register registry zookeeper://:@127.0.0.1:2181?&registry.timeout=3s&group=&registry.role=0&registry=zookeeper error, error message is registerTempZookeeperNode(path:/dubbo/com.ikurento.user.UserProvider/consumers, url:consumer://10.32.20.124/com.ikurento.user.UserProvider?app.version=0.0.1&application=BDTService&async=false&category=consumers&cluster=failover&dubbo=dubbogo-consumer-2.6.0&environment=dev&group=&interface=com.ikurento.user.UserProvider&ip=10.32.20.124&loadbalance=&methods.GetUser.loadbalance=&methods.GetUser.retries=3&module=dubbogo+user-info+client&name=BDTService&organization=ikurento.com&owner=ZX&pid=46528&protocol=jsonrpc&retries=0&timestamp=1557294115&version=): RegisterTempNode(root{/dubbo/com.ikurento.user.UserProvider/consumers}, node{consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D46528%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557294115%26version%3D}): zk: node already exists
+[2019/05/08 13:44:33 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 13:44:33 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 13:44:33 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 13:44:33 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:44:33 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:44:33 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 13:44:33 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:44:33 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:44:33 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 13:44:33 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:44:33 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:44:33 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 13:44:33 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 13:44:33 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 13:44:33 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 13:44:33 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:44:33 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:44:33 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 13:44:33 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:44:33 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:44:33 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 13:44:33 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:44:33 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:44:33 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 13:44:33 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).RegisterTemp:299] conn.Create("/dubbo/com.ikurento.user.UserProvider/consumers/consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D46955%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557294273%26version%3D", zk.FlagEphemeral) = error(zk: node already exists)
+
+[2019/05/08 13:44:33 CST] [EROR] [registry.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*ZkRegistry).registerTempZookeeperNode:406] RegisterTempNode(root{/dubbo/com.ikurento.user.UserProvider/consumers}, node{consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D46955%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557294273%26version%3D}) = error{zk: node already exists
+/Users/hunter/go/pkg/mod/github.com/dubbo/go-for-apache-dubbo@v0.0.0-20190507201542-5edf3cc97a43/registry/zookeeper/zk_client.go:300: }
+[2019/05/08 13:47:40 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 13:47:40 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 13:47:40 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 13:47:40 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:47:40 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:47:40 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 13:47:40 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:47:40 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:47:40 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 13:47:40 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:47:40 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:47:40 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 13:47:40 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 13:47:40 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 13:47:40 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 13:47:40 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:47:40 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:47:40 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 13:47:40 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:47:40 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:47:40 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 13:47:40 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:47:40 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:47:40 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 13:47:40 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).RegisterTemp:299] conn.Create("/dubbo/com.ikurento.user.UserProvider/consumers/consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D47347%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557294460%26version%3D", zk.FlagEphemeral) = error(zk: node already exists)
+
+[2019/05/08 13:47:40 CST] [EROR] [registry.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*ZkRegistry).registerTempZookeeperNode:406] RegisterTempNode(root{/dubbo/com.ikurento.user.UserProvider/consumers}, node{consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D47347%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557294460%26version%3D}) = error{zk: node already exists
+/Users/hunter/go/pkg/mod/github.com/dubbo/go-for-apache-dubbo@v0.0.0-20190507201542-5edf3cc97a43/registry/zookeeper/zk_client.go:300: }
+[2019/05/08 13:50:47 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 13:50:47 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 13:50:47 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 13:50:47 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:50:47 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:50:47 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 13:50:47 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:50:47 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:50:47 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 13:50:47 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:50:47 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:50:47 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 13:50:47 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 13:50:47 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 13:50:47 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 13:50:47 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:50:47 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:50:47 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 13:50:47 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:50:47 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:50:47 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 13:50:47 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:50:47 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:50:47 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 13:50:47 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).RegisterTemp:299] conn.Create("/dubbo/com.ikurento.user.UserProvider/consumers/consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D47776%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557294647%26version%3D", zk.FlagEphemeral) = error(zk: node already exists)
+
+[2019/05/08 13:50:47 CST] [EROR] [registry.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*ZkRegistry).registerTempZookeeperNode:406] RegisterTempNode(root{/dubbo/com.ikurento.user.UserProvider/consumers}, node{consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D47776%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557294647%26version%3D}) = error{zk: node already exists
+/Users/hunter/go/pkg/mod/github.com/dubbo/go-for-apache-dubbo@v0.0.0-20190507201542-5edf3cc97a43/registry/zookeeper/zk_client.go:300: }
+[2019/05/08 13:53:54 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.init.0:44] [consumerInit] &errors.errorString{s:"application configure(consumer) file name is nil"}
+[2019/05/08 13:53:54 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.Load:216] consumerConfig is nil!
+[2019/05/08 13:53:54 CST] [EROR] [rpc_service.go:github.com/dubbo/go-for-apache-dubbo/config.suiteMethod:203] method Service of mtype func(*main.UserProvider) string has wrong number of in parameters 1; needs exactly 3/4
+[2019/05/08 13:53:54 CST] [EROR] [rpc_service.go:github.com/dubbo/go-for-apache-dubbo/config.suiteMethod:203] method Version of mtype func(*main.UserProvider) string has wrong number of in parameters 1; needs exactly 3/4
+[2019/05/08 13:53:54 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 13:53:54 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 13:53:54 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 13:53:54 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:53:54 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:53:54 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 13:53:54 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:53:54 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:53:54 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 13:53:54 CST] [EROR] [server.go:github.com/dubbo/go-for-apache-dubbo/protocol/jsonrpc.(*Server).Start:205] jsonrpc server [/com.ikurento.user.UserProvider] start failed: listen tcp 127.0.0.1:20001: bind: address already in use
+[2019/05/08 13:53:54 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 13:53:54 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 13:53:54 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 13:53:54 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:53:54 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:53:54 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 13:53:54 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:53:54 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:53:54 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 13:59:33 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.init.0:44] [consumerInit] &errors.errorString{s:"application configure(consumer) file name is nil"}
+[2019/05/08 13:59:33 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.Load:216] consumerConfig is nil!
+[2019/05/08 13:59:33 CST] [EROR] [rpc_service.go:github.com/dubbo/go-for-apache-dubbo/config.suiteMethod:203] method Service of mtype func(*main.UserProvider) string has wrong number of in parameters 1; needs exactly 3/4
+[2019/05/08 13:59:33 CST] [EROR] [rpc_service.go:github.com/dubbo/go-for-apache-dubbo/config.suiteMethod:203] method Version of mtype func(*main.UserProvider) string has wrong number of in parameters 1; needs exactly 3/4
+[2019/05/08 13:59:33 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 13:59:33 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 13:59:33 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 13:59:33 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:59:33 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:59:33 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 13:59:33 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:59:33 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:59:33 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 13:59:33 CST] [EROR] [server.go:github.com/dubbo/go-for-apache-dubbo/protocol/jsonrpc.(*Server).Start:205] jsonrpc server [/com.ikurento.user.UserProvider] start failed: listen tcp 127.0.0.1:20001: bind: address already in use
+[2019/05/08 13:59:33 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 13:59:33 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 13:59:33 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 13:59:33 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:59:33 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:59:33 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 13:59:33 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 13:59:33 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 13:59:33 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:04:41 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.init.0:44] [consumerInit] &errors.errorString{s:"application configure(consumer) file name is nil"}
+[2019/05/08 14:04:41 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.Load:216] consumerConfig is nil!
+[2019/05/08 14:04:41 CST] [EROR] [rpc_service.go:github.com/dubbo/go-for-apache-dubbo/config.suiteMethod:203] method Service of mtype func(*main.UserProvider) string has wrong number of in parameters 1; needs exactly 3/4
+[2019/05/08 14:04:41 CST] [EROR] [rpc_service.go:github.com/dubbo/go-for-apache-dubbo/config.suiteMethod:203] method Version of mtype func(*main.UserProvider) string has wrong number of in parameters 1; needs exactly 3/4
+[2019/05/08 14:04:41 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:04:41 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:04:41 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:04:41 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:04:41 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:04:41 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:04:41 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:04:41 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:04:41 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:04:41 CST] [EROR] [server.go:github.com/dubbo/go-for-apache-dubbo/protocol/jsonrpc.(*Server).Start:205] jsonrpc server [/com.ikurento.user.UserProvider] start failed: listen tcp 127.0.0.1:20001: bind: address already in use
+[2019/05/08 14:04:41 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:04:41 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:04:41 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:04:41 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:04:41 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:04:41 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:04:41 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:04:41 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:04:41 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:04:57 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.init.0:44] [consumerInit] &errors.errorString{s:"application configure(consumer) file name is nil"}
+[2019/05/08 14:04:57 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.Load:216] consumerConfig is nil!
+[2019/05/08 14:04:57 CST] [EROR] [rpc_service.go:github.com/dubbo/go-for-apache-dubbo/config.suiteMethod:203] method Service of mtype func(*main.UserProvider) string has wrong number of in parameters 1; needs exactly 3/4
+[2019/05/08 14:04:57 CST] [EROR] [rpc_service.go:github.com/dubbo/go-for-apache-dubbo/config.suiteMethod:203] method Version of mtype func(*main.UserProvider) string has wrong number of in parameters 1; needs exactly 3/4
+[2019/05/08 14:04:57 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:04:57 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:04:57 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:04:57 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:04:57 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:04:57 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:04:57 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:04:57 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:04:57 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:04:57 CST] [EROR] [server.go:github.com/dubbo/go-for-apache-dubbo/protocol/jsonrpc.(*Server).Start:205] jsonrpc server [/com.ikurento.user.UserProvider] start failed: listen tcp 127.0.0.1:20001: bind: address already in use
+[2019/05/08 14:04:57 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:04:57 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:04:57 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:04:57 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:04:57 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:04:57 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:04:57 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:04:57 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:04:57 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:11:00 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.init.0:44] [consumerInit] &errors.errorString{s:"application configure(consumer) file name is nil"}
+[2019/05/08 14:11:00 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.Load:216] consumerConfig is nil!
+[2019/05/08 14:11:00 CST] [EROR] [rpc_service.go:github.com/dubbo/go-for-apache-dubbo/config.suiteMethod:203] method Service of mtype func(*main.UserProvider) string has wrong number of in parameters 1; needs exactly 3/4
+[2019/05/08 14:11:00 CST] [EROR] [rpc_service.go:github.com/dubbo/go-for-apache-dubbo/config.suiteMethod:203] method Version of mtype func(*main.UserProvider) string has wrong number of in parameters 1; needs exactly 3/4
+[2019/05/08 14:11:00 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:11:00 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:11:00 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:11:00 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:11:00 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:11:00 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:11:00 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:11:00 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:11:00 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:11:00 CST] [EROR] [server.go:github.com/dubbo/go-for-apache-dubbo/protocol/jsonrpc.(*Server).Start:205] jsonrpc server [/com.ikurento.user.UserProvider] start failed: listen tcp 127.0.0.1:20001: bind: address already in use
+[2019/05/08 14:11:00 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:11:00 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:11:00 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:11:00 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:11:00 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:11:00 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:11:00 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:11:00 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:11:00 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:11:10 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:11:10 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:11:10 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:11:10 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:11:10 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:11:10 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 14:11:10 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:11:10 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:11:10 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:11:10 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:11:10 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:11:10 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 14:11:10 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:11:10 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:11:10 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:11:10 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:11:10 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:11:10 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 14:11:10 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:11:10 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:11:10 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:11:10 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:11:10 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:11:10 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 14:11:10 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).RegisterTemp:299] conn.Create("/dubbo/com.ikurento.user.UserProvider/consumers/consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D50091%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557295870%26version%3D", zk.FlagEphemeral) = error(zk: node already exists)
+
+[2019/05/08 14:11:10 CST] [EROR] [registry.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*ZkRegistry).registerTempZookeeperNode:406] RegisterTempNode(root{/dubbo/com.ikurento.user.UserProvider/consumers}, node{consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D50091%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557295870%26version%3D}) = error{zk: node already exists
+/Users/hunter/go/pkg/mod/github.com/dubbo/go-for-apache-dubbo@v0.0.0-20190507201542-5edf3cc97a43/registry/zookeeper/zk_client.go:300: }
+[2019/05/08 14:11:10 CST] [EROR] [protocol.go:github.com/dubbo/go-for-apache-dubbo/registry/protocol.(*RegistryProtocol).Refer:74] consumer service jsonrpc://:@:/com.ikurento.user.UserProvider?&retries=0&module=dubbogo user-info client&app.version=0.0.1&owner=ZX&timestamp=1557295870&async=false&environment=dev&loadbalance=&group=&version=&application=BDTService&organization=ikurento.com&name=BDTService&methods.GetUser.loadbalance=&methods.GetUser.retries=3&interface=com.ikurento.user.UserProvider&cluster=failover register registry zookeeper://:@127.0.0.1:2181?&group=&registry.role=0&registry=zookeeper&registry.timeout=3s error, error message is registerTempZookeeperNode(path:/dubbo/com.ikurento.user.UserProvider/consumers, url:consumer://10.32.20.124/com.ikurento.user.UserProvider?app.version=0.0.1&application=BDTService&async=false&category=consumers&cluster=failover&dubbo=dubbogo-consumer-2.6.0&environment=dev&group=&interface=com.ikurento.user.UserProvider&ip=10.32.20.124&loadbalance=&methods.GetUser.loadbalance=&methods.GetUser.retries=3&module=dubbogo+user-info+client&name=BDTService&organization=ikurento.com&owner=ZX&pid=50091&protocol=jsonrpc&retries=0&timestamp=1557295870&version=): RegisterTempNode(root{/dubbo/com.ikurento.user.UserProvider/consumers}, node{consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D50091%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557295870%26version%3D}): zk: node already exists
+[2019/05/08 14:12:20 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.init.0:44] [consumerInit] &errors.errorString{s:"application configure(consumer) file name is nil"}
+[2019/05/08 14:12:20 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.Load:216] consumerConfig is nil!
+[2019/05/08 14:12:20 CST] [EROR] [rpc_service.go:github.com/dubbo/go-for-apache-dubbo/config.suiteMethod:203] method Service of mtype func(*main.UserProvider) string has wrong number of in parameters 1; needs exactly 3/4
+[2019/05/08 14:12:20 CST] [EROR] [rpc_service.go:github.com/dubbo/go-for-apache-dubbo/config.suiteMethod:203] method Version of mtype func(*main.UserProvider) string has wrong number of in parameters 1; needs exactly 3/4
+[2019/05/08 14:12:20 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:12:20 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:12:20 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:12:20 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:12:20 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:12:20 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:12:20 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:12:20 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:12:20 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:12:20 CST] [EROR] [server.go:github.com/dubbo/go-for-apache-dubbo/protocol/jsonrpc.(*Server).Start:205] jsonrpc server [/com.ikurento.user.UserProvider] start failed: listen tcp 127.0.0.1:20001: bind: address already in use
+[2019/05/08 14:12:20 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:12:20 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:12:20 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:12:20 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:12:20 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:12:20 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:12:20 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:12:20 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:12:20 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:12:30 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.init.0:48] [providerInit] &errors.errorString{s:"application configure(provider) file name is nil"}
+[2019/05/08 14:12:30 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:12:30 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:12:30 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:12:30 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:12:30 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:12:30 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 14:12:30 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:12:30 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:12:30 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:12:30 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:12:30 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:12:30 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 14:12:30 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:12:30 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:12:30 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:12:30 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:12:30 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:12:30 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 14:12:30 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:12:30 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:12:30 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:12:30 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:12:30 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:12:30 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 14:12:30 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).RegisterTemp:299] conn.Create("/dubbo/com.ikurento.user.UserProvider/consumers/consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D50270%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557295950%26version%3D", zk.FlagEphemeral) = error(zk: node already exists)
+
+[2019/05/08 14:12:30 CST] [EROR] [registry.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*ZkRegistry).registerTempZookeeperNode:406] RegisterTempNode(root{/dubbo/com.ikurento.user.UserProvider/consumers}, node{consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D50270%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557295950%26version%3D}) = error{zk: node already exists
+/Users/hunter/go/pkg/mod/github.com/dubbo/go-for-apache-dubbo@v0.0.0-20190507201542-5edf3cc97a43/registry/zookeeper/zk_client.go:300: }
+[2019/05/08 14:12:30 CST] [EROR] [protocol.go:github.com/dubbo/go-for-apache-dubbo/registry/protocol.(*RegistryProtocol).Refer:74] consumer service jsonrpc://:@:/com.ikurento.user.UserProvider?&environment=dev&retries=0&app.version=0.0.1&methods.GetUser.loadbalance=&interface=com.ikurento.user.UserProvider&application=BDTService&loadbalance=&group=&organization=ikurento.com&methods.GetUser.retries=3&timestamp=1557295950&cluster=failover&name=BDTService&module=dubbogo user-info client&owner=ZX&version=&async=false register registry zookeeper://:@127.0.0.1:2181?&group=&registry.role=0&registry=zookeeper&registry.timeout=3s error, error message is registerTempZookeeperNode(path:/dubbo/com.ikurento.user.UserProvider/consumers, url:consumer://10.32.20.124/com.ikurento.user.UserProvider?app.version=0.0.1&application=BDTService&async=false&category=consumers&cluster=failover&dubbo=dubbogo-consumer-2.6.0&environment=dev&group=&interface=com.ikurento.user.UserProvider&ip=10.32.20.124&loadbalance=&methods.GetUser.loadbalance=&methods.GetUser.retries=3&module=dubbogo+user-info+client&name=BDTService&organization=ikurento.com&owner=ZX&pid=50270&protocol=jsonrpc&retries=0&timestamp=1557295950&version=): RegisterTempNode(root{/dubbo/com.ikurento.user.UserProvider/consumers}, node{consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D50270%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557295950%26version%3D}): zk: node already exists
+[2019/05/08 14:12:30 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.Load:230] providerConfig is nil!
+[2019/05/08 14:13:31 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.init.0:44] [consumerInit] &errors.errorString{s:"application configure(consumer) file name is nil"}
+[2019/05/08 14:13:31 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.Load:216] consumerConfig is nil!
+[2019/05/08 14:13:31 CST] [EROR] [rpc_service.go:github.com/dubbo/go-for-apache-dubbo/config.suiteMethod:203] method Service of mtype func(*main.UserProvider) string has wrong number of in parameters 1; needs exactly 3/4
+[2019/05/08 14:13:31 CST] [EROR] [rpc_service.go:github.com/dubbo/go-for-apache-dubbo/config.suiteMethod:203] method Version of mtype func(*main.UserProvider) string has wrong number of in parameters 1; needs exactly 3/4
+[2019/05/08 14:13:31 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:13:31 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:13:31 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:13:31 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:13:31 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:13:31 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:13:31 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:13:31 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:13:31 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:13:31 CST] [EROR] [server.go:github.com/dubbo/go-for-apache-dubbo/protocol/jsonrpc.(*Server).Start:205] jsonrpc server [/com.ikurento.user.UserProvider] start failed: listen tcp 127.0.0.1:20001: bind: address already in use
+[2019/05/08 14:13:31 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:13:31 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:13:31 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:13:31 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:13:31 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:13:31 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:13:31 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:13:31 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:13:31 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:13:41 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.init.0:48] [providerInit] &errors.errorString{s:"application configure(provider) file name is nil"}
+[2019/05/08 14:13:41 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:13:41 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:13:41 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:13:41 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:13:41 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:13:41 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 14:13:41 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:13:41 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:13:41 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:13:41 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:13:41 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:13:41 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 14:13:41 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:13:41 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:13:41 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:13:41 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:13:41 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:13:41 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 14:13:41 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:13:41 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:13:41 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:13:41 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:13:41 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:13:41 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 14:13:41 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).RegisterTemp:299] conn.Create("/dubbo/com.ikurento.user.UserProvider/consumers/consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D50442%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557296021%26version%3D", zk.FlagEphemeral) = error(zk: node already exists)
+
+[2019/05/08 14:13:41 CST] [EROR] [registry.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*ZkRegistry).registerTempZookeeperNode:406] RegisterTempNode(root{/dubbo/com.ikurento.user.UserProvider/consumers}, node{consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D50442%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557296021%26version%3D}) = error{zk: node already exists
+/Users/hunter/go/pkg/mod/github.com/dubbo/go-for-apache-dubbo@v0.0.0-20190507201542-5edf3cc97a43/registry/zookeeper/zk_client.go:300: }
+[2019/05/08 14:13:41 CST] [EROR] [protocol.go:github.com/dubbo/go-for-apache-dubbo/registry/protocol.(*RegistryProtocol).Refer:74] consumer service jsonrpc://:@:/com.ikurento.user.UserProvider?&retries=0&version=&async=false&organization=ikurento.com&name=BDTService&module=dubbogo user-info client&app.version=0.0.1&owner=ZX&timestamp=1557296021&group=&application=BDTService&methods.GetUser.loadbalance=&interface=com.ikurento.user.UserProvider&cluster=failover&loadbalance=&methods.GetUser.retries=3&environment=dev register registry zookeeper://:@127.0.0.1:2181?&registry.role=0&registry=zookeeper&registry.timeout=3s&group= error, error message is registerTempZookeeperNode(path:/dubbo/com.ikurento.user.UserProvider/consumers, url:consumer://10.32.20.124/com.ikurento.user.UserProvider?app.version=0.0.1&application=BDTService&async=false&category=consumers&cluster=failover&dubbo=dubbogo-consumer-2.6.0&environment=dev&group=&interface=com.ikurento.user.UserProvider&ip=10.32.20.124&loadbalance=&methods.GetUser.loadbalance=&methods.GetUser.retries=3&module=dubbogo+user-info+client&name=BDTService&organization=ikurento.com&owner=ZX&pid=50442&protocol=jsonrpc&retries=0&timestamp=1557296021&version=): RegisterTempNode(root{/dubbo/com.ikurento.user.UserProvider/consumers}, node{consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D50442%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557296021%26version%3D}): zk: node already exists
+[2019/05/08 14:13:41 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.Load:230] providerConfig is nil!
+[2019/05/08 14:16:35 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.init.0:44] [consumerInit] &errors.errorString{s:"application configure(consumer) file name is nil"}
+[2019/05/08 14:16:35 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.Load:216] consumerConfig is nil!
+[2019/05/08 14:16:35 CST] [EROR] [rpc_service.go:github.com/dubbo/go-for-apache-dubbo/config.suiteMethod:203] method Service of mtype func(*main.UserProvider) string has wrong number of in parameters 1; needs exactly 3/4
+[2019/05/08 14:16:35 CST] [EROR] [rpc_service.go:github.com/dubbo/go-for-apache-dubbo/config.suiteMethod:203] method Version of mtype func(*main.UserProvider) string has wrong number of in parameters 1; needs exactly 3/4
+[2019/05/08 14:16:35 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:16:35 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:16:35 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:16:35 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:16:35 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:16:35 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:16:35 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:16:35 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:16:35 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:16:35 CST] [EROR] [server.go:github.com/dubbo/go-for-apache-dubbo/protocol/jsonrpc.(*Server).Start:205] jsonrpc server [/com.ikurento.user.UserProvider] start failed: listen tcp 127.0.0.1:20001: bind: address already in use
+[2019/05/08 14:16:35 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:16:35 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:16:35 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:16:35 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:16:35 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:16:35 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:16:35 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:16:35 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:16:35 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:16:39 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.init.0:48] [providerInit] &errors.errorString{s:"application configure(provider) file name is nil"}
+[2019/05/08 14:16:39 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:16:39 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:16:39 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:16:39 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:16:39 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:16:39 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 14:16:39 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:16:39 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:16:39 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:16:39 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:16:39 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:16:39 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 14:16:39 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:16:39 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:16:39 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:16:39 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:16:39 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:16:39 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 14:16:39 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:16:39 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:16:39 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:16:39 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:16:39 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:16:39 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 14:16:39 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).RegisterTemp:299] conn.Create("/dubbo/com.ikurento.user.UserProvider/consumers/consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D50839%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557296199%26version%3D", zk.FlagEphemeral) = error(zk: node already exists)
+
+[2019/05/08 14:16:39 CST] [EROR] [registry.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*ZkRegistry).registerTempZookeeperNode:406] RegisterTempNode(root{/dubbo/com.ikurento.user.UserProvider/consumers}, node{consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D50839%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557296199%26version%3D}) = error{zk: node already exists
+/Users/hunter/go/pkg/mod/github.com/dubbo/go-for-apache-dubbo@v0.0.0-20190507201542-5edf3cc97a43/registry/zookeeper/zk_client.go:300: }
+[2019/05/08 14:16:39 CST] [EROR] [protocol.go:github.com/dubbo/go-for-apache-dubbo/registry/protocol.(*RegistryProtocol).Refer:74] consumer service jsonrpc://:@:/com.ikurento.user.UserProvider?&cluster=failover&loadbalance=&retries=0&group=&app.version=0.0.1&interface=com.ikurento.user.UserProvider&environment=dev&version=&application=BDTService&organization=ikurento.com&owner=ZX&methods.GetUser.loadbalance=&methods.GetUser.retries=3&timestamp=1557296199&async=false&name=BDTService&module=dubbogo user-info client register registry zookeeper://:@127.0.0.1:2181?&group=&registry.role=0&registry=zookeeper&registry.timeout=3s error, error message is registerTempZookeeperNode(path:/dubbo/com.ikurento.user.UserProvider/consumers, url:consumer://10.32.20.124/com.ikurento.user.UserProvider?app.version=0.0.1&application=BDTService&async=false&category=consumers&cluster=failover&dubbo=dubbogo-consumer-2.6.0&environment=dev&group=&interface=com.ikurento.user.UserProvider&ip=10.32.20.124&loadbalance=&methods.GetUser.loadbalance=&methods.GetUser.retries=3&module=dubbogo+user-info+client&name=BDTService&organization=ikurento.com&owner=ZX&pid=50839&protocol=jsonrpc&retries=0&timestamp=1557296199&version=): RegisterTempNode(root{/dubbo/com.ikurento.user.UserProvider/consumers}, node{consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D50839%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557296199%26version%3D}): zk: node already exists
+[2019/05/08 14:16:39 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.Load:230] providerConfig is nil!
+[2019/05/08 14:21:57 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.init.0:44] [consumerInit] &errors.errorString{s:"application configure(consumer) file name is nil"}
+[2019/05/08 14:21:57 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.Load:216] consumerConfig is nil!
+[2019/05/08 14:21:57 CST] [EROR] [rpc_service.go:github.com/dubbo/go-for-apache-dubbo/config.suiteMethod:203] method Service of mtype func(*main.UserProvider) string has wrong number of in parameters 1; needs exactly 3/4
+[2019/05/08 14:21:57 CST] [EROR] [rpc_service.go:github.com/dubbo/go-for-apache-dubbo/config.suiteMethod:203] method Version of mtype func(*main.UserProvider) string has wrong number of in parameters 1; needs exactly 3/4
+[2019/05/08 14:21:57 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:21:57 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:21:57 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:21:57 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:21:57 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:21:57 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:21:57 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:21:57 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:21:57 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:21:57 CST] [EROR] [server.go:github.com/dubbo/go-for-apache-dubbo/protocol/jsonrpc.(*Server).Start:205] jsonrpc server [/com.ikurento.user.UserProvider] start failed: listen tcp 127.0.0.1:20001: bind: address already in use
+[2019/05/08 14:21:57 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:21:57 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:21:57 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:21:57 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:21:57 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:21:57 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:21:57 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:21:57 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:21:57 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:22:01 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.init.0:48] [providerInit] &errors.errorString{s:"application configure(provider) file name is nil"}
+[2019/05/08 14:22:21 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.init.0:44] [consumerInit] &errors.errorString{s:"application configure(consumer) file name is nil"}
+[2019/05/08 14:22:21 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.Load:216] consumerConfig is nil!
+[2019/05/08 14:22:21 CST] [EROR] [rpc_service.go:github.com/dubbo/go-for-apache-dubbo/config.suiteMethod:203] method Service of mtype func(*main.UserProvider) string has wrong number of in parameters 1; needs exactly 3/4
+[2019/05/08 14:22:21 CST] [EROR] [rpc_service.go:github.com/dubbo/go-for-apache-dubbo/config.suiteMethod:203] method Version of mtype func(*main.UserProvider) string has wrong number of in parameters 1; needs exactly 3/4
+[2019/05/08 14:22:21 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:22:21 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:22:21 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:22:21 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:22:21 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:22:21 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:22:21 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:22:21 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:22:21 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:22:21 CST] [EROR] [server.go:github.com/dubbo/go-for-apache-dubbo/protocol/jsonrpc.(*Server).Start:205] jsonrpc server [/com.ikurento.user.UserProvider] start failed: listen tcp 127.0.0.1:20001: bind: address already in use
+[2019/05/08 14:22:21 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:22:21 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:22:21 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:22:21 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:22:21 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:22:21 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:22:21 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:22:21 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:22:21 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:22:25 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.init.0:48] [providerInit] &errors.errorString{s:"application configure(provider) file name is nil"}
+[2019/05/08 14:22:48 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.init.0:44] [consumerInit] &errors.errorString{s:"application configure(consumer) file name is nil"}
+[2019/05/08 14:22:48 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.Load:216] consumerConfig is nil!
+[2019/05/08 14:22:48 CST] [EROR] [rpc_service.go:github.com/dubbo/go-for-apache-dubbo/config.suiteMethod:203] method Service of mtype func(*main.UserProvider) string has wrong number of in parameters 1; needs exactly 3/4
+[2019/05/08 14:22:48 CST] [EROR] [rpc_service.go:github.com/dubbo/go-for-apache-dubbo/config.suiteMethod:203] method Version of mtype func(*main.UserProvider) string has wrong number of in parameters 1; needs exactly 3/4
+[2019/05/08 14:22:48 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:22:48 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:22:48 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:22:48 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:22:48 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:22:48 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:22:48 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:22:48 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:22:48 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:22:48 CST] [EROR] [server.go:github.com/dubbo/go-for-apache-dubbo/protocol/jsonrpc.(*Server).Start:205] jsonrpc server [/com.ikurento.user.UserProvider] start failed: listen tcp 127.0.0.1:20001: bind: address already in use
+[2019/05/08 14:22:48 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:22:48 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:22:48 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:22:48 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:22:48 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:22:48 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:22:48 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:22:48 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:22:48 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:22:52 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.init.0:48] [providerInit] &errors.errorString{s:"application configure(provider) file name is nil"}
+[2019/05/08 14:22:52 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:22:52 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:22:52 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:22:52 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:22:52 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:22:52 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 14:22:52 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:22:52 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:22:52 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:22:52 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:22:52 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:22:52 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 14:22:52 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:22:52 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:22:52 CST] [WARN] [listener.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zkEventListener).listenServiceEvent:265] serviceURL dubbo://:@127.0.0.1:20000/com.ikurento.user.UserProvider?group=&version= is not compatible with SubURL jsonrpc://:@:/com.ikurento.user.UserProvider?group=&version=
+[2019/05/08 14:22:52 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:22:52 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:22:52 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:22:52 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 14:22:52 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:22:52 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:22:52 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:22:52 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:22:52 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:22:52 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 14:22:52 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).RegisterTemp:299] conn.Create("/dubbo/com.ikurento.user.UserProvider/consumers/consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D51771%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557296572%26version%3D", zk.FlagEphemeral) = error(zk: node already exists)
+
+[2019/05/08 14:22:52 CST] [EROR] [registry.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*ZkRegistry).registerTempZookeeperNode:406] RegisterTempNode(root{/dubbo/com.ikurento.user.UserProvider/consumers}, node{consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D51771%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557296572%26version%3D}) = error{zk: node already exists
+/Users/hunter/go/pkg/mod/github.com/dubbo/go-for-apache-dubbo@v0.0.0-20190507201542-5edf3cc97a43/registry/zookeeper/zk_client.go:300: }
+[2019/05/08 14:22:52 CST] [EROR] [protocol.go:github.com/dubbo/go-for-apache-dubbo/registry/protocol.(*RegistryProtocol).Refer:74] consumer service jsonrpc://:@:/com.ikurento.user.UserProvider?&retries=0&group=&version=&name=BDTService&interface=com.ikurento.user.UserProvider&cluster=failover&module=dubbogo user-info client&methods.GetUser.retries=3&environment=dev&loadbalance=&async=false&application=BDTService&organization=ikurento.com&owner=ZX&timestamp=1557296572&app.version=0.0.1&methods.GetUser.loadbalance= register registry zookeeper://:@127.0.0.1:2181?&group=&registry.role=0&registry=zookeeper&registry.timeout=3s error, error message is registerTempZookeeperNode(path:/dubbo/com.ikurento.user.UserProvider/consumers, url:consumer://10.32.20.124/com.ikurento.user.UserProvider?app.version=0.0.1&application=BDTService&async=false&category=consumers&cluster=failover&dubbo=dubbogo-consumer-2.6.0&environment=dev&group=&interface=com.ikurento.user.UserProvider&ip=10.32.20.124&loadbalance=&methods.GetUser.loadbalance=&methods.GetUser.retries=3&module=dubbogo+user-info+client&name=BDTService&organization=ikurento.com&owner=ZX&pid=51771&protocol=jsonrpc&retries=0&timestamp=1557296572&version=): RegisterTempNode(root{/dubbo/com.ikurento.user.UserProvider/consumers}, node{consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D51771%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557296572%26version%3D}): zk: node already exists
+[2019/05/08 14:22:52 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.Load:230] providerConfig is nil!
+[2019/05/08 14:25:25 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.init.0:44] [consumerInit] &errors.errorString{s:"application configure(consumer) file name is nil"}
+[2019/05/08 14:25:25 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.Load:216] consumerConfig is nil!
+[2019/05/08 14:25:25 CST] [EROR] [rpc_service.go:github.com/dubbo/go-for-apache-dubbo/config.suiteMethod:203] method Service of mtype func(*main.UserProvider) string has wrong number of in parameters 1; needs exactly 3/4
+[2019/05/08 14:25:25 CST] [EROR] [rpc_service.go:github.com/dubbo/go-for-apache-dubbo/config.suiteMethod:203] method Version of mtype func(*main.UserProvider) string has wrong number of in parameters 1; needs exactly 3/4
+[2019/05/08 14:25:25 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:25:25 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:25:25 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:25:25 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:25:25 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:25:25 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:25:25 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:25:25 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:25:25 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:25:25 CST] [EROR] [server.go:github.com/dubbo/go-for-apache-dubbo/protocol/jsonrpc.(*Server).Start:205] jsonrpc server [/com.ikurento.user.UserProvider] start failed: listen tcp 127.0.0.1:20001: bind: address already in use
+[2019/05/08 14:25:25 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:25:25 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:25:25 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:25:25 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:25:25 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:25:25 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:25:25 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:25:25 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:25:25 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:25:28 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.init.0:48] [providerInit] &errors.errorString{s:"application configure(provider) file name is nil"}
+[2019/05/08 14:25:28 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:25:28 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:25:28 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:25:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:25:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:25:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 14:25:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:25:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:25:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:25:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:25:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:25:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 14:25:28 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:25:28 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:25:28 CST] [WARN] [listener.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zkEventListener).listenServiceEvent:265] serviceURL dubbo://:@127.0.0.1:20000/com.ikurento.user.UserProvider?group=&version= is not compatible with SubURL jsonrpc://:@:/com.ikurento.user.UserProvider?group=&version=
+[2019/05/08 14:25:28 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:25:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:25:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:25:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 14:25:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:25:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:25:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:25:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:25:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:25:28 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 14:25:28 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).RegisterTemp:299] conn.Create("/dubbo/com.ikurento.user.UserProvider/consumers/consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D52135%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557296728%26version%3D", zk.FlagEphemeral) = error(zk: node already exists)
+
+[2019/05/08 14:25:28 CST] [EROR] [registry.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*ZkRegistry).registerTempZookeeperNode:406] RegisterTempNode(root{/dubbo/com.ikurento.user.UserProvider/consumers}, node{consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D52135%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557296728%26version%3D}) = error{zk: node already exists
+/Users/hunter/go/pkg/mod/github.com/dubbo/go-for-apache-dubbo@v0.0.0-20190507201542-5edf3cc97a43/registry/zookeeper/zk_client.go:300: }
+[2019/05/08 14:25:28 CST] [EROR] [protocol.go:github.com/dubbo/go-for-apache-dubbo/registry/protocol.(*RegistryProtocol).Refer:74] consumer service jsonrpc://:@:/com.ikurento.user.UserProvider?&version=&organization=ikurento.com&module=dubbogo user-info client&owner=ZX&methods.GetUser.retries=3&interface=com.ikurento.user.UserProvider&group=&retries=0&cluster=failover&loadbalance=&application=BDTService&name=BDTService&app.version=0.0.1&environment=dev&methods.GetUser.loadbalance=&timestamp=1557296728&async=false register registry zookeeper://:@127.0.0.1:2181?&group=&registry.role=0&registry=zookeeper&registry.timeout=3s error, error message is registerTempZookeeperNode(path:/dubbo/com.ikurento.user.UserProvider/consumers, url:consumer://10.32.20.124/com.ikurento.user.UserProvider?app.version=0.0.1&application=BDTService&async=false&category=consumers&cluster=failover&dubbo=dubbogo-consumer-2.6.0&environment=dev&group=&interface=com.ikurento.user.UserProvider&ip=10.32.20.124&loadbalance=&methods.GetUser.loadbalance=&methods.GetUser.retries=3&module=dubbogo+user-info+client&name=BDTService&organization=ikurento.com&owner=ZX&pid=52135&protocol=jsonrpc&retries=0&timestamp=1557296728&version=): RegisterTempNode(root{/dubbo/com.ikurento.user.UserProvider/consumers}, node{consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D52135%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557296728%26version%3D}): zk: node already exists
+[2019/05/08 14:25:28 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.Load:230] providerConfig is nil!
+[2019/05/08 14:25:40 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.init.0:44] [consumerInit] &errors.errorString{s:"application configure(consumer) file name is nil"}
+[2019/05/08 14:25:40 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.Load:216] consumerConfig is nil!
+[2019/05/08 14:25:40 CST] [EROR] [rpc_service.go:github.com/dubbo/go-for-apache-dubbo/config.suiteMethod:203] method Service of mtype func(*main.UserProvider) string has wrong number of in parameters 1; needs exactly 3/4
+[2019/05/08 14:25:40 CST] [EROR] [rpc_service.go:github.com/dubbo/go-for-apache-dubbo/config.suiteMethod:203] method Version of mtype func(*main.UserProvider) string has wrong number of in parameters 1; needs exactly 3/4
+[2019/05/08 14:25:40 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:25:40 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:25:40 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:25:40 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:25:40 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:25:40 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:25:40 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:25:40 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:25:40 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:25:40 CST] [EROR] [server.go:github.com/dubbo/go-for-apache-dubbo/protocol/jsonrpc.(*Server).Start:205] jsonrpc server [/com.ikurento.user.UserProvider] start failed: listen tcp 127.0.0.1:20001: bind: address already in use
+[2019/05/08 14:25:40 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:25:40 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:25:40 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2182, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:25:40 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:25:40 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:25:40 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:25:40 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:25:40 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:25:40 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:25:44 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.init.0:48] [providerInit] &errors.errorString{s:"application configure(provider) file name is nil"}
+[2019/05/08 14:25:44 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:25:44 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:25:44 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:25:44 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:25:44 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:25:44 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 14:25:44 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:25:44 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:25:44 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:25:44 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:25:44 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:25:44 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 14:25:44 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:1-zookeeper connecting, err:<nil>}
+[2019/05/08 14:25:44 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:100-zookeeper connected, err:<nil>}
+[2019/05/08 14:25:44 CST] [WARN] [listener.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zkEventListener).listenServiceEvent:265] serviceURL dubbo://:@127.0.0.1:20000/com.ikurento.user.UserProvider?group=&version= is not compatible with SubURL jsonrpc://:@:/com.ikurento.user.UserProvider?group=&version=
+[2019/05/08 14:25:44 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).handleZkEvent:110] client{zk registry} get a zookeeper event{type:EventSession, server:127.0.0.1:2181, path:, state:101-zookeeper has session, err:<nil>}
+[2019/05/08 14:25:44 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:25:44 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:25:44 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 14:25:44 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:25:44 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:25:44 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/providers") exists
+
+[2019/05/08 14:25:44 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo") exists
+
+[2019/05/08 14:25:44 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider") exists
+
+[2019/05/08 14:25:44 CST] [EROR] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).Create:255] zk.create("/dubbo/com.ikurento.user.UserProvider/consumers") exists
+
+[2019/05/08 14:25:44 CST] [WARN] [zk_client.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*zookeeperClient).RegisterTemp:299] conn.Create("/dubbo/com.ikurento.user.UserProvider/consumers/consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D52196%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557296744%26version%3D", zk.FlagEphemeral) = error(zk: node already exists)
+
+[2019/05/08 14:25:44 CST] [EROR] [registry.go:github.com/dubbo/go-for-apache-dubbo/registry/zookeeper.(*ZkRegistry).registerTempZookeeperNode:406] RegisterTempNode(root{/dubbo/com.ikurento.user.UserProvider/consumers}, node{consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D52196%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557296744%26version%3D}) = error{zk: node already exists
+/Users/hunter/go/pkg/mod/github.com/dubbo/go-for-apache-dubbo@v0.0.0-20190507201542-5edf3cc97a43/registry/zookeeper/zk_client.go:300: }
+[2019/05/08 14:25:44 CST] [EROR] [protocol.go:github.com/dubbo/go-for-apache-dubbo/registry/protocol.(*RegistryProtocol).Refer:74] consumer service jsonrpc://:@:/com.ikurento.user.UserProvider?&app.version=0.0.1&owner=ZX&timestamp=1557296744&loadbalance=&group=&version=&name=BDTService&module=dubbogo user-info client&interface=com.ikurento.user.UserProvider&application=BDTService&retries=0&methods.GetUser.retries=3&cluster=failover&async=false&organization=ikurento.com&environment=dev&methods.GetUser.loadbalance= register registry zookeeper://:@127.0.0.1:2181?&group=&registry.role=0&registry=zookeeper&registry.timeout=3s error, error message is registerTempZookeeperNode(path:/dubbo/com.ikurento.user.UserProvider/consumers, url:consumer://10.32.20.124/com.ikurento.user.UserProvider?app.version=0.0.1&application=BDTService&async=false&category=consumers&cluster=failover&dubbo=dubbogo-consumer-2.6.0&environment=dev&group=&interface=com.ikurento.user.UserProvider&ip=10.32.20.124&loadbalance=&methods.GetUser.loadbalance=&methods.GetUser.retries=3&module=dubbogo+user-info+client&name=BDTService&organization=ikurento.com&owner=ZX&pid=52196&protocol=jsonrpc&retries=0&timestamp=1557296744&version=): RegisterTempNode(root{/dubbo/com.ikurento.user.UserProvider/consumers}, node{consumer%3A%2F%2F10.32.20.124%2Fcom.ikurento.user.UserProvider%3Fapp.version%3D0.0.1%26application%3DBDTService%26async%3Dfalse%26category%3Dconsumers%26cluster%3Dfailover%26dubbo%3Ddubbogo-consumer-2.6.0%26environment%3Ddev%26group%3D%26interface%3Dcom.ikurento.user.UserProvider%26ip%3D10.32.20.124%26loadbalance%3D%26methods.GetUser.loadbalance%3D%26methods.GetUser.retries%3D3%26module%3Ddubbogo%2Buser-info%2Bclient%26name%3DBDTService%26organization%3Dikurento.com%26owner%3DZX%26pid%3D52196%26protocol%3Djsonrpc%26retries%3D0%26timestamp%3D1557296744%26version%3D}): zk: node already exists
+[2019/05/08 14:25:44 CST] [WARN] [config_loader.go:github.com/dubbo/go-for-apache-dubbo/config/support.Load:230] providerConfig is nil!
