@@ -14,7 +14,7 @@
 .glide/
 
 .idea
-logs/
+
 jsonrpc/pid
 dubbo/pid
 *.iml
