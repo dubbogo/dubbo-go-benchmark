@@ -5,7 +5,7 @@ go 1.12
 require (
 	github.com/AlexStocks/goext v0.3.2
 	github.com/AlexStocks/log4go v1.0.2
-	github.com/dubbo/go-for-apache-dubbo v0.0.0-20190508175310-cb872d964821
+	github.com/dubbo/go-for-apache-dubbo v0.0.0-20190508202152-dc262fbd5535
 	github.com/dubbogo/hessian2 v0.0.0-20190410112310-f093e4436e31
 	github.com/k0kubun/pp v3.0.1+incompatible // indirect
 	github.com/mailru/easyjson v0.0.0-20190403194419-1ea4449da983 // indirect

@@ -17,7 +17,6 @@ type Gender int
 
 func init() {
 	support.SetProService(new(UserProvider))
-	fmt.Println("hahahahah")
 }
 
 const (
