@@ -27,17 +27,17 @@ registries :
   username: ""
   password: ""
 
-- id: "shanghaizk"
-  type: "zookeeper"
-  timeout	: "3s"
-  address: "127.0.0.1:2181"
-  username: ""
-  password: ""
+#- id: "shanghaizk"
+#  type: "zookeeper"
+#  timeout	: "3s"
+#  address: "127.0.0.1:2181"
+#  username: ""
+#  password: ""
 
 references:
 - registries :
   - "hangzhouzk"
-  - "shanghaizk"
+#  - "shanghaizk"
 
   protocol : "dubbo"
   interface : "com.ikurento.user.UserProvider"
@@ -55,7 +55,7 @@ protocol_conf:
     pool_size: 64
     pool_ttl: 600
     getty_session_param:
-      compress_encoding: false
+      compress_encoding: true
       tcp_no_delay: true
       tcp_keep_alive: true
       keep_alive_period: "120s"
