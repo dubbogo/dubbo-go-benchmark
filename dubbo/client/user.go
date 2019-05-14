@@ -12,13 +12,13 @@ import (
 )
 
 import (
-	"github.com/dubbo/go-for-apache-dubbo/config/support"
+	"github.com/dubbo/go-for-apache-dubbo/config"
 )
 
 type Gender hessian.JavaEnum
 
 func init() {
-	support.SetConService(new(UserProvider))
+	config.SetConService(new(UserProvider))
 }
 
 const (

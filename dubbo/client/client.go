@@ -5,21 +5,21 @@ import (
 	"errors"
 	"flag"
 	"fmt"
-	hessian "github.com/dubbogo/hessian2"
-	"github.com/montanaflynn/stats"
 	"sync"
 	"sync/atomic"
 	"time"
 )
+import(
+	hessian "github.com/dubbogo/hessian2"
+	"github.com/montanaflynn/stats"
+)
 import (
+	"github.com/dubbo/go-for-apache-dubbo/config"
 	_ "github.com/dubbo/go-for-apache-dubbo/protocol/dubbo"
 	_ "github.com/dubbo/go-for-apache-dubbo/registry/protocol"
-
 	_ "github.com/dubbo/go-for-apache-dubbo/filter/imp"
-
 	_ "github.com/dubbo/go-for-apache-dubbo/cluster/loadbalance"
-	_ "github.com/dubbo/go-for-apache-dubbo/cluster/support"
-	"github.com/dubbo/go-for-apache-dubbo/config/support"
+	_ "github.com/dubbo/go-for-apache-dubbo/cluster/cluster_impl"
 	_ "github.com/dubbo/go-for-apache-dubbo/registry/zookeeper"
 )
 
@@ -52,7 +52,7 @@ func main() {
 	hessian.RegisterJavaEnum(Gender(WOMAN))
 	hessian.RegisterPOJO(&User{})
 
-	conMap, _ := support.Load()
+	conMap, _ := config.Load()
 	if conMap == nil {
 		panic("conMap is nil")
 	}

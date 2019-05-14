@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	hessian "github.com/dubbogo/hessian2"
 	"net/http"
 	_ "net/http/pprof"
 	"os"
@@ -12,13 +11,14 @@ import (
 )
 
 import (
+	hessian "github.com/dubbogo/hessian2"
 	"github.com/AlexStocks/goext/net"
 	"github.com/AlexStocks/goext/time"
 	log "github.com/AlexStocks/log4go"
 )
 
 import (
-	"github.com/dubbo/go-for-apache-dubbo/config/support"
+	"github.com/dubbo/go-for-apache-dubbo/config"
 
 	_ "github.com/dubbo/go-for-apache-dubbo/protocol/dubbo"
 	_ "github.com/dubbo/go-for-apache-dubbo/protocol/jsonrpc"
@@ -27,7 +27,7 @@ import (
 	_ "github.com/dubbo/go-for-apache-dubbo/filter/imp"
 
 	_ "github.com/dubbo/go-for-apache-dubbo/cluster/loadbalance"
-	_ "github.com/dubbo/go-for-apache-dubbo/cluster/support"
+	_ "github.com/dubbo/go-for-apache-dubbo/cluster/cluster_impl"
 	_ "github.com/dubbo/go-for-apache-dubbo/registry/zookeeper"
 )
 
@@ -46,7 +46,7 @@ func main() {
 	hessian.RegisterPOJO(&User{})
 	// ------------
 
-	_, proMap := support.Load()
+	_, proMap := config.Load()
 	if proMap == nil {
 		panic("proMap is nil")
 	}
@@ -57,7 +57,7 @@ func main() {
 }
 
 func initProfiling() {
-	if !support.GetProviderConfig().Pprof_Enabled {
+	if !config.GetProviderConfig().Pprof_Enabled {
 		return
 	}
 	const (
@@ -73,7 +73,7 @@ func initProfiling() {
 	if err != nil {
 		panic("can not get local ip!")
 	}
-	addr = ip + ":" + strconv.Itoa(support.GetProviderConfig().Pprof_Port)
+	addr = ip + ":" + strconv.Itoa(config.GetProviderConfig().Pprof_Port)
 	log.Info("App Profiling startup on address{%v}", addr+PprofPath)
 
 	go func() {

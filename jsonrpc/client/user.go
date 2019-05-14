@@ -10,11 +10,11 @@ import (
 )
 
 import (
-	"github.com/dubbo/go-for-apache-dubbo/config/support"
+	"github.com/dubbo/go-for-apache-dubbo/config"
 )
 
 func init() {
-	support.SetConService(new(UserProvider))
+	config.SetConService(new(UserProvider))
 }
 
 type JsonRPCUser struct {

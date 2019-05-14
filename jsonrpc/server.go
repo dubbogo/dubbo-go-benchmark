@@ -2,18 +2,23 @@ package main
 
 import (
 	"fmt"
+	"os"
+	"os/signal"
+	"syscall"
+)
+import(
 	gxtime "github.com/AlexStocks/goext/time"
 	log "github.com/AlexStocks/log4go"
+)
+
+import(
 	_ "github.com/dubbo/go-for-apache-dubbo/cluster/loadbalance"
-	_ "github.com/dubbo/go-for-apache-dubbo/cluster/support"
-	"github.com/dubbo/go-for-apache-dubbo/config/support"
+	_ "github.com/dubbo/go-for-apache-dubbo/cluster/cluster_impl"
+	"github.com/dubbo/go-for-apache-dubbo/config"
 	_ "github.com/dubbo/go-for-apache-dubbo/filter/imp"
 	_ "github.com/dubbo/go-for-apache-dubbo/protocol/jsonrpc"
 	_ "github.com/dubbo/go-for-apache-dubbo/registry/protocol"
 	_ "github.com/dubbo/go-for-apache-dubbo/registry/zookeeper"
-	"os"
-	"os/signal"
-	"syscall"
 )
 
 var (
@@ -25,7 +30,7 @@ var (
 // 		export APP_LOG_CONF_FILE="xxx"
 
 func main() {
-	_, proMap := support.Load()
+	_, proMap := config.Load()
 	if proMap == nil {
 		panic("proMap is nil")
 	}

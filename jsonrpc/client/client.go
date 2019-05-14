@@ -5,21 +5,22 @@ import (
 	"errors"
 	"flag"
 	"fmt"
-	"github.com/dubbo/go-for-apache-dubbo/config/support"
-	"github.com/montanaflynn/stats"
 	"sync"
 	"sync/atomic"
-
 	"time"
 )
+import(
+	"github.com/montanaflynn/stats"
+)
 import (
+	"github.com/dubbo/go-for-apache-dubbo/config"
 	_ "github.com/dubbo/go-for-apache-dubbo/protocol/jsonrpc"
 	_ "github.com/dubbo/go-for-apache-dubbo/registry/protocol"
 
 	_ "github.com/dubbo/go-for-apache-dubbo/filter/imp"
 
 	_ "github.com/dubbo/go-for-apache-dubbo/cluster/loadbalance"
-	_ "github.com/dubbo/go-for-apache-dubbo/cluster/support"
+	_ "github.com/dubbo/go-for-apache-dubbo/cluster/cluster_impl"
 	_ "github.com/dubbo/go-for-apache-dubbo/registry/zookeeper"
 )
 
@@ -47,7 +48,7 @@ func main() {
 
 	fmt.Printf("sent total %d messages, %d message per client", n*m, m)
 
-	conMap, _ := support.Load()
+	conMap, _ := config.Load()
 	if conMap == nil {
 		panic("conMap is nil")
 	}

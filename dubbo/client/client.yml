@@ -48,7 +48,7 @@ references:
 
 protocol_conf:
   dubbo:
-    connection_number: 2
+    connection_number: 10
     heartbeat_period: "5s"
     session_timeout: "20s"
     fail_fast_timeout: "5s"
