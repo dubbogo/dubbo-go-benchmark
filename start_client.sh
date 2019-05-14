@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 
 #c 代表压测并发数，n代表压测总数，p代表协议
 while getopts ":p:n:c:" opt

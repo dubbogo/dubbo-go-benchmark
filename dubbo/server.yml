@@ -4,10 +4,6 @@
 pprof_enabled : true
 pprof_port : 20080
 
-# server
-transport : "http"
-net_timeout : "3s"
-
 path: ""
 # application config
 application_config:
@@ -26,18 +22,18 @@ registries :
   username: ""
   password: ""
 
-#- id: "shanghaizk"
-#  type: "zookeeper"
-#  timeout	: "3s"
-#  address: "127.0.0.1:2182"
-#  username: ""
-#  password: ""
+- id: "shanghaizk"
+  type: "zookeeper"
+  timeout	: "3s"
+  address: "127.0.0.1:2182"
+  username: ""
+  password: ""
 
 
 services:
 - registries:
   - "hangzhouzk"
-#  - "shanghaizk"
+  - "shanghaizk"
   protocol : "dubbo"
     # 相当于dubbo.xml中的interface
   interface : "com.ikurento.user.UserProvider"
@@ -63,7 +59,7 @@ protocol_conf:
     fail_fast_timeout: "5s"
     session_timeout: "20s"
     getty_session_param:
-      compress_encoding: true
+      compress_encoding: false
       tcp_no_delay: true
       tcp_keep_alive: true
       keep_alive_period: "120s"
@@ -74,5 +70,5 @@ protocol_conf:
       tcp_read_timeout: "1s"
       tcp_write_timeout: "5s"
       wait_timeout: "1s"
-      max_msg_len: 1024
+      max_msg_len: 10240
       session_name: "server"

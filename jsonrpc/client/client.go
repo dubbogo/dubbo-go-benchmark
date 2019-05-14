@@ -9,18 +9,23 @@ import (
 	"sync/atomic"
 	"time"
 )
-import(
+
+import (
 	"github.com/montanaflynn/stats"
 )
+
 import (
 	"github.com/dubbo/go-for-apache-dubbo/config"
 	_ "github.com/dubbo/go-for-apache-dubbo/protocol/jsonrpc"
 	_ "github.com/dubbo/go-for-apache-dubbo/registry/protocol"
 
-	_ "github.com/dubbo/go-for-apache-dubbo/filter/imp"
+	_ "github.com/dubbo/go-for-apache-dubbo/filter/impl"
 
+	_ "github.com/dubbo/go-for-apache-dubbo/cluster"
 	_ "github.com/dubbo/go-for-apache-dubbo/cluster/loadbalance"
+
 	_ "github.com/dubbo/go-for-apache-dubbo/cluster/cluster_impl"
+
 	_ "github.com/dubbo/go-for-apache-dubbo/registry/zookeeper"
 )
 
@@ -29,6 +34,9 @@ import (
 // 		export APP_LOG_CONF_FILE="xxx"
 var concurrency = flag.Int("c", 1, "concurrency")
 var total = flag.Int("n", 1, "total requests for all clients")
+
+// package 4096 more
+const ARG = "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"
 
 func main() {
 	flag.Parse()
@@ -77,13 +85,13 @@ func main() {
 			}()
 
 			//warmup
-			for j := 0; j < 5; j++ {
-				user := &JsonRPCUser{}
-				err := conMap["com.ikurento.user.UserProvider"].GetRPCService().(*UserProvider).GetUser(context.TODO(), []interface{}{"A003"}, user)
-				if err != nil {
-					fmt.Println(err)
-				}
-			}
+			//for j := 0; j < 5; j++ {
+			//	user := &JsonRPCUser{}
+			//	err := conMap["com.ikurento.user.UserProvider"].GetRPCService().(*UserProvider).GetUser(context.TODO(), []interface{}{"A003"}, user)
+			//	if err != nil {
+			//		fmt.Println(err)
+			//	}
+			//}
 
 			startWg.Done()
 			startWg.Wait()
@@ -91,7 +99,7 @@ func main() {
 			for j := 0; j < m; j++ {
 				t := time.Now().UnixNano()
 				user := &JsonRPCUser{}
-				err := conMap["com.ikurento.user.UserProvider"].GetRPCService().(*UserProvider).GetUser(context.TODO(), []interface{}{"A003"}, user)
+				err := conMap["com.ikurento.user.UserProvider"].GetRPCService().(*UserProvider).GetUser(context.TODO(), []interface{}{"A003", ARG}, user)
 
 				t = time.Now().UnixNano() - t
 

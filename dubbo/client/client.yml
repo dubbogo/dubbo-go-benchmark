@@ -5,8 +5,7 @@ pprof_enabled : true
 pprof_port : 10086
 
 # client
-request_timeout : "3500ms"
-net_io_timeout : "2s"
+request_timeout : "100ms"
 # connect timeout
 connect_timeout : "100ms"
 
@@ -27,17 +26,17 @@ registries :
   username: ""
   password: ""
 
-#- id: "shanghaizk"
-#  type: "zookeeper"
-#  timeout	: "3s"
-#  address: "127.0.0.1:2181"
-#  username: ""
-#  password: ""
+- id: "shanghaizk"
+  type: "zookeeper"
+  timeout	: "3s"
+  address: "127.0.0.1:2181"
+  username: ""
+  password: ""
 
 references:
 - registries :
   - "hangzhouzk"
-#  - "shanghaizk"
+  - "shanghaizk"
 
   protocol : "dubbo"
   interface : "com.ikurento.user.UserProvider"
@@ -48,14 +47,15 @@ references:
 
 protocol_conf:
   dubbo:
-    connection_number: 10
+    reconnect_interval: 0
+    connection_number: 2
     heartbeat_period: "5s"
     session_timeout: "20s"
     fail_fast_timeout: "5s"
     pool_size: 64
     pool_ttl: 600
     getty_session_param:
-      compress_encoding: true
+      compress_encoding: false
       tcp_no_delay: true
       tcp_keep_alive: true
       keep_alive_period: "120s"
@@ -66,5 +66,5 @@ protocol_conf:
       tcp_read_timeout: "1s"
       tcp_write_timeout: "5s"
       wait_timeout: "1s"
-      max_msg_len: 1024
+      max_msg_len: 10240
       session_name: "client"

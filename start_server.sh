@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 
 #p代表协议
 while getopts ":p:" opt

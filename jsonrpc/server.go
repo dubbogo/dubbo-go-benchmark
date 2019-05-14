@@ -6,16 +6,17 @@ import (
 	"os/signal"
 	"syscall"
 )
-import(
-	gxtime "github.com/AlexStocks/goext/time"
+
+import (
+	"github.com/AlexStocks/goext/time"
 	log "github.com/AlexStocks/log4go"
 )
 
-import(
-	_ "github.com/dubbo/go-for-apache-dubbo/cluster/loadbalance"
+import (
 	_ "github.com/dubbo/go-for-apache-dubbo/cluster/cluster_impl"
+	_ "github.com/dubbo/go-for-apache-dubbo/cluster/loadbalance"
 	"github.com/dubbo/go-for-apache-dubbo/config"
-	_ "github.com/dubbo/go-for-apache-dubbo/filter/imp"
+	_ "github.com/dubbo/go-for-apache-dubbo/filter/impl"
 	_ "github.com/dubbo/go-for-apache-dubbo/protocol/jsonrpc"
 	_ "github.com/dubbo/go-for-apache-dubbo/registry/protocol"
 	_ "github.com/dubbo/go-for-apache-dubbo/registry/zookeeper"
@@ -36,8 +37,6 @@ func main() {
 	}
 	initSignal()
 }
-
-
 
 func initSignal() {
 	signals := make(chan os.Signal, 1)

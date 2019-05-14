@@ -1,6 +1,7 @@
 cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
-github.com/AlexStocks/getty v0.0.0-20190513191741-cb811d1c31dd h1:kLcmlBGDmo9S+VSmRnDTUFCq3wvlIh9CMd4zLWqY1+4=
 github.com/AlexStocks/getty v0.0.0-20190513191741-cb811d1c31dd/go.mod h1:n25mdqPgFi06sWL6mZTjm1hBIZuKwgXUVXAX+KGB97U=
+github.com/AlexStocks/getty v0.0.0-20190513203438-4a52b6874223 h1:3Sk5FwL8QpEHeJewYv4piyhOGOj2MS2Ev4S5tHTVSTo=
+github.com/AlexStocks/getty v0.0.0-20190513203438-4a52b6874223/go.mod h1:n25mdqPgFi06sWL6mZTjm1hBIZuKwgXUVXAX+KGB97U=
 github.com/AlexStocks/goext v0.3.2 h1:Bn4C+R6/E5Yjk2Uc/voawtbGv91x9aCid92xwYL2AS0=
 github.com/AlexStocks/goext v0.3.2/go.mod h1:3M5j9Pjge4CdkNg2WIjRLUeoPedJHHKwkkglDGSl3Hc=
 github.com/AlexStocks/log4go v1.0.2 h1:1K5WM8KjSUECaoXUl8FSF05KGeCJDfBrhKUBsxwUvhk=
@@ -20,10 +21,11 @@ github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSs
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/dgrijalva/jwt-go v3.2.0+incompatible/go.mod h1:E3ru+11k8xSBh+hMPgOLZmtrrCbhqsmaPHjLKYnJCaQ=
-github.com/dubbo/go-for-apache-dubbo v0.0.0-20190514105353-2add39758d40 h1:RLpVyAq3Zc1+6U1Jg0qrtdPh93W54vagQrCVsXEaO28=
 github.com/dubbo/go-for-apache-dubbo v0.0.0-20190514105353-2add39758d40/go.mod h1:jYe3+Knc/3ZQGe5B/tZS83EH75W0w0g776zJ+gCRiGY=
-github.com/dubbogo/hessian2 v0.0.0-20190410112310-f093e4436e31 h1:qgwFcVu63dt6cKbMICPQN3NKo6m9fC/6FdJbffnmXOU=
+github.com/dubbo/go-for-apache-dubbo v0.0.0-20190514174254-2add39758d40/go.mod h1:jYe3+Knc/3ZQGe5B/tZS83EH75W0w0g776zJ+gCRiGY=
+github.com/dubbo/go-for-apache-dubbo v0.0.0-20190514174254-73becbbabc2a/go.mod h1:kSiJWa/7U7Dc5Cs2SQbw+mf8pFHYicL3rT2kM0nfWrc=
 github.com/dubbogo/hessian2 v0.0.0-20190410112310-f093e4436e31/go.mod h1:v+gfInE8fm/k3Fjkb2oUCKSO9LKbWvf+PtweEI89BmI=
+github.com/dubbogo/hessian2 v0.0.0-20190513195500-efce02944002/go.mod h1:v+gfInE8fm/k3Fjkb2oUCKSO9LKbWvf+PtweEI89BmI=
 github.com/fatih/set v0.2.1/go.mod h1:+RKtMCH+favT2+3YecHGxcc0b4KyVWA1QWWJUs4E0CI=
 github.com/ghodss/yaml v1.0.0/go.mod h1:4dBDuWmgqj2HViK6kFavaiC9ZROes6MMH2rRYeMEF04=
 github.com/gogo/protobuf v1.2.1/go.mod h1:hp+jE20tsWTFYpLwKvXlhS1hjn+gTNwPg2I6zVXpSg4=
