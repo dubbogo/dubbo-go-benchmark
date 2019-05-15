@@ -24,7 +24,9 @@ export -n CONF_CONSUMER_FILE_PATH
 export CONF_PROVIDER_FILE_PATH=$PWD/$popt/server.yml
 export APP_LOG_CONF_FILE=$PWD/$popt/log.xml
 
-go run ./$popt/ &
+cd ./$popt
+go build .
+./$popt &
 echo "进程ID:"$!
 echo $!>./pid
 
