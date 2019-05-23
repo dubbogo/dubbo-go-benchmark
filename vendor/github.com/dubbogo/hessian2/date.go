@@ -1,4 +1,4 @@
-// Copyright (c) 2016 ~ 2019, Alex Stocks.
+// Copyright 2016-2019 Alex Stocks
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ import (
 )
 
 import (
-	jerrors "github.com/juju/errors"
+	"github.com/pkg/errors"
 )
 
 /////////////////////////////////////////
@@ -90,6 +90,6 @@ func (d *Decoder) decDate(flag int32) (time.Time, error) {
 		return time.Unix(i64*60, 0), nil
 
 	default:
-		return t, jerrors.Errorf("decDate Invalid type: %v", tag)
+		return t, errors.Errorf("decDate Invalid type: %v", tag)
 	}
 }

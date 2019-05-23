@@ -1,3 +1,17 @@
+// Copyright 2016-2019 hxmhlt
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package protocol
 
 import (
@@ -40,7 +54,7 @@ func newRegistryProtocol() *registryProtocol {
 	}
 }
 func getRegistry(regUrl *common.URL) registry.Registry {
-	reg, err := extension.GetRegistryExtension(regUrl.Protocol, regUrl)
+	reg, err := extension.GetRegistry(regUrl.Protocol, regUrl)
 	if err != nil {
 		log.Error("Registry can not connect success, program is going to panic.Error message is %s", err.Error())
 		panic(err.Error())
@@ -110,7 +124,7 @@ func (proto *registryProtocol) Export(invoker protocol.Invoker) protocol.Exporte
 		log.Info("The exporter has been cached, and will return cached exporter!")
 	} else {
 		wrappedInvoker := newWrappedInvoker(invoker, providerUrl)
-		cachedExporter = extension.GetProtocolExtension(protocolwrapper.FILTER).Export(wrappedInvoker)
+		cachedExporter = extension.GetProtocol(protocolwrapper.FILTER).Export(wrappedInvoker)
 		proto.bounds.Store(key, cachedExporter)
 		log.Info("The exporter has not been cached, and will return a new  exporter!")
 	}

@@ -1,3 +1,17 @@
+// Copyright 2016-2019 Alex Stocks
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package dubbo
 
 import (
@@ -5,7 +19,7 @@ import (
 )
 
 import (
-	jerrors "github.com/juju/errors"
+	perrors "github.com/pkg/errors"
 )
 
 type (
@@ -87,19 +101,19 @@ func (c *GettySessionParam) CheckValidity() error {
 	var err error
 
 	if c.keepAlivePeriod, err = time.ParseDuration(c.KeepAlivePeriod); err != nil {
-		return jerrors.Annotatef(err, "time.ParseDuration(KeepAlivePeriod{%#v})", c.KeepAlivePeriod)
+		return perrors.WithMessagef(err, "time.ParseDuration(KeepAlivePeriod{%#v})", c.KeepAlivePeriod)
 	}
 
 	if c.tcpReadTimeout, err = time.ParseDuration(c.TcpReadTimeout); err != nil {
-		return jerrors.Annotatef(err, "time.ParseDuration(TcpReadTimeout{%#v})", c.TcpReadTimeout)
+		return perrors.WithMessagef(err, "time.ParseDuration(TcpReadTimeout{%#v})", c.TcpReadTimeout)
 	}
 
 	if c.tcpWriteTimeout, err = time.ParseDuration(c.TcpWriteTimeout); err != nil {
-		return jerrors.Annotatef(err, "time.ParseDuration(TcpWriteTimeout{%#v})", c.TcpWriteTimeout)
+		return perrors.WithMessagef(err, "time.ParseDuration(TcpWriteTimeout{%#v})", c.TcpWriteTimeout)
 	}
 
 	if c.waitTimeout, err = time.ParseDuration(c.WaitTimeout); err != nil {
-		return jerrors.Annotatef(err, "time.ParseDuration(WaitTimeout{%#v})", c.WaitTimeout)
+		return perrors.WithMessagef(err, "time.ParseDuration(WaitTimeout{%#v})", c.WaitTimeout)
 	}
 
 	return nil
@@ -109,30 +123,30 @@ func (c *ClientConfig) CheckValidity() error {
 	var err error
 
 	if c.heartbeatPeriod, err = time.ParseDuration(c.HeartbeatPeriod); err != nil {
-		return jerrors.Annotatef(err, "time.ParseDuration(HeartbeatPeroid{%#v})", c.HeartbeatPeriod)
+		return perrors.WithMessagef(err, "time.ParseDuration(HeartbeatPeroid{%#v})", c.HeartbeatPeriod)
 	}
 
 	if c.sessionTimeout, err = time.ParseDuration(c.SessionTimeout); err != nil {
-		return jerrors.Annotatef(err, "time.ParseDuration(SessionTimeout{%#v})", c.SessionTimeout)
+		return perrors.WithMessagef(err, "time.ParseDuration(SessionTimeout{%#v})", c.SessionTimeout)
 	}
 
 	if c.failFastTimeout, err = time.ParseDuration(c.FailFastTimeout); err != nil {
-		return jerrors.Annotatef(err, "time.ParseDuration(FailFastTimeout{%#v})", c.FailFastTimeout)
+		return perrors.WithMessagef(err, "time.ParseDuration(FailFastTimeout{%#v})", c.FailFastTimeout)
 	}
 
-	return jerrors.Trace(c.GettySessionParam.CheckValidity())
+	return perrors.WithStack(c.GettySessionParam.CheckValidity())
 }
 
 func (c *ServerConfig) CheckValidity() error {
 	var err error
 
 	if c.sessionTimeout, err = time.ParseDuration(c.SessionTimeout); err != nil {
-		return jerrors.Annotatef(err, "time.ParseDuration(SessionTimeout{%#v})", c.SessionTimeout)
+		return perrors.WithMessagef(err, "time.ParseDuration(SessionTimeout{%#v})", c.SessionTimeout)
 	}
 
 	if c.failFastTimeout, err = time.ParseDuration(c.FailFastTimeout); err != nil {
-		return jerrors.Annotatef(err, "time.ParseDuration(FailFastTimeout{%#v})", c.FailFastTimeout)
+		return perrors.WithMessagef(err, "time.ParseDuration(FailFastTimeout{%#v})", c.FailFastTimeout)
 	}
 
-	return jerrors.Trace(c.GettySessionParam.CheckValidity())
+	return perrors.WithStack(c.GettySessionParam.CheckValidity())
 }

@@ -1,7 +1,21 @@
+// Copyright 2016-2019 hxmhlt
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package registry
 
 import (
-	"github.com/tevino/abool"
+	"go.uber.org/atomic"
 )
 import (
 	"github.com/dubbo/go-for-apache-dubbo/common"
@@ -9,12 +23,12 @@ import (
 
 type MockRegistry struct {
 	listener  *listener
-	destroyed *abool.AtomicBool
+	destroyed *atomic.Bool
 }
 
 func NewMockRegistry(url *common.URL) (Registry, error) {
 	registry := &MockRegistry{
-		destroyed: abool.NewBool(false),
+		destroyed: atomic.NewBool(false),
 	}
 	listener := &listener{count: 0, registry: registry, listenChan: make(chan *ServiceEvent)}
 	registry.listener = listener
@@ -25,11 +39,11 @@ func (*MockRegistry) Register(url common.URL) error {
 }
 
 func (r *MockRegistry) Destroy() {
-	if r.destroyed.SetToIf(false, true) {
+	if r.destroyed.CAS(false, true) {
 	}
 }
 func (r *MockRegistry) IsAvailable() bool {
-	return !r.destroyed.IsSet()
+	return !r.destroyed.Load()
 }
 func (r *MockRegistry) GetUrl() common.URL {
 	return common.URL{}

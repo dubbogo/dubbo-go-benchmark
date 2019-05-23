@@ -1,3 +1,17 @@
+// Copyright 2016-2019 Yincheng Fang
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package config
 
 import (
@@ -10,19 +24,20 @@ import (
 )
 
 import (
-	"github.com/AlexStocks/goext/log"
 	log "github.com/AlexStocks/log4go"
-	jerrors "github.com/juju/errors"
+	perrors "github.com/pkg/errors"
 	"gopkg.in/yaml.v2"
 )
 
 import (
 	"github.com/dubbo/go-for-apache-dubbo/common/constant"
+	"github.com/dubbo/go-for-apache-dubbo/version"
 )
 
 var (
 	consumerConfig *ConsumerConfig
 	providerConfig *ProviderConfig
+	maxWait        = 3
 )
 
 // loaded comsumer & provider config from xxx.yml, and log config from xxx.xml
@@ -58,10 +73,10 @@ func logInit() error {
 
 	confFile = os.Getenv(constant.APP_LOG_CONF_FILE)
 	if confFile == "" {
-		return fmt.Errorf("log configure file name is nil")
+		return perrors.Errorf("log configure file name is nil")
 	}
 	if path.Ext(confFile) != ".xml" {
-		return fmt.Errorf("log configure file name{%v} suffix must be .xml", confFile)
+		return perrors.Errorf("log configure file name{%v} suffix must be .xml", confFile)
 	}
 
 	log.LoadConfiguration(confFile)
@@ -71,54 +86,54 @@ func logInit() error {
 
 func consumerInit(confConFile string) error {
 	if confConFile == "" {
-		return fmt.Errorf("application configure(consumer) file name is nil")
+		return perrors.Errorf("application configure(consumer) file name is nil")
 	}
 
 	if path.Ext(confConFile) != ".yml" {
-		return fmt.Errorf("application configure file name{%v} suffix must be .yml", confConFile)
+		return perrors.Errorf("application configure file name{%v} suffix must be .yml", confConFile)
 	}
 
 	confFileStream, err := ioutil.ReadFile(confConFile)
 	if err != nil {
-		return fmt.Errorf("ioutil.ReadFile(file:%s) = error:%s", confConFile, jerrors.ErrorStack(err))
+		return perrors.Errorf("ioutil.ReadFile(file:%s) = error:%v", confConFile, perrors.WithStack(err))
 	}
 	consumerConfig = &ConsumerConfig{}
 	err = yaml.Unmarshal(confFileStream, consumerConfig)
 	if err != nil {
-		return fmt.Errorf("yaml.Unmarshal() = error:%s", jerrors.ErrorStack(err))
+		return perrors.Errorf("yaml.Unmarshal() = error:%v", perrors.WithStack(err))
 	}
 
 	if consumerConfig.RequestTimeout, err = time.ParseDuration(consumerConfig.Request_Timeout); err != nil {
-		return jerrors.Annotatef(err, "time.ParseDuration(Request_Timeout{%#v})", consumerConfig.Request_Timeout)
+		return perrors.WithMessagef(err, "time.ParseDuration(Request_Timeout{%#v})", consumerConfig.Request_Timeout)
 	}
 	if consumerConfig.ConnectTimeout, err = time.ParseDuration(consumerConfig.Connect_Timeout); err != nil {
-		return jerrors.Annotatef(err, "time.ParseDuration(Connect_Timeout{%#v})", consumerConfig.Connect_Timeout)
+		return perrors.WithMessagef(err, "time.ParseDuration(Connect_Timeout{%#v})", consumerConfig.Connect_Timeout)
 	}
 
-	gxlog.CInfo("consumer config{%#v}\n", consumerConfig)
+	log.Debug("consumer config{%#v}\n", consumerConfig)
 	return nil
 }
 
 func providerInit(confProFile string) error {
 	if confProFile == "" {
-		return fmt.Errorf("application configure(provider) file name is nil")
+		return perrors.Errorf("application configure(provider) file name is nil")
 	}
 
 	if path.Ext(confProFile) != ".yml" {
-		return fmt.Errorf("application configure file name{%v} suffix must be .yml", confProFile)
+		return perrors.Errorf("application configure file name{%v} suffix must be .yml", confProFile)
 	}
 
 	confFileStream, err := ioutil.ReadFile(confProFile)
 	if err != nil {
-		return fmt.Errorf("ioutil.ReadFile(file:%s) = error:%s", confProFile, jerrors.ErrorStack(err))
+		return perrors.Errorf("ioutil.ReadFile(file:%s) = error:%v", confProFile, perrors.WithStack(err))
 	}
 	providerConfig = &ProviderConfig{}
 	err = yaml.Unmarshal(confFileStream, providerConfig)
 	if err != nil {
-		return fmt.Errorf("yaml.Unmarshal() = error:%s", jerrors.ErrorStack(err))
+		return perrors.Errorf("yaml.Unmarshal() = error:%v", perrors.WithStack(err))
 	}
 
-	gxlog.CInfo("provider config{%#v}\n", providerConfig)
+	log.Debug("provider config{%#v}\n", providerConfig)
 	return nil
 }
 
@@ -131,16 +146,16 @@ type ConsumerConfig struct {
 	Pprof_Enabled bool `default:"false" yaml:"pprof_enabled" json:"pprof_enabled,omitempty"`
 	Pprof_Port    int  `default:"10086"  yaml:"pprof_port" json:"pprof_port,omitempty"`
 
+	Filter string `yaml:"filter" json:"filter,omitempty"`
+
 	// client
 	Connect_Timeout string `default:"100ms"  yaml:"connect_timeout" json:"connect_timeout,omitempty"`
 	ConnectTimeout  time.Duration
 
 	Request_Timeout string `yaml:"request_timeout" default:"5s" json:"request_timeout,omitempty"`
 	RequestTimeout  time.Duration
-
-	// codec & selector & transport & registry
-	Selector     string `default:"cache"  yaml:"selector" json:"selector,omitempty"`
-	Selector_TTL string `default:"10m"  yaml:"selector_ttl" json:"selector_ttl,omitempty"`
+	ProxyFactory    string `yaml:"proxy_factory" default:"default" json:"proxy_factory,omitempty"`
+	Check           *bool  `yaml:"check"  json:"check,omitempty"`
 	// application
 	ApplicationConfig ApplicationConfig `yaml:"application_config" json:"application_config,omitempty"`
 	Registries        []RegistryConfig  `yaml:"registries" json:"registries,omitempty"`
@@ -174,17 +189,16 @@ type ProviderConfig struct {
 	Pprof_Enabled bool `default:"false" yaml:"pprof_enabled" json:"pprof_enabled,omitempty"`
 	Pprof_Port    int  `default:"10086"  yaml:"pprof_port" json:"pprof_port,omitempty"`
 
+	Filter       string `yaml:"filter" json:"filter,omitempty"`
+	ProxyFactory string `yaml:"proxy_factory" default:"default" json:"proxy_factory,omitempty"`
+
 	ApplicationConfig ApplicationConfig `yaml:"application_config" json:"application_config,omitempty"`
-	Path              string            `yaml:"path" json:"path,omitempty"`
 	Registries        []RegistryConfig  `yaml:"registries" json:"registries,omitempty"`
 	Services          []ServiceConfig   `yaml:"services" json:"services,omitempty"`
 	Protocols         []ProtocolConfig  `yaml:"protocols" json:"protocols,omitempty"`
 	ProtocolConf      interface{}       `yaml:"protocol_conf" json:"protocol_conf,omitempty"`
 }
 
-func SetProviderConfig(p ProviderConfig) {
-	providerConfig = &p
-}
 func GetProviderConfig() ProviderConfig {
 	if providerConfig == nil {
 		log.Warn("providerConfig is nil!")
@@ -226,7 +240,7 @@ func Load() (map[string]*ReferenceConfig, map[string]*ServiceConfig) {
 		length := len(consumerConfig.References)
 		for index := 0; index < length; index++ {
 			con := &consumerConfig.References[index]
-			rpcService := conServices[con.InterfaceName]
+			rpcService := GetConsumerService(con.InterfaceName)
 			if rpcService == nil {
 				log.Warn("%s is not exsist!", con.InterfaceName)
 				continue
@@ -234,6 +248,36 @@ func Load() (map[string]*ReferenceConfig, map[string]*ServiceConfig) {
 			con.Refer()
 			con.Implement(rpcService)
 			refMap[con.InterfaceName] = con
+		}
+
+		//wait for invoker is available, if wait over default 3s, then panic
+		var count int
+		checkok := true
+		for {
+			for _, refconfig := range consumerConfig.References {
+				if (refconfig.Check != nil && *refconfig.Check) ||
+					(refconfig.Check == nil && consumerConfig.Check != nil && *consumerConfig.Check) ||
+					(refconfig.Check == nil && consumerConfig.Check == nil) { //default to true
+
+					if refconfig.invoker != nil &&
+						!refconfig.invoker.IsAvailable() {
+						checkok = false
+						count++
+						if count > maxWait {
+							panic(fmt.Sprintf("Failed to check the status of the service %v . No provider available for the service to the consumer use dubbo version %v", refconfig.InterfaceName, version.Version))
+						}
+						time.Sleep(time.Second * 1)
+						break
+					}
+					if refconfig.invoker == nil {
+						log.Warn("The interface %s invoker not exsist , may you should check your interface config.", refconfig.InterfaceName)
+					}
+				}
+			}
+			if checkok {
+				break
+			}
+			checkok = true
 		}
 	}
 
@@ -245,7 +289,7 @@ func Load() (map[string]*ReferenceConfig, map[string]*ServiceConfig) {
 		length := len(providerConfig.Services)
 		for index := 0; index < length; index++ {
 			pro := &providerConfig.Services[index]
-			rpcService := proServices[pro.InterfaceName]
+			rpcService := GetProviderService(pro.InterfaceName)
 			if rpcService == nil {
 				log.Warn("%s is not exsist!", pro.InterfaceName)
 				continue

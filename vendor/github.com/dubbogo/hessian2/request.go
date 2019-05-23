@@ -1,4 +1,4 @@
-// Copyright (c) 2016 ~ 2019, Alex Stocks.
+// Copyright 2016-2019 Alex Stocks, Yincheng Fang
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ import (
 )
 
 import (
-	jerrors "github.com/juju/errors"
+	"github.com/pkg/errors"
 )
 
 /////////////////////////////////////////
@@ -37,7 +37,7 @@ func getArgType(v interface{}) string {
 	}
 
 	switch v.(type) {
-	// 基本类型的序列化tag
+	// Serialized tags for base types
 	case nil:
 		return "V"
 	case bool:
@@ -48,7 +48,7 @@ func getArgType(v interface{}) string {
 		return "B"
 	case int16:
 		return "S"
-	case uint16: // 相当于Java的Char
+	case uint16: // Equivalent to Char of Java
 		return "C"
 	// case rune:
 	//	return "C"
@@ -72,7 +72,7 @@ func getArgType(v interface{}) string {
 		// return  "java.util.HashMap"
 		return "java.util.Map"
 
-	//  复杂类型的序列化tag
+	//  Serialized tags for complex types
 	default:
 		t := reflect.TypeOf(v)
 		if reflect.Ptr == t.Kind() {
@@ -84,7 +84,7 @@ func getArgType(v interface{}) string {
 		case reflect.Slice, reflect.Array:
 			// return "java.util.ArrayList"
 			return "java.util.List"
-		case reflect.Map: // 进入这个case，就说明map可能是map[string]int这种类型
+		case reflect.Map: // Enter here, map may be map[string]int
 			return "java.util.Map"
 		default:
 			return ""
@@ -104,7 +104,7 @@ func getArgsTypeList(args []interface{}) (string, error) {
 	for i := range args {
 		typ = getArgType(args[i])
 		if typ == "" {
-			return types, jerrors.Errorf("cat not get arg %#v type", args[i])
+			return types, errors.Errorf("cat not get arg %#v type", args[i])
 		}
 		if !strings.Contains(typ, ".") {
 			types += typ
@@ -131,7 +131,7 @@ func packRequest(service Service, header DubboHeader, params interface{}) ([]byt
 
 	args, ok := params.([]interface{})
 	if !ok {
-		return nil, jerrors.Errorf("@params is not of type: []interface{}")
+		return nil, errors.Errorf("@params is not of type: []interface{}")
 	}
 
 	hb := header.Type == PackageHeartbeat
@@ -140,13 +140,17 @@ func packRequest(service Service, header DubboHeader, params interface{}) ([]byt
 	// byteArray
 	//////////////////////////////////////////
 	// magic
-	if hb {
+	switch header.Type {
+	case PackageHeartbeat:
 		byteArray = append(byteArray, DubboRequestHeartbeatHeader[:]...)
-	} else {
+	case PackageRequest_TwoWay:
+		byteArray = append(byteArray, DubboRequestHeaderBytesTwoWay[:]...)
+	default:
 		byteArray = append(byteArray, DubboRequestHeaderBytes[:]...)
 	}
+
 	// serialization id, two way flag, event, request/response flag
-	// java 中标识一个class的ID
+	// SerialID is id of serialization approach in java dubbo
 	byteArray[2] |= header.SerialID & SERIAL_MASK
 	// request id
 	binary.BigEndian.PutUint64(byteArray[4:], uint64(header.ID))
@@ -171,7 +175,7 @@ func packRequest(service Service, header DubboHeader, params interface{}) ([]byt
 
 	// args = args type list + args value list
 	if types, err = getArgsTypeList(args); err != nil {
-		return nil, jerrors.Annotatef(err, " PackRequest(args:%+v)", args)
+		return nil, errors.Wrapf(err, " PackRequest(args:%+v)", args)
 	}
 	encoder.Encode(types)
 	for _, v := range args {
@@ -194,7 +198,7 @@ END:
 	byteArray = encoder.Buffer()
 	pkgLen = len(byteArray)
 	if pkgLen > int(DEFAULT_LEN) { // 8M
-		return nil, jerrors.Errorf("Data length %d too large, max payload %d", pkgLen, DEFAULT_LEN)
+		return nil, errors.Errorf("Data length %d too large, max payload %d", pkgLen, DEFAULT_LEN)
 	}
 	// byteArray{body length}
 	binary.BigEndian.PutUint32(byteArray[12:], uint32(pkgLen-HEADER_LENGTH))
@@ -206,10 +210,10 @@ func unpackRequestBody(buf []byte, reqObj interface{}) error {
 
 	req, ok := reqObj.([]interface{})
 	if !ok {
-		return jerrors.Errorf("@reqObj is not of type: []interface{}")
+		return errors.Errorf("@reqObj is not of type: []interface{}")
 	}
 	if len(req) < 7 {
-		return jerrors.New("length of @reqObj should  be 7")
+		return errors.New("length of @reqObj should  be 7")
 	}
 
 	var (
@@ -221,31 +225,31 @@ func unpackRequestBody(buf []byte, reqObj interface{}) error {
 
 	dubboVersion, err = decoder.Decode()
 	if err != nil {
-		return jerrors.Trace(err)
+		return errors.WithStack(err)
 	}
 	req[0] = dubboVersion
 
 	target, err = decoder.Decode()
 	if err != nil {
-		return jerrors.Trace(err)
+		return errors.WithStack(err)
 	}
 	req[1] = target
 
 	serviceVersion, err = decoder.Decode()
 	if err != nil {
-		return jerrors.Trace(err)
+		return errors.WithStack(err)
 	}
 	req[2] = serviceVersion
 
 	method, err = decoder.Decode()
 	if err != nil {
-		return jerrors.Trace(err)
+		return errors.WithStack(err)
 	}
 	req[3] = method
 
 	argsTypes, err = decoder.Decode()
 	if err != nil {
-		return jerrors.Trace(err)
+		return errors.WithStack(err)
 	}
 	req[4] = argsTypes
 
@@ -254,7 +258,7 @@ func unpackRequestBody(buf []byte, reqObj interface{}) error {
 	for i := 0; i < len(ats); i++ {
 		arg, err = decoder.Decode()
 		if err != nil {
-			return jerrors.Trace(err)
+			return errors.WithStack(err)
 		}
 		args = append(args, arg)
 	}
@@ -262,7 +266,7 @@ func unpackRequestBody(buf []byte, reqObj interface{}) error {
 
 	attachments, err := decoder.Decode()
 	if err != nil {
-		return jerrors.Trace(err)
+		return errors.WithStack(err)
 	}
 	req[6] = attachments
 

@@ -1,13 +1,27 @@
+// Copyright 2016-2019 Yincheng Fang
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package dubbo
 
 import (
-	"errors"
 	"strconv"
 	"sync"
 )
 
 import (
 	log "github.com/AlexStocks/log4go"
+	perrors "github.com/pkg/errors"
 )
 
 import (
@@ -17,7 +31,7 @@ import (
 	invocation_impl "github.com/dubbo/go-for-apache-dubbo/protocol/invocation"
 )
 
-var Err_No_Reply = errors.New("request need @reply")
+var Err_No_Reply = perrors.New("request need @reply")
 
 type DubboInvoker struct {
 	protocol.BaseInvoker
@@ -53,17 +67,17 @@ func (di *DubboInvoker) Invoke(invocation protocol.Invocation) protocol.Result {
 		} else {
 			result.Err = di.client.CallOneway(url.Location, url, inv.MethodName(), inv.Arguments())
 		}
-		log.Debug("result.Err: %v, result.Rest: %v", result.Err, result.Rest)
 	} else {
 		if inv.Reply() == nil {
 			result.Err = Err_No_Reply
 		} else {
-
 			result.Err = di.client.Call(url.Location, url, inv.MethodName(), inv.Arguments(), inv.Reply())
-			result.Rest = inv.Reply() // reply should be set to result.Rest when sync
 		}
-		log.Debug("result.Err: %v, result.Rest: %v", result.Err, result.Rest)
 	}
+	if result.Err == nil {
+		result.Rest = inv.Reply()
+	}
+	log.Debug("result.Err: %v, result.Rest: %v", result.Err, result.Rest)
 
 	return &result
 }

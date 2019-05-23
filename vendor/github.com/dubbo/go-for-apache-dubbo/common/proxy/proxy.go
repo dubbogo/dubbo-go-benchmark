@@ -1,3 +1,17 @@
+// Copyright 2016-2019 Yincheng Fang
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package proxy
 
 import (
@@ -53,63 +67,101 @@ func (p *Proxy) Implement(v common.RPCService) {
 
 	makeDubboCallProxy := func(methodName string, outs []reflect.Type) func(in []reflect.Value) []reflect.Value {
 		return func(in []reflect.Value) []reflect.Value {
-
+			var (
+				err   error
+				inv   *invocation_impl.RPCInvocation
+				inArr []interface{}
+				reply reflect.Value
+			)
 			if methodName == "Echo" {
 				methodName = "$echo"
 			}
-			inv := invocation_impl.NewRPCInvocationForConsumer(methodName, nil, in[1].Interface().([]interface{}), in[2].Interface(), p.callBack, common.URL{}, nil)
 
-			for k, v := range p.attachments {
-				inv.SetAttachments(k, v)
+			start := 0
+			end := len(in)
+			if in[0].Type().String() == "context.Context" {
+				start += 1
+			}
+			if len(outs) == 1 {
+				end -= 1
+				reply = in[len(in)-1]
+			} else {
+				if outs[0].Kind() == reflect.Ptr {
+					reply = reflect.New(outs[0].Elem())
+				} else {
+					reply = reflect.New(outs[0])
+				}
+			}
+
+			if v, ok := in[start].Interface().([]interface{}); ok && end-start == 1 {
+				inArr = v
+			} else {
+				inArr = make([]interface{}, end-start)
+				index := 0
+				for i := start; i < end; i++ {
+					inArr[index] = in[i].Interface()
+					index++
+				}
+			}
+
+			inv = invocation_impl.NewRPCInvocationForConsumer(methodName, nil, inArr, reply.Interface(), p.callBack, common.URL{}, nil)
+
+			for k, value := range p.attachments {
+				inv.SetAttachments(k, value)
 			}
 
 			result := p.invoke.Invoke(inv)
-			var err error
+
 			err = result.Error()
-			log.Info("[makeDubboCallProxy] err: %v", err)
-			return []reflect.Value{reflect.ValueOf(&err).Elem()}
+			log.Info("[makeDubboCallProxy] result: %v, err: %v", result.Result(), err)
+			if len(outs) == 1 {
+				return []reflect.Value{reflect.ValueOf(&err).Elem()}
+			}
+			if len(outs) == 2 && outs[0].Kind() != reflect.Ptr {
+				return []reflect.Value{reply.Elem(), reflect.ValueOf(&err).Elem()}
+			}
+			return []reflect.Value{reply, reflect.ValueOf(&err).Elem()}
 		}
 	}
 
 	numField := valueOfElem.NumField()
 	for i := 0; i < numField; i++ {
 		t := typeOf.Field(i)
+		methodName := t.Tag.Get("dubbo")
+		if methodName == "" {
+			methodName = t.Name
+		}
 		f := valueOfElem.Field(i)
 		if f.Kind() == reflect.Func && f.IsValid() && f.CanSet() {
+			inNum := t.Type.NumIn()
+			outNum := t.Type.NumOut()
 
-			if t.Type.NumIn() != 3 && t.Type.NumIn() != 4 {
-				log.Warn("method %s of mtype %v has wrong number of in parameters %d; needs exactly 3/4",
-					t.Name, t.Type.String(), t.Type.NumIn())
+			if outNum != 1 && outNum != 2 {
+				log.Warn("method %s of mtype %v has wrong number of in out parameters %d; needs exactly 1/2",
+					t.Name, t.Type.String(), outNum)
 				continue
 			}
 
-			if t.Type.NumIn() == 3 && t.Type.In(2).Kind() != reflect.Ptr {
-				log.Warn("reply type of method %q is not a pointer %v", t.Name, t.Type.In(2))
+			// The latest return type of the method must be error.
+			if returnType := t.Type.Out(outNum - 1); returnType != typError {
+				log.Warn("the latest return type %s of method %q is not error", returnType, t.Name)
 				continue
 			}
 
-			if t.Type.NumIn() == 4 && t.Type.In(3).Kind() != reflect.Ptr {
-				log.Warn("reply type of method %q is not a pointer %v", t.Name, t.Type.In(3))
+			// reply must be Ptr when outNum == 1
+			if outNum == 1 && t.Type.In(inNum-1).Kind() != reflect.Ptr {
+				log.Warn("reply type of method %q is not a pointer", t.Name)
 				continue
 			}
 
-			// Method needs one out.
-			if t.Type.NumOut() != 1 {
-				log.Warn("method %q has %d out parameters; needs exactly 1", t.Name, t.Type.NumOut())
-				continue
+			var funcOuts = make([]reflect.Type, outNum)
+			for i := 0; i < outNum; i++ {
+				funcOuts[i] = t.Type.Out(i)
 			}
-			// The return type of the method must be error.
-			if returnType := t.Type.Out(0); returnType != typError {
-				log.Warn("return type %s of method %q is not error", returnType, t.Name)
-				continue
-			}
-
-			var funcOuts = make([]reflect.Type, t.Type.NumOut())
-			funcOuts[0] = t.Type.Out(0)
 
 			// do method proxy here:
-			f.Set(reflect.MakeFunc(f.Type(), makeDubboCallProxy(t.Name, funcOuts)))
-			log.Debug("set method [%s]", t.Name)
+			f.Set(reflect.MakeFunc(f.Type(), makeDubboCallProxy(methodName, funcOuts)))
+			log.Debug("set method [%s]", methodName)
 		}
 	}
 

@@ -1,3 +1,17 @@
+// Copyright 2016-2019 hxmhlt
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package config
 
 import (
@@ -10,7 +24,7 @@ import (
 )
 import (
 	log "github.com/AlexStocks/log4go"
-	jerrors "github.com/juju/errors"
+	perrors "github.com/pkg/errors"
 	"go.uber.org/atomic"
 )
 import (
@@ -22,6 +36,7 @@ import (
 
 type ServiceConfig struct {
 	context       context.Context
+	Filter        string           `yaml:"filter" json:"filter,omitempty"`
 	Protocol      string           `required:"true"  yaml:"protocol"  json:"protocol,omitempty"` //multi protocol support, split by ','
 	InterfaceName string           `required:"true"  yaml:"interface"  json:"interface,omitempty"`
 	Registries    []ConfigRegistry `required:"true"  yaml:"registries"  json:"registries,omitempty"`
@@ -58,7 +73,7 @@ func (srvconfig *ServiceConfig) Export() error {
 
 	//TODO:delay export
 	if srvconfig.unexported != nil && srvconfig.unexported.Load() {
-		err := jerrors.Errorf("The service %v has already unexported! ", srvconfig.InterfaceName)
+		err := perrors.Errorf("The service %v has already unexported! ", srvconfig.InterfaceName)
 		log.Error(err.Error())
 		return err
 	}
@@ -74,7 +89,7 @@ func (srvconfig *ServiceConfig) Export() error {
 		//registry the service reflect
 		methods, err := common.ServiceMap.Register(proto.Name, srvconfig.rpcService)
 		if err != nil {
-			err := jerrors.Errorf("The service %v  export the protocol %v error! Error message is %v .", srvconfig.InterfaceName, proto.Name, err.Error())
+			err := perrors.Errorf("The service %v  export the protocol %v error! Error message is %v .", srvconfig.InterfaceName, proto.Name, err.Error())
 			log.Error(err.Error())
 			return err
 		}
@@ -91,16 +106,18 @@ func (srvconfig *ServiceConfig) Export() error {
 
 		for _, regUrl := range regUrls {
 			regUrl.SubURL = url
-			invoker := protocol.NewBaseInvoker(*regUrl)
+
 			srvconfig.cacheMutex.Lock()
 			if srvconfig.cacheProtocol == nil {
 				log.Info("First load the registry protocol!")
-				srvconfig.cacheProtocol = extension.GetProtocolExtension("registry")
+				srvconfig.cacheProtocol = extension.GetProtocol("registry")
 			}
 			srvconfig.cacheMutex.Unlock()
+
+			invoker := extension.GetProxyFactory(providerConfig.ProxyFactory).GetInvoker(*regUrl)
 			exporter := srvconfig.cacheProtocol.Export(invoker)
 			if exporter == nil {
-				panic(jerrors.New("New exporter error"))
+				panic(perrors.New("New exporter error"))
 			}
 			srvconfig.exporters = append(srvconfig.exporters, exporter)
 		}
@@ -131,6 +148,9 @@ func (srvconfig *ServiceConfig) getUrlMap() url.Values {
 	urlMap.Set(constant.APP_VERSION_KEY, providerConfig.ApplicationConfig.Version)
 	urlMap.Set(constant.OWNER_KEY, providerConfig.ApplicationConfig.Owner)
 	urlMap.Set(constant.ENVIRONMENT_KEY, providerConfig.ApplicationConfig.Environment)
+
+	//filter
+	urlMap.Set(constant.SERVICE_FILTER_KEY, mergeValue(providerConfig.Filter, srvconfig.Filter, constant.DEFAULT_SERVICE_FILTERS))
 
 	for _, v := range srvconfig.Methods {
 		urlMap.Set("methods."+v.Name+"."+constant.LOADBALANCE_KEY, v.Loadbalance)

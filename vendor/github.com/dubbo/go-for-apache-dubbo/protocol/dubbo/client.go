@@ -1,3 +1,17 @@
+// Copyright 2016-2019 Yincheng Fang, Alex Stocks
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package dubbo
 
 import (
@@ -8,10 +22,10 @@ import (
 
 import (
 	"github.com/AlexStocks/getty"
-	"github.com/AlexStocks/goext/sync/atomic"
 	log "github.com/AlexStocks/log4go"
 	"github.com/dubbogo/hessian2"
-	jerrors "github.com/juju/errors"
+	perrors "github.com/pkg/errors"
+	"go.uber.org/atomic"
 	"gopkg.in/yaml.v2"
 )
 
@@ -22,11 +36,11 @@ import (
 )
 
 var (
-	errInvalidCodecType  = jerrors.New("illegal CodecType")
-	errInvalidAddress    = jerrors.New("remote address invalid or empty")
-	errSessionNotExist   = jerrors.New("session not exist")
-	errClientClosed      = jerrors.New("client closed")
-	errClientReadTimeout = jerrors.New("client read timeout")
+	errInvalidCodecType  = perrors.New("illegal CodecType")
+	errInvalidAddress    = perrors.New("remote address invalid or empty")
+	errSessionNotExist   = perrors.New("session not exist")
+	errClientClosed      = perrors.New("client closed")
+	errClientReadTimeout = perrors.New("client read timeout")
 
 	clientConf *ClientConfig
 )
@@ -83,38 +97,38 @@ type CallOptions struct {
 
 type CallOption func(*CallOptions)
 
-func WithCallRequestTimeout(d time.Duration) CallOption {
-	return func(o *CallOptions) {
-		o.RequestTimeout = d
-	}
-}
+//func WithCallRequestTimeout(d time.Duration) CallOption {
+//	return func(o *CallOptions) {
+//		o.RequestTimeout = d
+//	}
+//}
+//
+//func WithCallResponseTimeout(d time.Duration) CallOption {
+//	return func(o *CallOptions) {
+//		o.ResponseTimeout = d
+//	}
+//}
+//
+//func WithCallSerialID(s SerialID) CallOption {
+//	return func(o *CallOptions) {
+//		o.SerialID = s
+//	}
+//}
+//
+//func WithCallMeta_All(callMeta map[interface{}]interface{}) CallOption {
+//	return func(o *CallOptions) {
+//		o.Meta = callMeta
+//	}
+//}
 
-func WithCallResponseTimeout(d time.Duration) CallOption {
-	return func(o *CallOptions) {
-		o.ResponseTimeout = d
-	}
-}
-
-func WithCallSerialID(s SerialID) CallOption {
-	return func(o *CallOptions) {
-		o.SerialID = s
-	}
-}
-
-func WithCallMeta_All(callMeta map[interface{}]interface{}) CallOption {
-	return func(o *CallOptions) {
-		o.Meta = callMeta
-	}
-}
-
-func WithCallMeta(k, v interface{}) CallOption {
-	return func(o *CallOptions) {
-		if o.Meta == nil {
-			o.Meta = make(map[interface{}]interface{})
-		}
-		o.Meta[k] = v
-	}
-}
+//func WithCallMeta(k, v interface{}) CallOption {
+//	return func(o *CallOptions) {
+//		if o.Meta == nil {
+//			o.Meta = make(map[interface{}]interface{})
+//		}
+//		o.Meta[k] = v
+//	}
+//}
 
 type CallResponse struct {
 	Opts      CallOptions
@@ -129,7 +143,7 @@ type AsyncCallback func(response CallResponse)
 type Client struct {
 	conf     ClientConfig
 	pool     *gettyRPCClientPool
-	sequence gxatomic.Uint64
+	sequence atomic.Uint64
 
 	pendingLock      sync.RWMutex
 	pendingResponses map[SequenceType]*PendingResponse
@@ -154,7 +168,7 @@ func (c *Client) CallOneway(addr string, svcUrl common.URL, method string, args 
 		o(&copts)
 	}
 
-	return jerrors.Trace(c.call(CT_OneWay, addr, svcUrl, method, args, nil, nil, copts))
+	return perrors.WithStack(c.call(CT_OneWay, addr, svcUrl, method, args, nil, nil, copts))
 }
 
 // if @reply is nil, the transport layer will get the response without notify the invoker.
@@ -170,7 +184,7 @@ func (c *Client) Call(addr string, svcUrl common.URL, method string, args, reply
 		ct = CT_OneWay
 	}
 
-	return jerrors.Trace(c.call(ct, addr, svcUrl, method, args, reply, nil, copts))
+	return perrors.WithStack(c.call(ct, addr, svcUrl, method, args, reply, nil, copts))
 }
 
 func (c *Client) AsyncCall(addr string, svcUrl common.URL, method string, args interface{},
@@ -181,7 +195,7 @@ func (c *Client) AsyncCall(addr string, svcUrl common.URL, method string, args i
 		o(&copts)
 	}
 
-	return jerrors.Trace(c.call(CT_TwoWay, addr, svcUrl, method, args, reply, callback, copts))
+	return perrors.WithStack(c.call(CT_TwoWay, addr, svcUrl, method, args, reply, callback, copts))
 }
 
 func (c *Client) call(ct CallType, addr string, svcUrl common.URL, method string,
@@ -197,6 +211,7 @@ func (c *Client) call(ct CallType, addr string, svcUrl common.URL, method string
 	p := &DubboPackage{}
 	p.Service.Path = strings.TrimPrefix(svcUrl.Path, "/")
 	p.Service.Target = svcUrl.GetParam(constant.INTERFACE_KEY, "")
+	p.Service.Interface = svcUrl.GetParam(constant.INTERFACE_KEY, "")
 	p.Service.Version = svcUrl.GetParam(constant.VERSION_KEY, constant.DEFAULT_VERSION)
 	p.Service.Method = method
 	p.Service.Timeout = opts.RequestTimeout
@@ -209,10 +224,13 @@ func (c *Client) call(ct CallType, addr string, svcUrl common.URL, method string
 
 	var rsp *PendingResponse
 	if ct != CT_OneWay {
+		p.Header.Type = hessian.PackageRequest_TwoWay
 		rsp = NewPendingResponse()
 		rsp.reply = reply
 		rsp.callback = callback
 		rsp.opts = opts
+	} else {
+		p.Header.Type = hessian.PackageRequest
 	}
 
 	var (
@@ -228,7 +246,7 @@ func (c *Client) call(ct CallType, addr string, svcUrl common.URL, method string
 	defer c.pool.release(conn, err)
 
 	if err = c.transfer(session, p, rsp, opts); err != nil {
-		return jerrors.Trace(err)
+		return perrors.WithStack(err)
 	}
 
 	if ct == CT_OneWay || callback != nil {
@@ -243,7 +261,7 @@ func (c *Client) call(ct CallType, addr string, svcUrl common.URL, method string
 		err = rsp.err
 	}
 
-	return jerrors.Trace(err)
+	return perrors.WithStack(err)
 }
 
 func (c *Client) Close() {
@@ -256,7 +274,7 @@ func (c *Client) Close() {
 func (c *Client) selectSession(addr string) (*gettyRPCClient, getty.Session, error) {
 	rpcClient, err := c.pool.getGettyRpcClient(DUBBO, addr)
 	if err != nil {
-		return nil, nil, jerrors.Trace(err)
+		return nil, nil, perrors.WithStack(err)
 	}
 	return rpcClient, rpcClient.selectSession(), nil
 }
@@ -280,8 +298,6 @@ func (c *Client) transfer(session getty.Session, pkg *DubboPackage,
 		pkg.Body = []interface{}{}
 		pkg.Header.Type = hessian.PackageHeartbeat
 		pkg.Header.SerialID = byte(S_Dubbo)
-	} else {
-		pkg.Header.Type = hessian.PackageRequest
 	}
 	pkg.Header.ID = int64(sequence)
 
@@ -300,7 +316,7 @@ func (c *Client) transfer(session getty.Session, pkg *DubboPackage,
 		rsp.readStart = time.Now()
 	}
 
-	return jerrors.Trace(err)
+	return perrors.WithStack(err)
 }
 
 func (c *Client) addPendingResponse(pr *PendingResponse) {

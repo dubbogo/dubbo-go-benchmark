@@ -1,13 +1,28 @@
-package cluster
+// Copyright 2016-2019 hxmhlt
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+package cluster_impl
 
 import (
-	gxnet "github.com/AlexStocks/goext/net"
-	jerrors "github.com/juju/errors"
+	perrors "github.com/pkg/errors"
 )
+
 import (
 	"github.com/dubbo/go-for-apache-dubbo/cluster"
 	"github.com/dubbo/go-for-apache-dubbo/common/constant"
 	"github.com/dubbo/go-for-apache-dubbo/common/extension"
+	"github.com/dubbo/go-for-apache-dubbo/common/utils"
 	"github.com/dubbo/go-for-apache-dubbo/protocol"
 	"github.com/dubbo/go-for-apache-dubbo/version"
 )
@@ -37,7 +52,7 @@ func (invoker *failoverClusterInvoker) Invoke(invocation protocol.Invocation) pr
 	lb := url.GetParam(constant.LOADBALANCE_KEY, constant.DEFAULT_LOADBALANCE)
 
 	//Get the service method loadbalance config if have
-	if v := url.GetMethodParam(methodName, constant.LOADBALANCE_KEY, constant.DEFAULT_LOADBALANCE); v != "" {
+	if v := url.GetMethodParam(methodName, constant.LOADBALANCE_KEY, ""); v != "" {
 		lb = v
 	}
 	loadbalance := extension.GetLoadbalance(lb)
@@ -46,7 +61,7 @@ func (invoker *failoverClusterInvoker) Invoke(invocation protocol.Invocation) pr
 	retries := url.GetParamInt(constant.RETRIES_KEY, constant.DEFAULT_RETRIES)
 
 	//Get the service method loadbalance config if have
-	if v := url.GetMethodParamInt(methodName, constant.RETRIES_KEY, constant.DEFAULT_RETRIES); v != 0 {
+	if v := url.GetMethodParamInt(methodName, constant.RETRIES_KEY, 0); v != 0 {
 		retries = v
 	}
 	invoked := []protocol.Invoker{}
@@ -77,8 +92,8 @@ func (invoker *failoverClusterInvoker) Invoke(invocation protocol.Invocation) pr
 			return result
 		}
 	}
-	ip, _ := gxnet.GetLocalIP()
-	return &protocol.RPCResult{Err: jerrors.Errorf("Failed to invoke the method %v in the service %v . Tried %v times of "+
+	ip, _ := utils.GetLocalIP()
+	return &protocol.RPCResult{Err: perrors.Errorf("Failed to invoke the method %v in the service %v . Tried %v times of "+
 		"the providers %v (%v/%v)from the registry %v on the consumer %v using the dubbo version %v. Last error is %v.",
 		methodName, invoker.GetUrl().Service(), retries, providers, len(providers), len(invokers), invoker.directory.GetUrl(), ip, version.Version, result.Error().Error(),
 	)}

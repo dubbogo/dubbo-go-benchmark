@@ -1,3 +1,17 @@
+// Copyright 2016-2019 Yincheng Fang, Alex Stocks
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package dubbo
 
 import (
@@ -12,7 +26,7 @@ import (
 import (
 	"github.com/AlexStocks/getty"
 	log "github.com/AlexStocks/log4go"
-	jerrors "github.com/juju/errors"
+	perrors "github.com/pkg/errors"
 )
 
 type gettyRPCClient struct {
@@ -29,7 +43,7 @@ type gettyRPCClient struct {
 }
 
 var (
-	errClientPoolClosed = jerrors.New("client pool closed")
+	errClientPoolClosed = perrors.New("client pool closed")
 )
 
 func newGettyRPCClientConn(pool *gettyRPCClientPool, protocol, addr string) (*gettyRPCClient, error) {
@@ -52,7 +66,7 @@ func newGettyRPCClientConn(pool *gettyRPCClientPool, protocol, addr string) (*ge
 		}
 
 		if idx > 5000 {
-			return nil, jerrors.New(fmt.Sprintf("failed to create client connection to %s in 5 seconds", addr))
+			return nil, perrors.New(fmt.Sprintf("failed to create client connection to %s in 5 seconds", addr))
 		}
 		time.Sleep(1e6)
 	}
@@ -189,7 +203,7 @@ func (c *gettyRPCClient) getClientRpcSession(session getty.Session) (rpcSession,
 		}
 	}
 
-	return rpcSession, jerrors.Trace(err)
+	return rpcSession, perrors.WithStack(err)
 }
 
 func (c *gettyRPCClient) isAvailable() bool {
@@ -201,7 +215,7 @@ func (c *gettyRPCClient) isAvailable() bool {
 }
 
 func (c *gettyRPCClient) close() error {
-	err := jerrors.Errorf("close gettyRPCClient{%#v} again", c)
+	err := perrors.Errorf("close gettyRPCClient{%#v} again", c)
 	c.once.Do(func() {
 		// delete @c from client pool
 		c.pool.remove(c)
@@ -266,6 +280,7 @@ func (p *gettyRPCClientPool) getGettyRpcClient(protocol, addr string) (*gettyRPC
 			conn.close() // -> pool.remove(c)
 			continue
 		}
+		conn.created = now //update created time
 
 		return conn, nil
 	}

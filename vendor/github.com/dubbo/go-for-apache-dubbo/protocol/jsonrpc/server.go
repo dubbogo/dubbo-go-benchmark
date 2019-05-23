@@ -1,3 +1,17 @@
+// Copyright 2016-2019 Yincheng Fang, Alex Stocks
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package jsonrpc
 
 import (
@@ -17,7 +31,7 @@ import (
 
 import (
 	log "github.com/AlexStocks/log4go"
-	jerrors "github.com/juju/errors"
+	perrors "github.com/pkg/errors"
 )
 
 import (
@@ -91,10 +105,10 @@ func (s *Server) handlePkg(conn net.Conn) {
 		rspBuf.Reset()
 		err := rsp.Write(rspBuf)
 		if err != nil {
-			return jerrors.Trace(err)
+			return perrors.WithStack(err)
 		}
 		_, err = rspBuf.WriteTo(conn)
-		return jerrors.Trace(err)
+		return perrors.WithStack(err)
 	}
 
 	for {
@@ -126,9 +140,9 @@ func (s *Server) handlePkg(conn net.Conn) {
 		if contentType != "application/json" && contentType != "application/json-rpc" {
 			setTimeout(conn, httpTimeout)
 			r.Header.Set("Content-Type", "text/plain")
-			if errRsp := sendErrorResp(r.Header, []byte(jerrors.ErrorStack(err))); errRsp != nil {
-				log.Warn("sendErrorResp(header:%#v, error:%s) = error:%s",
-					r.Header, jerrors.ErrorStack(err), errRsp)
+			if errRsp := sendErrorResp(r.Header, []byte(perrors.WithStack(err).Error())); errRsp != nil {
+				log.Warn("sendErrorResp(header:%#v, error:%v) = error:%s",
+					r.Header, perrors.WithStack(err), errRsp)
 			}
 			return
 		}
@@ -145,9 +159,9 @@ func (s *Server) handlePkg(conn net.Conn) {
 		setTimeout(conn, httpTimeout)
 
 		if err := serveRequest(ctx, reqHeader, reqBody, conn, s.exporter); err != nil {
-			if errRsp := sendErrorResp(r.Header, []byte(jerrors.ErrorStack(err))); errRsp != nil {
-				log.Warn("sendErrorResp(header:%#v, error:%s) = error:%s",
-					r.Header, jerrors.ErrorStack(err), errRsp)
+			if errRsp := sendErrorResp(r.Header, []byte(perrors.WithStack(err).Error())); errRsp != nil {
+				log.Warn("sendErrorResp(header:%#v, error:%v) = error:%s",
+					r.Header, perrors.WithStack(err), errRsp)
 			}
 
 			log.Info("Unexpected error serving request, closing socket: %v", err)
@@ -179,7 +193,7 @@ func accept(listener net.Listener, fn func(net.Conn)) error {
 				time.Sleep(tmpDelay)
 				continue
 			}
-			return jerrors.Trace(err)
+			return perrors.WithStack(err)
 		}
 
 		go func() {
@@ -252,10 +266,10 @@ func serveRequest(ctx context.Context,
 		rspBuf.Reset()
 		err := rsp.Write(rspBuf)
 		if err != nil {
-			return jerrors.Trace(err)
+			return perrors.WithStack(err)
 		}
 		_, err = rspBuf.WriteTo(conn)
-		return jerrors.Trace(err)
+		return perrors.WithStack(err)
 	}
 
 	sendResp := func(header map[string]string, body []byte) error {
@@ -276,10 +290,10 @@ func serveRequest(ctx context.Context,
 		rspBuf.Reset()
 		err := rsp.Write(rspBuf)
 		if err != nil {
-			return jerrors.Trace(err)
+			return perrors.WithStack(err)
 		}
 		_, err = rspBuf.WriteTo(conn)
-		return jerrors.Trace(err)
+		return perrors.WithStack(err)
 	}
 
 	// read request header
@@ -287,22 +301,22 @@ func serveRequest(ctx context.Context,
 	err := codec.ReadHeader(header, body)
 	if err != nil {
 		if err == io.EOF || err == io.ErrUnexpectedEOF {
-			return jerrors.Trace(err)
+			return perrors.WithStack(err)
 		}
 
-		return jerrors.New("server cannot decode request: " + err.Error())
+		return perrors.New("server cannot decode request: " + err.Error())
 	}
 	serviceName := header["Path"]
 	methodName := codec.req.Method
 	if len(serviceName) == 0 || len(methodName) == 0 {
 		codec.ReadBody(nil)
-		return jerrors.New("service/method request ill-formed: " + serviceName + "/" + methodName)
+		return perrors.New("service/method request ill-formed: " + serviceName + "/" + methodName)
 	}
 
 	// read body
 	var args interface{}
 	if err = codec.ReadBody(&args); err != nil {
-		return jerrors.Trace(err)
+		return perrors.WithStack(err)
 	}
 	log.Debug("args: %v", args)
 
@@ -319,18 +333,18 @@ func serveRequest(ctx context.Context,
 			if errRsp := sendErrorResp(header, []byte(err.Error())); errRsp != nil {
 				log.Warn("Exporter: sendErrorResp(header:%#v, error:%v) = error:%s",
 					header, err, errRsp)
-				return jerrors.Trace(errRsp)
+				return perrors.WithStack(errRsp)
 			}
 		}
 		if res := result.Result(); res != nil {
 			rspStream, err := codec.Write("", res)
 			if err != nil {
-				return jerrors.Trace(err)
+				return perrors.WithStack(err)
 			}
 			if errRsp := sendResp(header, rspStream); errRsp != nil {
 				log.Warn("Exporter: sendResp(header:%#v, error:%v) = error:%s",
 					header, err, errRsp)
-				return jerrors.Trace(errRsp)
+				return perrors.WithStack(errRsp)
 			}
 		}
 	}
@@ -338,44 +352,47 @@ func serveRequest(ctx context.Context,
 	// get method
 	svc := common.ServiceMap.GetService(JSONRPC, serviceName)
 	if svc == nil {
-		return jerrors.New("cannot find svc " + serviceName)
+		return perrors.New("cannot find svc " + serviceName)
 	}
-	mtype := svc.Method()[methodName]
-	if mtype == nil {
-		return jerrors.New("cannot find method " + methodName + " of svc " + serviceName)
+	method := svc.Method()[methodName]
+	if method == nil {
+		return perrors.New("cannot find method " + methodName + " of svc " + serviceName)
 	}
 
-	// get args
-	var argv reflect.Value
-	argIsValue := false
-	if mtype.ArgType().Kind() == reflect.Ptr {
-		argv = reflect.New(mtype.ArgType().Elem())
+	in := []reflect.Value{svc.Rcvr()}
+	if method.CtxType() != nil {
+		in = append(in, method.SuiteContext(ctx))
+	}
+
+	// prepare argv
+	if (len(method.ArgsType()) == 1 || len(method.ArgsType()) == 2 && method.ReplyType() == nil) && method.ArgsType()[0].String() == "[]interface {}" {
+		in = append(in, reflect.ValueOf(args))
 	} else {
-		argv = reflect.New(mtype.ArgType())
-		argIsValue = true
-	}
-	// argv guaranteed to be a pointer now.
-	argvTmp := argv.Interface()
-	argvTmp = args
-	//if err = codec.ReadBody(argv.Interface()); err != nil {
-	//	return jerrors.Trace(err)
-	//}
-	if argIsValue {
-		argv = argv.Elem()
+		for i := 0; i < len(args.([]interface{})); i++ {
+			in = append(in, reflect.ValueOf(args.([]interface{})[i]))
+		}
 	}
 
-	replyv := reflect.New(mtype.ReplyType().Elem())
+	// prepare replyv
+	var replyv reflect.Value
+	if method.ReplyType() == nil {
+		replyv = reflect.New(method.ArgsType()[len(method.ArgsType())-1].Elem())
+		in = append(in, replyv)
+	}
 
-	//  call service.method(args)
-	var errMsg string
-	returnValues := mtype.Method().Func.Call([]reflect.Value{
-		svc.Rcvr(),
-		mtype.SuiteContext(ctx),
-		reflect.ValueOf(argvTmp),
-		reflect.ValueOf(replyv.Interface()),
-	})
-	// The return value for the method is an error.
-	if retErr := returnValues[0].Interface(); retErr != nil {
+	returnValues := method.Method().Func.Call(in)
+
+	var (
+		retErr interface{}
+		errMsg string
+	)
+	if len(returnValues) == 1 {
+		retErr = returnValues[0].Interface()
+	} else {
+		replyv = returnValues[0]
+		retErr = returnValues[1].Interface()
+	}
+	if retErr != nil {
 		errMsg = retErr.(error).Error()
 	}
 
@@ -388,7 +405,7 @@ func serveRequest(ctx context.Context,
 	}
 	rspStream, err := codec.Write(errMsg, rspReply)
 	if err != nil {
-		return jerrors.Trace(err)
+		return perrors.WithStack(err)
 	}
 	rsp := &http.Response{
 		StatusCode:    code,

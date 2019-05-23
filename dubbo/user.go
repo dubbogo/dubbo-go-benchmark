@@ -8,9 +8,7 @@ import (
 )
 
 import (
-	"github.com/AlexStocks/goext/log"
 	"github.com/dubbogo/hessian2"
-
 )
 
 import (
@@ -20,7 +18,7 @@ import (
 type Gender hessian.JavaEnum
 
 func init() {
-	config.SetProService(new(UserProvider))
+	config.SetProviderService(new(UserProvider))
 }
 
 const (
@@ -60,45 +58,21 @@ func (g Gender) EnumValue(s string) hessian.JavaEnum {
 	return hessian.InvalidJavaEnum
 }
 
-type (
-	User struct {
-		// !!! Cannot define lowercase names of variable
-		Id   string
-		Name string
-		Age  int32
-		Time time.Time
-		Sex  Gender // 注意此处，java enum Object <--> go string
-	}
-
-	UserProvider struct {
-		user map[string]User
-	}
-)
-
-var (
-	DefaultUser = User{
-		Id: "0", Name: "Alex Stocks", Age: 31,
-		Sex: Gender(MAN),
-	}
-
-	userMap = UserProvider{user: make(map[string]User)}
-)
-
-func init() {
-	userMap.user["A000"] = DefaultUser
-	userMap.user["A001"] = User{Id: "001", Name: "ZhangSheng", Age: 18, Sex: Gender(MAN)}
-	userMap.user["A002"] = User{Id: "002", Name: "Lily", Age: 20, Sex: Gender(WOMAN)}
-	userMap.user["A003"] = User{Id: "113", Name: "Moorse", Age: 30, Sex: Gender(WOMAN)}
-	for k, v := range userMap.user {
-		v.Time = time.Now()
-		userMap.user[k] = v
-	}
+// User -------------------------------------------------
+type User struct {
+	Id        string
+	Name      string
+	Age       int32
+	Time      time.Time
+	Sex       Gender
+	IsChinese bool
+	Remarks   string
 }
 
 func (u User) String() string {
 	return fmt.Sprintf(
-		"User{Id:%s, Name:%s, Age:%d, Time:%s, Sex:%s}",
-		u.Id, u.Name, u.Age, u.Time, u.Sex,
+		"User{Id:%s, Name:%s, Age:%d, Time:%s, Sex:%s, Country:%v, Remarks:%s}",
+		u.Id, u.Name, u.Age, u.Time, u.Sex, u.IsChinese, u.Remarks,
 	)
 }
 
@@ -106,32 +80,20 @@ func (u User) JavaClassName() string {
 	return "com.ikurento.user.User"
 }
 
-func (u *UserProvider) getUser(userId string) (*User, error) {
-	if user, ok := userMap.user[userId]; ok {
-		return &user, nil
-	}
-
-	return nil, fmt.Errorf("invalid user id:%s", userId)
+// UserProvider -------------------------------------------------
+type UserProvider struct {
 }
 
 func (u *UserProvider) GetUser(ctx context.Context, req []interface{}, rsp *User) error {
-	var (
-		err  error
-		user *User
-	)
-
-	gxlog.CInfo("req:%#v", req)
-	user, err = u.getUser(req[0].(string))
-	if err == nil {
-		*rsp = *user
-		gxlog.CInfo("rsp:%#v", rsp)
-		// s, _ := json.Marshal(rsp)
-		// fmt.Println("hello0:", string(s))
-
-		// s, _ = json.Marshal(*rsp)
-		// fmt.Println("hello1:", string(s))
-	}
-	return err
+	rsp.Id = req[0].(string)
+	rsp.Name = "name"
+	rsp.Age = 20
+	rsp.Sex = Gender(MAN)
+	rsp.Time = time.Now()
+	rsp.IsChinese = true
+	rsp.Remarks = req[1].(string)
+	fmt.Printf("GetUser")
+	return nil
 }
 
 func (u *UserProvider) Service() string {

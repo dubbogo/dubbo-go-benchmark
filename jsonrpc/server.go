@@ -15,6 +15,7 @@ import (
 import (
 	_ "github.com/dubbo/go-for-apache-dubbo/cluster/cluster_impl"
 	_ "github.com/dubbo/go-for-apache-dubbo/cluster/loadbalance"
+	_ "github.com/dubbo/go-for-apache-dubbo/common/proxy/proxy_factory"
 	"github.com/dubbo/go-for-apache-dubbo/config"
 	_ "github.com/dubbo/go-for-apache-dubbo/filter/impl"
 	_ "github.com/dubbo/go-for-apache-dubbo/protocol/jsonrpc"

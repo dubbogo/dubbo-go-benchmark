@@ -1,3 +1,17 @@
+// Copyright 2016-2019 hxmhlt
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package config
 
 import (
@@ -20,6 +34,8 @@ type ReferenceConfig struct {
 	context       context.Context
 	pxy           *proxy.Proxy
 	InterfaceName string           `required:"true"  yaml:"interface"  json:"interface,omitempty"`
+	Check         *bool            `yaml:"check"  json:"check,omitempty"`
+	Filter        string           `yaml:"filter" json:"filter,omitempty"`
 	Protocol      string           `yaml:"protocol"  json:"protocol,omitempty"`
 	Registries    []ConfigRegistry `required:"true"  yaml:"registries"  json:"registries,omitempty"`
 	Cluster       string           `yaml:"cluster"  json:"cluster,omitempty"`
@@ -41,11 +57,20 @@ type ConfigRegistry string
 func NewReferenceConfig(ctx context.Context) *ReferenceConfig {
 	return &ReferenceConfig{context: ctx}
 }
+func (refconfig *ReferenceConfig) UnmarshalYAML(unmarshal func(interface{}) error) error {
+	type rf ReferenceConfig
+	raw := rf{} // Put your defaults here
+	if err := unmarshal(&raw); err != nil {
+		return err
+	}
 
+	*refconfig = ReferenceConfig(raw)
+	return nil
+}
 func (refconfig *ReferenceConfig) Refer() {
-	//首先是user specified SubURL, could be peer-to-peer address, or register center's address.
+	//1. user specified SubURL, could be peer-to-peer address, or register center's address.
 
-	//其次是assemble SubURL from register center's configuration模式
+	//2. assemble SubURL from register center's configuration模式
 	regUrls := loadRegistries(refconfig.Registries, consumerConfig.Registries, common.CONSUMER)
 	url := common.NewURLWithOptions(refconfig.InterfaceName, common.WithProtocol(refconfig.Protocol), common.WithParams(refconfig.getUrlMap()))
 
@@ -55,20 +80,19 @@ func (refconfig *ReferenceConfig) Refer() {
 	}
 
 	if len(regUrls) == 1 {
-		refconfig.invoker = extension.GetProtocolExtension("registry").Refer(*regUrls[0])
+		refconfig.invoker = extension.GetProtocol("registry").Refer(*regUrls[0])
 
 	} else {
 		invokers := []protocol.Invoker{}
 		for _, regUrl := range regUrls {
-			invokers = append(invokers, extension.GetProtocolExtension("registry").Refer(*regUrl))
+			invokers = append(invokers, extension.GetProtocol("registry").Refer(*regUrl))
 		}
 		cluster := extension.GetCluster("registryAware")
 		refconfig.invoker = cluster.Join(directory.NewStaticDirectory(invokers))
 	}
+
 	//create proxy
-	attachments := map[string]string{}
-	attachments[constant.ASYNC_KEY] = url.GetParam(constant.ASYNC_KEY, "false")
-	refconfig.pxy = proxy.NewProxy(refconfig.invoker, nil, attachments)
+	refconfig.pxy = extension.GetProxyFactory(consumerConfig.ProxyFactory).GetProxy(refconfig.invoker, url)
 }
 
 // @v is service provider implemented RPCService
@@ -100,6 +124,9 @@ func (refconfig *ReferenceConfig) getUrlMap() url.Values {
 	urlMap.Set(constant.APP_VERSION_KEY, consumerConfig.ApplicationConfig.Version)
 	urlMap.Set(constant.OWNER_KEY, consumerConfig.ApplicationConfig.Owner)
 	urlMap.Set(constant.ENVIRONMENT_KEY, consumerConfig.ApplicationConfig.Environment)
+
+	//filter
+	urlMap.Set(constant.REFERENCE_FILTER_KEY, mergeValue(consumerConfig.Filter, refconfig.Filter, constant.DEFAULT_REFERENCE_FILTERS))
 
 	for _, v := range refconfig.Methods {
 		urlMap.Set("methods."+v.Name+"."+constant.LOADBALANCE_KEY, v.Loadbalance)

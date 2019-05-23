@@ -1,14 +1,28 @@
-package cluster
+// Copyright 2016-2019 hxmhlt
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+package cluster_impl
 
 import (
-	gxnet "github.com/AlexStocks/goext/net"
-	jerrors "github.com/juju/errors"
-	"github.com/tevino/abool"
+	perrors "github.com/pkg/errors"
+	"go.uber.org/atomic"
 )
 
 import (
 	"github.com/dubbo/go-for-apache-dubbo/cluster"
 	"github.com/dubbo/go-for-apache-dubbo/common"
+	"github.com/dubbo/go-for-apache-dubbo/common/utils"
 	"github.com/dubbo/go-for-apache-dubbo/protocol"
 	"github.com/dubbo/go-for-apache-dubbo/version"
 )
@@ -16,14 +30,14 @@ import (
 type baseClusterInvoker struct {
 	directory      cluster.Directory
 	availablecheck bool
-	destroyed      *abool.AtomicBool
+	destroyed      *atomic.Bool
 }
 
 func newBaseClusterInvoker(directory cluster.Directory) baseClusterInvoker {
 	return baseClusterInvoker{
 		directory:      directory,
 		availablecheck: true,
-		destroyed:      abool.NewBool(false),
+		destroyed:      atomic.NewBool(false),
 	}
 }
 func (invoker *baseClusterInvoker) GetUrl() common.URL {
@@ -32,23 +46,23 @@ func (invoker *baseClusterInvoker) GetUrl() common.URL {
 
 func (invoker *baseClusterInvoker) Destroy() {
 	//this is must atom operation
-	if invoker.destroyed.SetToIf(false, true) {
+	if invoker.destroyed.CAS(false, true) {
 		invoker.directory.Destroy()
 	}
 }
 
 func (invoker *baseClusterInvoker) IsAvailable() bool {
-	//TODO:不理解java版本中关于stikyInvoker的逻辑所以先不写
+	//TODO:sticky connection
 	return invoker.directory.IsAvailable()
 }
 
 //check invokers availables
 func (invoker *baseClusterInvoker) checkInvokers(invokers []protocol.Invoker, invocation protocol.Invocation) error {
 	if len(invokers) == 0 {
-		ip, _ := gxnet.GetLocalIP()
-		return jerrors.Errorf("Failed to invoke the method %v . No provider available for the service %v from"+
+		ip, _ := utils.GetLocalIP()
+		return perrors.Errorf("Failed to invoke the method %v. No provider available for the service %v from "+
 			"registry %v on the consumer %v using the dubbo version %v .Please check if the providers have been started and registered.",
-			invocation.MethodName(), invoker.directory.GetUrl().Key(), invoker.directory.GetUrl().String(), ip, version.Version)
+			invocation.MethodName(), invoker.directory.GetUrl().SubURL.Key(), invoker.directory.GetUrl().String(), ip, version.Version)
 	}
 	return nil
 
@@ -56,9 +70,9 @@ func (invoker *baseClusterInvoker) checkInvokers(invokers []protocol.Invoker, in
 
 //check cluster invoker is destroyed or not
 func (invoker *baseClusterInvoker) checkWhetherDestroyed() error {
-	if invoker.destroyed.IsSet() {
-		ip, _ := gxnet.GetLocalIP()
-		return jerrors.Errorf("Rpc cluster invoker for %v on consumer %v use dubbo version %v is now destroyed! can not invoke any more. ",
+	if invoker.destroyed.Load() {
+		ip, _ := utils.GetLocalIP()
+		return perrors.Errorf("Rpc cluster invoker for %v on consumer %v use dubbo version %v is now destroyed! can not invoke any more. ",
 			invoker.directory.GetUrl().Service(), ip, version.Version)
 	}
 	return nil
@@ -69,7 +83,7 @@ func (invoker *baseClusterInvoker) doSelect(lb cluster.LoadBalance, invocation p
 	if len(invokers) == 1 {
 		return invokers[0]
 	}
-	selectedInvoker := lb.Select(invokers, invoker.GetUrl(), invocation)
+	selectedInvoker := lb.Select(invokers, invocation)
 
 	//judge to if the selectedInvoker is invoked
 
@@ -88,7 +102,7 @@ func (invoker *baseClusterInvoker) doSelect(lb cluster.LoadBalance, invocation p
 		}
 
 		if len(reslectInvokers) > 0 {
-			return lb.Select(reslectInvokers, invoker.GetUrl(), invocation)
+			return lb.Select(reslectInvokers, invocation)
 		} else {
 			return nil
 		}

@@ -1,3 +1,17 @@
+// Copyright 2016-2019 hxmhlt
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package directory
 
 import (
@@ -7,7 +21,7 @@ import (
 
 import (
 	log "github.com/AlexStocks/log4go"
-	jerrors "github.com/juju/errors"
+	perrors "github.com/pkg/errors"
 )
 
 import (
@@ -47,7 +61,7 @@ func NewRegistryDirectory(url *common.URL, registry registry.Registry, opts ...O
 		opt(&options)
 	}
 	if url.SubURL == nil {
-		return nil, jerrors.Errorf("url is invalid, suburl can not be nil")
+		return nil, perrors.Errorf("url is invalid, suburl can not be nil")
 	}
 	return &registryDirectory{
 		BaseDirectory:    directory.NewBaseDirectory(url),
@@ -73,14 +87,14 @@ func (dir *registryDirectory) Subscribe(url common.URL) {
 				log.Warn("event listener game over.")
 				return
 			}
-			log.Warn("getListener() = err:%s", jerrors.ErrorStack(err))
+			log.Warn("getListener() = err:%v", perrors.WithStack(err))
 			time.Sleep(time.Duration(RegistryConnDelay) * time.Second)
 			continue
 		}
 
 		for {
 			if serviceEvent, err := listener.Next(); err != nil {
-				log.Warn("Selector.watch() = error{%v}", jerrors.ErrorStack(err))
+				log.Warn("Selector.watch() = error{%v}", perrors.WithStack(err))
 				listener.Close()
 				time.Sleep(time.Duration(RegistryConnDelay) * time.Second)
 				return
@@ -175,7 +189,7 @@ func (dir *registryDirectory) cacheInvoker(url common.URL) {
 
 		if _, ok := dir.cacheInvokersMap.Load(url.Key()); !ok {
 			log.Debug("service will be added in cache invokers: invokers key is  %s!", url.Key())
-			newInvoker := extension.GetProtocolExtension(protocolwrapper.FILTER).Refer(url)
+			newInvoker := extension.GetProtocol(protocolwrapper.FILTER).Refer(url)
 			if newInvoker != nil {
 				dir.cacheInvokersMap.Store(url.Key(), newInvoker)
 			}
@@ -190,7 +204,16 @@ func (dir *registryDirectory) List(invocation protocol.Invocation) []protocol.In
 }
 
 func (dir *registryDirectory) IsAvailable() bool {
-	return dir.BaseDirectory.IsAvailable()
+	if !dir.BaseDirectory.IsAvailable() {
+		return dir.BaseDirectory.IsAvailable()
+	} else {
+		for _, ivk := range dir.cacheInvokers {
+			if ivk.IsAvailable() {
+				return true
+			}
+		}
+	}
+	return false
 }
 
 func (dir *registryDirectory) Destroy() {
@@ -209,7 +232,13 @@ func (dir *registryDirectory) Destroy() {
 func mergeUrl(serviceUrl common.URL, referenceUrl *common.URL) common.URL {
 	mergedUrl := serviceUrl
 	var methodConfigMergeFcn = []func(method string){}
+	//iterator the referenceUrl if serviceUrl not have the key ,merge in
 
+	for k, v := range referenceUrl.Params {
+		if _, ok := mergedUrl.Params[k]; !ok {
+			mergedUrl.Params.Set(k, v[0])
+		}
+	}
 	//loadBalance strategy config
 	if v := referenceUrl.Params.Get(constant.LOADBALANCE_KEY); v != "" {
 		mergedUrl.Params.Set(constant.LOADBALANCE_KEY, v)

@@ -1,4 +1,4 @@
-// Copyright (c) 2016 ~ 2019, Alex Stocks.
+// Copyright 2016-2019 Alex Stocks
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ import (
 )
 
 import (
-	jerrors "github.com/juju/errors"
+	"github.com/pkg/errors"
 )
 
 // invalid consts
@@ -100,7 +100,7 @@ var (
 	javaEnumType = reflect.TypeOf((*POJOEnum)(nil)).Elem()
 )
 
-// 解析struct
+// struct parsing
 func showPOJORegistry() {
 	pojoRegistry.Lock()
 	for k, v := range pojoRegistry.registry {
@@ -114,62 +114,74 @@ func showPOJORegistry() {
 func RegisterPOJO(o POJO) int {
 	// # definition for an object (compact map)
 	// class-def  ::= 'C' string int string*
-	var (
-		ok bool
-		b  []byte
-		i  int
-		n  int
-		f  string
-		l  []string
-		t  structInfo
-		c  classInfo
-		v  reflect.Value
-	)
-
 	pojoRegistry.Lock()
 	defer pojoRegistry.Unlock()
-	if _, ok = pojoRegistry.registry[o.JavaClassName()]; !ok {
-		v = reflect.ValueOf(o)
-		switch v.Kind() {
-		case reflect.Struct:
-			t.typ = v.Type()
-		case reflect.Ptr:
-			t.typ = v.Elem().Type()
-		default:
-			t.typ = reflect.TypeOf(o)
-		}
-		t.goName = t.typ.String()
-		t.javaName = o.JavaClassName()
-		t.inst = o
-		pojoRegistry.j2g[t.javaName] = t.goName
 
-		b = b[:0]
-		b = encByte(b, BC_OBJECT_DEF)
-		b = encString(b, t.javaName)
-		l = l[:0]
-		n = t.typ.NumField()
-		b = encInt32(b, int32(n))
-		for i = 0; i < n; i++ {
-			if val, has := t.typ.Field(i).Tag.Lookup(tagIdentifier); has {
-				f = val
-			} else {
-				f = lowerCamelCase(t.typ.Field(i).Name)
-			}
-			l = append(l, f)
-			b = encString(b, f)
-		}
-
-		c = classInfo{javaName: t.javaName, fieldNameList: l}
-		c.buffer = append(c.buffer, b[:]...)
-		t.index = len(pojoRegistry.classInfoList)
-		pojoRegistry.classInfoList = append(pojoRegistry.classInfoList, c)
-		pojoRegistry.registry[t.goName] = t
-		i = t.index
-	} else {
-		i = -1
+	if _, ok := pojoRegistry.registry[o.JavaClassName()]; ok {
+		return -1
 	}
 
-	return i
+	var (
+		bHeader    []byte
+		bBody      []byte
+		fieldList  []string
+		structInfo structInfo
+		clsDef     classInfo
+		v          reflect.Value
+	)
+
+	v = reflect.ValueOf(o)
+	switch v.Kind() {
+	case reflect.Struct:
+		structInfo.typ = v.Type()
+	case reflect.Ptr:
+		structInfo.typ = v.Elem().Type()
+	default:
+		structInfo.typ = reflect.TypeOf(o)
+	}
+
+	structInfo.goName = structInfo.typ.String()
+	structInfo.javaName = o.JavaClassName()
+	structInfo.inst = o
+	pojoRegistry.j2g[structInfo.javaName] = structInfo.goName
+
+	// prepare fields info of objectDef
+	for i := 0; i < structInfo.typ.NumField(); i++ {
+		// skip unexported anonymous filed
+		if structInfo.typ.Field(i).PkgPath != "" {
+			continue
+		}
+
+		var fieldName string
+		if val, has := structInfo.typ.Field(i).Tag.Lookup(tagIdentifier); has {
+			fieldName = val
+		} else {
+			fieldName = lowerCamelCase(structInfo.typ.Field(i).Name)
+		}
+
+		fieldList = append(fieldList, fieldName)
+		bBody = encString(bBody, fieldName)
+	}
+
+	// prepare header of objectDef
+	bHeader = encByte(bHeader, BC_OBJECT_DEF)
+	bHeader = encString(bHeader, structInfo.javaName)
+
+	// write fields length into header of objectDef
+	// note: cause fieldList is a dynamic slice, so one must calculate length only after it being prepared already.
+	bHeader = encInt32(bHeader, int32(len(fieldList)))
+
+	// prepare classDef
+	clsDef = classInfo{javaName: structInfo.javaName, fieldNameList: fieldList}
+
+	// merge header and body of objectDef into buffer of classInfo
+	clsDef.buffer = append(bHeader, bBody...)
+
+	structInfo.index = len(pojoRegistry.classInfoList)
+	pojoRegistry.classInfoList = append(pojoRegistry.classInfoList, clsDef)
+	pojoRegistry.registry[structInfo.goName] = structInfo
+
+	return structInfo.index
 }
 
 // RegisterJavaEnum Register a value type JavaEnum variable.
@@ -269,13 +281,13 @@ func getStructDefByIndex(idx int) (reflect.Type, classInfo, error) {
 	defer pojoRegistry.RUnlock()
 
 	if len(pojoRegistry.classInfoList) <= idx || idx < 0 {
-		return nil, cls, jerrors.Errorf("illegal class index @idx %d", idx)
+		return nil, cls, errors.Errorf("illegal class index @idx %d", idx)
 	}
 	cls = pojoRegistry.classInfoList[idx]
 	clsName = pojoRegistry.j2g[cls.javaName]
 	s, ok = pojoRegistry.registry[clsName]
 	if !ok {
-		return nil, cls, jerrors.Errorf("can not find go type name %s in registry", clsName)
+		return nil, cls, errors.Errorf("can not find go type name %s in registry", clsName)
 	}
 
 	return s.typ, cls, nil

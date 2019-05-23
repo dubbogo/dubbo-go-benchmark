@@ -1,3 +1,17 @@
+// Copyright 2016-2019 hxmhlt
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package zookeeper
 
 import (
@@ -10,7 +24,7 @@ import (
 
 import (
 	log "github.com/AlexStocks/log4go"
-	jerrors "github.com/juju/errors"
+	perrors "github.com/pkg/errors"
 	"github.com/samuel/go-zookeeper/zk"
 )
 
@@ -97,7 +111,7 @@ func (l *zkEventListener) handleZkNodeEvent(zkPath string, children []string, co
 
 	newChildren, err := l.client.getChildren(zkPath)
 	if err != nil {
-		log.Error("path{%s} child nodes changed, zk.Children() = error{%v}", zkPath, jerrors.ErrorStack(err))
+		log.Error("path{%s} child nodes changed, zk.Children() = error{%v}", zkPath, perrors.WithStack(err))
 		return
 	}
 
@@ -116,7 +130,7 @@ func (l *zkEventListener) handleZkNodeEvent(zkPath string, children []string, co
 		//context.TODO
 		serviceURL, err = common.NewURL(context.TODO(), n)
 		if err != nil {
-			log.Error("NewURL(%s) = error{%v}", n, jerrors.ErrorStack(err))
+			log.Error("NewURL(%s) = error{%v}", n, perrors.WithStack(err))
 			continue
 		}
 		if !conf.URLEqual(serviceURL) {
@@ -152,7 +166,7 @@ func (l *zkEventListener) handleZkNodeEvent(zkPath string, children []string, co
 		}
 		log.Warn("delete serviceURL{%s}", serviceURL)
 		if err != nil {
-			log.Error("NewURL(i{%s}) = error{%v}", n, jerrors.ErrorStack(err))
+			log.Error("NewURL(i{%s}) = error{%v}", n, perrors.WithStack(err))
 			continue
 		}
 		l.events <- zkEvent{&registry.ServiceEvent{Action: registry.ServiceDel, Service: serviceURL}, nil}
@@ -292,16 +306,16 @@ func (l *zkEventListener) Next() (*registry.ServiceEvent, error) {
 		select {
 		case <-l.client.done():
 			log.Warn("listener's zk client connection is broken, so zk event listener exit now.")
-			return nil, jerrors.New("listener stopped")
+			return nil, perrors.New("listener stopped")
 
 		case <-l.registry.done:
 			log.Warn("zk consumer register has quit, so zk event listener exit asap now.")
-			return nil, jerrors.New("listener stopped")
+			return nil, perrors.New("listener stopped")
 
 		case e := <-l.events:
 			log.Debug("got zk event %s", e)
 			if e.err != nil {
-				return nil, jerrors.Trace(e.err)
+				return nil, perrors.WithStack(e.err)
 			}
 			if e.res.Action == registry.ServiceDel && !l.valid() {
 				log.Warn("update @result{%s}. But its connection to registry is invalid", e.res)

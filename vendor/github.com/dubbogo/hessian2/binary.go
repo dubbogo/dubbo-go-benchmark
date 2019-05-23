@@ -1,4 +1,4 @@
-// Copyright (c) 2016 ~ 2019, Alex Stocks.
+// Copyright 2016-2019 Alex Stocks
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ import (
 )
 
 import (
-	jerrors "github.com/juju/errors"
+	"github.com/pkg/errors"
 )
 
 /////////////////////////////////////////
@@ -88,19 +88,19 @@ func (d *Decoder) getBinaryLength(tag byte) (int, error) {
 	if tag >= BC_BINARY_SHORT && tag <= byte(0x37) { // [0x34, 0x37]
 		_, err = io.ReadFull(d.reader, buf[:1])
 		if err != nil {
-			return 0, jerrors.Trace(err)
+			return 0, errors.WithStack(err)
 		}
 
 		return int(tag-BC_BINARY_SHORT)<<8 + int(buf[0]), nil
 	}
 
 	if tag != BC_BINARY_CHUNK && tag != BC_BINARY {
-		return 0, jerrors.Errorf("illegal binary tag:%d", tag)
+		return 0, errors.Errorf("illegal binary tag:%d", tag)
 	}
 
 	_, err = io.ReadFull(d.reader, buf[:2])
 	if err != nil {
-		return 0, jerrors.Trace(err)
+		return 0, errors.WithStack(err)
 	}
 
 	return int(buf[0])<<8 + int(buf[1]), nil
@@ -118,7 +118,7 @@ func (d *Decoder) decBinary(flag int32) ([]byte, error) {
 	} else {
 		tag, err = d.readBufByte()
 		if err != nil {
-			return nil, jerrors.Trace(err)
+			return nil, errors.WithStack(err)
 		}
 	}
 
@@ -131,12 +131,12 @@ func (d *Decoder) decBinary(flag int32) ([]byte, error) {
 	for {
 		length, err = d.getBinaryLength(tag)
 		if err != nil {
-			return nil, jerrors.Trace(err)
+			return nil, errors.WithStack(err)
 		}
 
 		_, err = io.ReadFull(d.reader, buf[:length])
 		if err != nil {
-			return nil, jerrors.Trace(err)
+			return nil, errors.WithStack(err)
 		}
 
 		data = append(data, buf[:length]...)
@@ -147,7 +147,7 @@ func (d *Decoder) decBinary(flag int32) ([]byte, error) {
 
 		tag, err = d.readBufByte()
 		if err != nil {
-			return nil, jerrors.Trace(err)
+			return nil, errors.WithStack(err)
 		}
 	}
 	return data, nil

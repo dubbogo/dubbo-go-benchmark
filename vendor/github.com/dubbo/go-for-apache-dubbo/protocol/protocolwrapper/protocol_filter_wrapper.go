@@ -1,6 +1,21 @@
+// Copyright 2016-2019 Yincheng Fang
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package protocolwrapper
 
 import (
+	"github.com/dubbo/go-for-apache-dubbo/filter"
 	"strings"
 )
 
@@ -8,12 +23,12 @@ import (
 	"github.com/dubbo/go-for-apache-dubbo/common"
 	"github.com/dubbo/go-for-apache-dubbo/common/constant"
 	"github.com/dubbo/go-for-apache-dubbo/common/extension"
-	"github.com/dubbo/go-for-apache-dubbo/filter"
-	"github.com/dubbo/go-for-apache-dubbo/filter/impl"
 	"github.com/dubbo/go-for-apache-dubbo/protocol"
 )
 
-const FILTER = "filter"
+const (
+	FILTER = "filter"
+)
 
 func init() {
 	extension.SetProtocol(FILTER, GetProtocol)
@@ -26,7 +41,7 @@ type ProtocolFilterWrapper struct {
 
 func (pfw *ProtocolFilterWrapper) Export(invoker protocol.Invoker) protocol.Exporter {
 	if pfw.protocol == nil {
-		pfw.protocol = extension.GetProtocolExtension(invoker.GetUrl().Protocol)
+		pfw.protocol = extension.GetProtocol(invoker.GetUrl().Protocol)
 	}
 	invoker = buildInvokerChain(invoker, constant.SERVICE_FILTER_KEY)
 	return pfw.protocol.Export(invoker)
@@ -34,7 +49,7 @@ func (pfw *ProtocolFilterWrapper) Export(invoker protocol.Invoker) protocol.Expo
 
 func (pfw *ProtocolFilterWrapper) Refer(url common.URL) protocol.Invoker {
 	if pfw.protocol == nil {
-		pfw.protocol = extension.GetProtocolExtension(url.Protocol)
+		pfw.protocol = extension.GetProtocol(url.Protocol)
 	}
 	return buildInvokerChain(pfw.protocol.Refer(url), constant.REFERENCE_FILTER_KEY)
 }
@@ -45,17 +60,16 @@ func (pfw *ProtocolFilterWrapper) Destroy() {
 
 func buildInvokerChain(invoker protocol.Invoker, key string) protocol.Invoker {
 	filtName := invoker.GetUrl().Params.Get(key)
-	if filtName != "" && strings.LastIndex(filtName, ",") != len(filtName)-1 {
-		filtName = filtName + ","
-	}
-	if key == constant.SERVICE_FILTER_KEY { // echofilter must be the first in provider
-		filtName = impl.ECHO + "," + filtName
+	if filtName == "" {
+		return invoker
 	}
 	filtNames := strings.Split(filtName, ",")
 	next := invoker
+
 	// The order of filters is from left to right, so loading from right to left
-	for i := len(filtNames) - 2; i >= 0; i-- {
-		filter := extension.GetFilterExtension(filtNames[i])
+
+	for i := len(filtNames) - 1; i >= 0; i-- {
+		filter := extension.GetFilter(filtNames[i])
 		fi := &FilterInvoker{next: next, invoker: invoker, filter: filter}
 		next = fi
 	}

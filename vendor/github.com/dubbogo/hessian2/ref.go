@@ -1,4 +1,4 @@
-// Copyright (c) 2016 ~ 2019, Alex Stocks.
+// Copyright 2019 Wongoo, Yincheng Fang
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ import (
 )
 
 import (
-	jerrors "github.com/juju/errors"
+	"github.com/pkg/errors"
 )
 
 // used to ref object,list,map
@@ -62,7 +62,7 @@ func (h *_refHolder) add(dest reflect.Value) {
 	h.destinations = append(h.destinations, dest)
 }
 
-// 添加引用
+// Add reference
 func (d *Decoder) appendRefs(v interface{}) *_refHolder {
 	var holder *_refHolder
 	vv := EnsurePackValue(v)
@@ -158,6 +158,6 @@ func (d *Decoder) decRef(flag int32) (interface{}, error) {
 		return d.refs[i], nil
 
 	default:
-		return nil, jerrors.Errorf("decRef illegal ref type tag:%+v", tag)
+		return nil, errors.Errorf("decRef illegal ref type tag:%+v", tag)
 	}
 }

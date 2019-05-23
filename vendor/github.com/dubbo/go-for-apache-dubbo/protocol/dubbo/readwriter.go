@@ -1,3 +1,17 @@
+// Copyright 2016-2019 Yincheng Fang, Alex Stocks
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package dubbo
 
 import (
@@ -8,10 +22,11 @@ import (
 import (
 	"github.com/AlexStocks/getty"
 	log "github.com/AlexStocks/log4go"
-	jerrors "github.com/juju/errors"
+	perrors "github.com/pkg/errors"
 )
 import (
 	"github.com/dubbo/go-for-apache-dubbo/common"
+	"github.com/dubbo/go-for-apache-dubbo/common/constant"
 )
 
 ////////////////////////////////////////////
@@ -34,7 +49,7 @@ func (p *RpcClientPackageHandler) Read(ss getty.Session, data []byte) (interface
 	buf := bytes.NewBuffer(data)
 	err := pkg.Unmarshal(buf, p.client)
 	if err != nil {
-		pkg.Err = jerrors.Trace(err) // client will get this err
+		pkg.Err = perrors.WithStack(err) // client will get this err
 		return pkg, len(data), nil
 	}
 
@@ -45,15 +60,16 @@ func (p *RpcClientPackageHandler) Write(ss getty.Session, pkg interface{}) error
 	req, ok := pkg.(*DubboPackage)
 	if !ok {
 		log.Error("illegal pkg:%+v\n", pkg)
-		return jerrors.New("invalid rpc request")
-	}
-	buf, err := req.Marshal()
-	if err != nil {
-		log.Warn("binary.Write(req{%#v}) = err{%#v}", req, jerrors.ErrorStack(err))
-		return jerrors.Trace(err)
+		return perrors.New("invalid rpc request")
 	}
 
-	return jerrors.Trace(ss.WriteBytes(buf.Bytes()))
+	buf, err := req.Marshal()
+	if err != nil {
+		log.Warn("binary.Write(req{%#v}) = err{%#v}", req, perrors.WithStack(err))
+		return perrors.WithStack(err)
+	}
+
+	return perrors.WithStack(ss.WriteBytes(buf.Bytes()))
 }
 
 ////////////////////////////////////////////
@@ -75,7 +91,7 @@ func (p *RpcServerPackageHandler) Read(ss getty.Session, data []byte) (interface
 	buf := bytes.NewBuffer(data)
 	err := pkg.Unmarshal(buf)
 	if err != nil {
-		return nil, 0, jerrors.Trace(err)
+		return nil, 0, perrors.WithStack(err)
 	}
 	// convert params of request
 	req := pkg.Body.([]interface{}) // length of body should be 7
@@ -87,7 +103,7 @@ func (p *RpcServerPackageHandler) Read(ss getty.Session, data []byte) (interface
 			dubboVersion = req[0].(string)
 		}
 		if req[1] != nil {
-			pkg.Service.Target = req[1].(string)
+			pkg.Service.Path = req[1].(string)
 		}
 		if req[2] != nil {
 			pkg.Service.Version = req[2].(string)
@@ -104,11 +120,12 @@ func (p *RpcServerPackageHandler) Read(ss getty.Session, data []byte) (interface
 		if req[6] != nil {
 			attachments = req[6].(map[interface{}]interface{})
 		}
+		pkg.Service.Interface = attachments[constant.INTERFACE_KEY].(string)
 		pkg.Body = map[string]interface{}{
 			"dubboVersion": dubboVersion,
 			"argsTypes":    argsTypes,
 			"args":         args,
-			"service":      common.ServiceMap.GetService(DUBBO, pkg.Service.Target),
+			"service":      common.ServiceMap.GetService(DUBBO, pkg.Service.Interface),
 			"attachments":  attachments,
 		}
 	}
@@ -120,14 +137,14 @@ func (p *RpcServerPackageHandler) Write(ss getty.Session, pkg interface{}) error
 	res, ok := pkg.(*DubboPackage)
 	if !ok {
 		log.Error("illegal pkg:%+v\n, it is %+v", pkg, reflect.TypeOf(pkg))
-		return jerrors.New("invalid rpc response")
+		return perrors.New("invalid rpc response")
 	}
 
 	buf, err := res.Marshal()
 	if err != nil {
-		log.Warn("binary.Write(res{%#v}) = err{%#v}", res, jerrors.ErrorStack(err))
-		return jerrors.Trace(err)
+		log.Warn("binary.Write(res{%#v}) = err{%#v}", res, perrors.WithStack(err))
+		return perrors.WithStack(err)
 	}
 
-	return jerrors.Trace(ss.WriteBytes(buf.Bytes()))
+	return perrors.WithStack(ss.WriteBytes(buf.Bytes()))
 }

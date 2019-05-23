@@ -1,4 +1,4 @@
-// Copyright (c) 2016 ~ 2019, Alex Stocks.
+// Copyright 2016-2019 Alex Stocks
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -11,9 +11,8 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-//
-// pack/unpack fixed length variable
 
+// pack/unpack fixed length variable
 package hessian
 
 import (
@@ -25,7 +24,7 @@ import (
 )
 
 import (
-	jerrors "github.com/juju/errors"
+	"github.com/pkg/errors"
 )
 
 var (
@@ -422,7 +421,7 @@ func ConvertSliceValueType(destTyp reflect.Type, v reflect.Value) (reflect.Value
 
 	k := v.Type().Kind()
 	if k != reflect.Slice && k != reflect.Array {
-		return _zeroValue, jerrors.Errorf("expect slice type, but get %v, objects: %v", k, v)
+		return _zeroValue, errors.Errorf("expect slice type, but get %v, objects: %v", k, v)
 	}
 
 	if v.Len() <= 0 {

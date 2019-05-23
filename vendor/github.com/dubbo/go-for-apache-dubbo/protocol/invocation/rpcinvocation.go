@@ -1,3 +1,17 @@
+// Copyright 2016-2019 Yincheng Fang
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package invocation
 
 import (
@@ -68,6 +82,10 @@ func (r *RPCInvocation) Reply() interface{} {
 	return r.reply
 }
 
+func (r *RPCInvocation) SetReply(reply interface{}) {
+	r.reply = reply
+}
+
 func (r *RPCInvocation) Attachments() map[string]string {
 	return r.attachments
 }
@@ -98,6 +116,14 @@ func (r *RPCInvocation) SetInvoker() protocol.Invoker {
 	return r.invoker
 }
 
+func (r *RPCInvocation) SetCallBack(c interface{}) {
+	r.callBack = c
+}
+
 func (r *RPCInvocation) CallBack() interface{} {
 	return r.callBack
+}
+
+func (r *RPCInvocation) SetMethod(method string) {
+	r.methodName = method
 }

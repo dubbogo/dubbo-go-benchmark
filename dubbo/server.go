@@ -2,16 +2,12 @@ package main
 
 import (
 	"fmt"
-	"net/http"
-	_ "net/http/pprof"
 	"os"
 	"os/signal"
-	"strconv"
 	"syscall"
 )
 
 import (
-	"github.com/AlexStocks/goext/net"
 	"github.com/AlexStocks/goext/time"
 	log "github.com/AlexStocks/log4go"
 	"github.com/dubbogo/hessian2"
@@ -21,9 +17,9 @@ import (
 	"github.com/dubbo/go-for-apache-dubbo/config"
 
 	_ "github.com/dubbo/go-for-apache-dubbo/protocol/dubbo"
-	_ "github.com/dubbo/go-for-apache-dubbo/protocol/jsonrpc"
 	_ "github.com/dubbo/go-for-apache-dubbo/registry/protocol"
 
+	_ "github.com/dubbo/go-for-apache-dubbo/common/proxy/proxy_factory"
 	_ "github.com/dubbo/go-for-apache-dubbo/filter/impl"
 
 	_ "github.com/dubbo/go-for-apache-dubbo/cluster/cluster_impl"
@@ -36,9 +32,6 @@ var (
 	survivalTimeout = int(3e9)
 )
 
-// they are necessary:
-// 		export CONF_PROVIDER_FILE_PATH="xxx"
-// 		export APP_LOG_CONF_FILE="xxx"
 func main() {
 
 	// ------for hessian2------
@@ -52,34 +45,7 @@ func main() {
 		panic("proMap is nil")
 	}
 
-	initProfiling()
-
 	initSignal()
-}
-
-func initProfiling() {
-	if !config.GetProviderConfig().Pprof_Enabled {
-		return
-	}
-	const (
-		PprofPath = "/debug/pprof/"
-	)
-	var (
-		err  error
-		ip   string
-		addr string
-	)
-
-	ip, err = gxnet.GetLocalIP()
-	if err != nil {
-		panic("can not get local ip!")
-	}
-	addr = ip + ":" + strconv.Itoa(config.GetProviderConfig().Pprof_Port)
-	log.Info("App Profiling startup on address{%v}", addr+PprofPath)
-
-	go func() {
-		log.Info(http.ListenAndServe(addr, nil))
-	}()
 }
 
 func initSignal() {

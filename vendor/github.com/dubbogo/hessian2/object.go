@@ -1,4 +1,4 @@
-// Copyright (c) 2016 ~ 2019, Alex Stocks.
+// Copyright 2016-2019 Alex Stocks, Wongoo, Yincheng Fang
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ import (
 )
 
 import (
-	jerrors "github.com/juju/errors"
+	"github.com/pkg/errors"
 )
 
 // get @v go struct name
@@ -128,7 +128,7 @@ func (e *Encoder) encObject(v POJO) error {
 
 	if idx == -1 {
 		idx, ok = checkPOJORegistry(typeof(v))
-		if !ok { // 不存在
+		if !ok {
 			if reflect.TypeOf(v).Implements(javaEnumType) {
 				idx = RegisterJavaEnum(v.(POJOEnum))
 			} else {
@@ -137,7 +137,7 @@ func (e *Encoder) encObject(v POJO) error {
 		}
 		_, clsDef, err = getStructDefByIndex(idx)
 		if err != nil {
-			return jerrors.Trace(err)
+			return errors.WithStack(err)
 		}
 
 		idx = len(e.classInfoList)
@@ -159,10 +159,15 @@ func (e *Encoder) encObject(v POJO) error {
 	}
 	num = vv.NumField()
 	for i = 0; i < num; i++ {
+		// skip unexported anonymous field
+		if vv.Type().Field(i).PkgPath != "" {
+			continue
+		}
+
 		field := vv.Field(i)
-		fieldName := field.Type().String()
 		if err = e.Encode(field.Interface()); err != nil {
-			return jerrors.Annotatef(err, "failed to encode field: %s, %+v", fieldName, field.Interface())
+			fieldName := field.Type().String()
+			return errors.Wrapf(err, "failed to encode field: %s, %+v", fieldName, field.Interface())
 		}
 	}
 
@@ -249,17 +254,17 @@ func (d *Decoder) decClassDef() (interface{}, error) {
 
 	clsName, err = d.decString(TAG_READ)
 	if err != nil {
-		return nil, jerrors.Trace(err)
+		return nil, errors.WithStack(err)
 	}
 	fieldNum, err = d.decInt32(TAG_READ)
 	if err != nil {
-		return nil, jerrors.Trace(err)
+		return nil, errors.WithStack(err)
 	}
 	fieldList = make([]string, fieldNum)
 	for i := 0; i < int(fieldNum); i++ {
 		fieldName, err = d.decString(TAG_READ)
 		if err != nil {
-			return nil, jerrors.Annotatef(err, "decClassDef->decString, filed num:%d, index:%d", fieldNum, i)
+			return nil, errors.Wrapf(err, "decClassDef->decString, field num:%d, index:%d", fieldNum, i)
 		}
 		fieldList[i] = fieldName
 	}
@@ -287,17 +292,17 @@ func findField(name string, typ reflect.Type) (int, error) {
 
 	}
 
-	return 0, jerrors.Errorf("failed to find field %s", name)
+	return 0, errors.Errorf("failed to find field %s", name)
 }
 
 func (d *Decoder) decInstance(typ reflect.Type, cls classInfo) (interface{}, error) {
 	if typ.Kind() != reflect.Struct {
-		return nil, jerrors.Errorf("wrong type expect Struct but get:%s", typ.String())
+		return nil, errors.Errorf("wrong type expect Struct but get:%s", typ.String())
 	}
 
 	vRef := reflect.New(typ)
 	// add pointer ref so that ref the same object
-	d.appendRefs(vRef)
+	d.appendRefs(vRef.Interface())
 
 	vv := vRef.Elem()
 	for i := 0; i < len(cls.fieldNameList); i++ {
@@ -305,11 +310,17 @@ func (d *Decoder) decInstance(typ reflect.Type, cls classInfo) (interface{}, err
 
 		index, err := findField(fieldName, typ)
 		if err != nil {
-			return nil, jerrors.Errorf("can not find field %s", fieldName)
+			return nil, errors.Errorf("can not find field %s", fieldName)
 		}
+
+		// skip unexported anonymous field
+		if vv.Type().Field(index).PkgPath != "" {
+			continue
+		}
+
 		field := vv.Field(index)
 		if !field.CanSet() {
-			return nil, jerrors.Errorf("decInstance CanSet false for field %s", fieldName)
+			return nil, errors.Errorf("decInstance CanSet false for field %s", fieldName)
 		}
 
 		// get field type from type object, not do that from value
@@ -323,7 +334,7 @@ func (d *Decoder) decInstance(typ reflect.Type, cls classInfo) (interface{}, err
 		case kind == reflect.String:
 			str, err := d.decString(TAG_READ)
 			if err != nil {
-				return nil, jerrors.Annotatef(err, "decInstance->ReadString: %s", fieldName)
+				return nil, errors.Wrapf(err, "decInstance->ReadString: %s", fieldName)
 			}
 			fldRawValue.SetString(str)
 
@@ -332,15 +343,15 @@ func (d *Decoder) decInstance(typ reflect.Type, cls classInfo) (interface{}, err
 			if err != nil {
 				// java enum
 				if fldRawValue.Type().Implements(javaEnumType) {
-					d.unreadByte() // enum解析，上面decInt64已经读取一个字节，所以这里需要回退一个字节
+					d.unreadByte() // Enum parsing, decInt64 above has read a byte, so you need to return a byte here
 					s, err := d.Decode()
 					if err != nil {
-						return nil, jerrors.Annotatef(err, "decInstance->decObject field name:%s", fieldName)
+						return nil, errors.Wrapf(err, "decInstance->decObject field name:%s", fieldName)
 					}
 					enumValue, _ := s.(JavaEnum)
 					num = int32(enumValue)
 				} else {
-					return nil, jerrors.Annotatef(err, "decInstance->ParseInt, field name:%s", fieldName)
+					return nil, errors.Wrapf(err, "decInstance->ParseInt, field name:%s", fieldName)
 				}
 			}
 
@@ -350,15 +361,15 @@ func (d *Decoder) decInstance(typ reflect.Type, cls classInfo) (interface{}, err
 			num, err := d.decInt64(TAG_READ)
 			if err != nil {
 				if fldTyp.Implements(javaEnumType) {
-					d.unreadByte() // enum解析，上面decInt64已经读取一个字节，所以这里需要回退一个字节
+					d.unreadByte() // Enum parsing, decInt64 above has read a byte, so you need to return a byte here
 					s, err := d.Decode()
 					if err != nil {
-						return nil, jerrors.Annotatef(err, "decInstance->decObject field name:%s", fieldName)
+						return nil, errors.Wrapf(err, "decInstance->decObject field name:%s", fieldName)
 					}
 					enumValue, _ := s.(JavaEnum)
 					num = int64(enumValue)
 				} else {
-					return nil, jerrors.Annotatef(err, "decInstance->decInt64 field name:%s", fieldName)
+					return nil, errors.Wrapf(err, "decInstance->decInt64 field name:%s", fieldName)
 				}
 			}
 
@@ -367,14 +378,14 @@ func (d *Decoder) decInstance(typ reflect.Type, cls classInfo) (interface{}, err
 		case kind == reflect.Bool:
 			b, err := d.Decode()
 			if err != nil {
-				return nil, jerrors.Annotatef(err, "decInstance->Decode field name:%s", fieldName)
+				return nil, errors.Wrapf(err, "decInstance->Decode field name:%s", fieldName)
 			}
 			fldRawValue.SetBool(b.(bool))
 
 		case kind == reflect.Float32 || kind == reflect.Float64:
 			num, err := d.decDouble(TAG_READ)
 			if err != nil {
-				return nil, jerrors.Annotatef(err, "decInstance->decDouble field name:%s", fieldName)
+				return nil, errors.Wrapf(err, "decInstance->decDouble field name:%s", fieldName)
 			}
 			fldRawValue.SetFloat(num.(float64))
 
@@ -382,7 +393,7 @@ func (d *Decoder) decInstance(typ reflect.Type, cls classInfo) (interface{}, err
 			// decode map should use the original field value for correct value setting
 			err := d.decMapByValue(field)
 			if err != nil {
-				return nil, jerrors.Annotatef(err, "decInstance->decMapByValue field name: %s", fieldName)
+				return nil, errors.Wrapf(err, "decInstance->decMapByValue field name: %s", fieldName)
 			}
 
 		case kind == reflect.Slice || kind == reflect.Array:
@@ -391,7 +402,7 @@ func (d *Decoder) decInstance(typ reflect.Type, cls classInfo) (interface{}, err
 				if err == io.EOF {
 					break
 				}
-				return nil, jerrors.Trace(err)
+				return nil, errors.WithStack(err)
 			}
 
 			// set slice separately
@@ -407,13 +418,13 @@ func (d *Decoder) decInstance(typ reflect.Type, cls classInfo) (interface{}, err
 			if fldRawValue.Type().String() == "time.Time" {
 				s, err = d.decDate(TAG_READ)
 				if err != nil {
-					return nil, jerrors.Trace(err)
+					return nil, errors.WithStack(err)
 				}
 				fldRawValue.Set(reflect.ValueOf(s))
 			} else {
 				s, err = d.decObject(TAG_READ)
 				if err != nil {
-					return nil, jerrors.Trace(err)
+					return nil, errors.WithStack(err)
 				}
 				if s != nil {
 					// set value which accepting pointers
@@ -422,11 +433,11 @@ func (d *Decoder) decInstance(typ reflect.Type, cls classInfo) (interface{}, err
 			}
 
 		default:
-			return nil, jerrors.Errorf("unknown struct member type: %v", kind)
+			return nil, errors.Errorf("unknown struct member type: %v", kind)
 		}
 	} // end for
 
-	return vRef, nil
+	return vRef.Interface(), nil
 }
 
 func (d *Decoder) appendClsDef(cd classInfo) {
@@ -442,12 +453,12 @@ func (d *Decoder) getStructDefByIndex(idx int) (reflect.Type, classInfo, error) 
 	)
 
 	if len(d.classInfoList) <= idx || idx < 0 {
-		return nil, cls, jerrors.Errorf("illegal class index @idx %d", idx)
+		return nil, cls, errors.Errorf("illegal class index @idx %d", idx)
 	}
 	cls = d.classInfoList[idx]
 	s, ok = getStructInfo(cls.javaName)
 	if !ok {
-		return nil, cls, jerrors.Errorf("can not find go type name %s in registry", clsName)
+		return nil, cls, errors.Errorf("can not find go type name %s in registry", clsName)
 	}
 
 	return s.typ, cls, nil
@@ -463,11 +474,11 @@ func (d *Decoder) decEnum(javaName string, flag int32) (JavaEnum, error) {
 	)
 	enumName, err = d.decString(TAG_READ) // java enum class member is "name"
 	if err != nil {
-		return InvalidJavaEnum, jerrors.Annotate(err, "decString for decJavaEnum")
+		return InvalidJavaEnum, errors.Wrap(err, "decString for decJavaEnum")
 	}
 	info, ok = getStructInfo(javaName)
 	if !ok {
-		return InvalidJavaEnum, jerrors.Errorf("getStructInfo(javaName:%s) = false", javaName)
+		return InvalidJavaEnum, errors.Errorf("getStructInfo(javaName:%s) = false", javaName)
 	}
 
 	enumValue = info.inst.(POJOEnum).EnumValue(enumName)
@@ -498,7 +509,7 @@ func (d *Decoder) decObject(flag int32) (interface{}, error) {
 	case tag == BC_OBJECT_DEF:
 		clsDef, err := d.decClassDef()
 		if err != nil {
-			return nil, jerrors.Annotate(err, "decObject->decClassDef byte double")
+			return nil, errors.Wrap(err, "decObject->decClassDef byte double")
 		}
 		cls, _ = clsDef.(classInfo)
 		//add to slice
@@ -534,6 +545,6 @@ func (d *Decoder) decObject(flag int32) (interface{}, error) {
 		return d.decInstance(typ, cls)
 
 	default:
-		return nil, jerrors.Errorf("decObject illegal object type tag:%+v", tag)
+		return nil, errors.Errorf("decObject illegal object type tag:%+v", tag)
 	}
 }

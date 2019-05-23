@@ -1,25 +1,16 @@
-// Copyright (c) 2016 ~ 2018, Alex Stocks.
-// Copyright (c) 2015 Alex Efros.
+// Copyright 2016-2019 Alex Stocks
 //
-// The MIT License (MIT)
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
+// http://www.apache.org/licenses/LICENSE-2.0
 //
-// The above copyright notice and this permission notice shall be included in all
-// copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-// SOFTWARE.
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 package jsonrpc
 
@@ -33,7 +24,7 @@ import (
 )
 
 import (
-	jerrors "github.com/juju/errors"
+	perrors "github.com/pkg/errors"
 )
 
 const (
@@ -149,10 +140,10 @@ func (c *jsonClientCodec) Write(d *CodecData) ([]byte, error) {
 				}
 			case reflect.Array, reflect.Struct:
 			default:
-				return nil, jerrors.New("unsupported param type: Ptr to " + k.String())
+				return nil, perrors.New("unsupported param type: Ptr to " + k.String())
 			}
 		default:
-			return nil, jerrors.New("unsupported param type: " + k.String())
+			return nil, perrors.New("unsupported param type: " + k.String())
 		}
 	}
 
@@ -167,7 +158,7 @@ func (c *jsonClientCodec) Write(d *CodecData) ([]byte, error) {
 	defer buf.Reset()
 	enc := json.NewEncoder(buf)
 	if err := enc.Encode(&c.req); err != nil {
-		return nil, jerrors.Trace(err)
+		return nil, perrors.WithStack(err)
 	}
 
 	return buf.Bytes(), nil
@@ -181,24 +172,24 @@ func (c *jsonClientCodec) Read(streamBytes []byte, x interface{}) error {
 	dec := json.NewDecoder(buf)
 	if err := dec.Decode(&c.rsp); err != nil {
 		if err != io.EOF {
-			err = jerrors.Trace(err)
+			err = perrors.WithStack(err)
 		}
 		return err
 	}
 
 	_, ok := c.pending[c.rsp.ID]
 	if !ok {
-		err := jerrors.Errorf("can not find method of rsponse id %v, rsponse error:%v", c.rsp.ID, c.rsp.Error)
+		err := perrors.Errorf("can not find method of rsponse id %v, rsponse error:%v", c.rsp.ID, c.rsp.Error)
 		return err
 	}
 	delete(c.pending, c.rsp.ID)
 
 	// c.rsp.ID
 	if c.rsp.Error != nil {
-		return jerrors.New(c.rsp.Error.Error())
+		return perrors.New(c.rsp.Error.Error())
 	}
 
-	return jerrors.Trace(json.Unmarshal(*c.rsp.Result, x))
+	return perrors.WithStack(json.Unmarshal(*c.rsp.Result, x))
 }
 
 //////////////////////////////////////////
@@ -230,32 +221,32 @@ func (r *serverRequest) UnmarshalJSON(raw []byte) error {
 	// Attention: if do not define a new struct named @req, the json.Unmarshal will invoke
 	// (*serverRequest)UnmarshalJSON recursively.
 	if err := json.Unmarshal(raw, req(r)); err != nil {
-		return jerrors.New("bad request")
+		return perrors.New("bad request")
 	}
 
 	var o = make(map[string]*json.RawMessage)
 	if err := json.Unmarshal(raw, &o); err != nil {
-		return jerrors.New("bad request")
+		return perrors.New("bad request")
 	}
 	if o["jsonrpc"] == nil || o["method"] == nil {
-		return jerrors.New("bad request")
+		return perrors.New("bad request")
 	}
 	_, okID := o["id"]
 	_, okParams := o["params"]
 	if len(o) == 3 && !(okID || okParams) || len(o) == 4 && !(okID && okParams) || len(o) > 4 {
-		return jerrors.New("bad request")
+		return perrors.New("bad request")
 	}
 	if r.Version != Version {
-		return jerrors.New("bad request")
+		return perrors.New("bad request")
 	}
 	if okParams {
 		if r.Params == nil || len(*r.Params) == 0 {
-			return jerrors.New("bad request")
+			return perrors.New("bad request")
 		}
 		switch []byte(*r.Params)[0] {
 		case '[', '{':
 		default:
-			return jerrors.New("bad request")
+			return perrors.New("bad request")
 		}
 	}
 	if okID && r.ID == nil {
@@ -263,11 +254,11 @@ func (r *serverRequest) UnmarshalJSON(raw []byte) error {
 	}
 	if okID {
 		if len(*r.ID) == 0 {
-			return jerrors.New("bad request")
+			return perrors.New("bad request")
 		}
 		switch []byte(*r.ID)[0] {
 		case 't', 'f', '{', '[':
-			return jerrors.New("bad request")
+			return perrors.New("bad request")
 		}
 	}
 
@@ -403,7 +394,7 @@ func (c *ServerCodec) Write(errMsg string, x interface{}) ([]byte, error) {
 	defer buf.Reset()
 	enc := json.NewEncoder(buf)
 	if err := enc.Encode(resp); err != nil {
-		return nil, jerrors.Trace(err)
+		return nil, perrors.WithStack(err)
 	}
 
 	return buf.Bytes(), nil

@@ -3,10 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
-)
-
-import (
-	"github.com/AlexStocks/goext/time"
+	"time"
 )
 
 import (
@@ -14,28 +11,46 @@ import (
 )
 
 func init() {
-	config.SetConService(new(UserProvider))
+	config.SetConsumerService(new(UserProvider))
 }
 
-type JsonRPCUser struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
-	Age  int64  `json:"age"`
-	Time int64  `json:"time"`
-	Sex  string `json:"sex"`
+type Gender int
+
+const (
+	MAN = iota
+	WOMAN
+)
+
+var genderStrings = [...]string{
+	"MAN",
+	"WOMAN",
 }
 
-func (u JsonRPCUser) String() string {
+func (g Gender) String() string {
+	return genderStrings[g]
+}
+
+// User -------------------------------------------------
+type User struct {
+	Id        string
+	Name      string
+	Age       int32
+	Time      time.Time
+	Sex       Gender
+	IsChinese bool
+	Remarks   string
+}
+
+func (u User) String() string {
 	return fmt.Sprintf(
-		"User{ID:%s, Name:%s, Age:%d, Time:%s, Sex:%s}",
-		u.ID, u.Name, u.Age, gxtime.YMDPrint(int(u.Time), 0), u.Sex,
+		"User{Id:%s, Name:%s, Age:%d, Time:%s, Sex:%s, Country:%v}",
+		u.Id, u.Name, u.Age, u.Time, u.Sex, u.IsChinese,
 	)
 }
 
 type UserProvider struct {
-	GetUser  func(ctx context.Context, req []interface{}, rsp *JsonRPCUser) error
-	GetUser1 func(ctx context.Context, req []interface{}, rsp *JsonRPCUser) error
-	Echo     func(ctx context.Context, req []interface{}, rsp *string) error // Echo represent EchoFilter will be used
+	GetUser func(ctx context.Context, req []interface{}, rsp *User) error
+	Echo    func(req interface{}) (string, error) // Echo represent EchoFilter will be used
 }
 
 func (u *UserProvider) Service() string {

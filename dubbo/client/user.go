@@ -18,7 +18,7 @@ import (
 type Gender hessian.JavaEnum
 
 func init() {
-	config.SetConService(new(UserProvider))
+	config.SetConsumerService(new(UserProvider))
 }
 
 const (
@@ -58,30 +58,31 @@ func (g Gender) EnumValue(s string) hessian.JavaEnum {
 	return hessian.InvalidJavaEnum
 }
 
+// User -------------------------------------------------
 type User struct {
-	// !!! Cannot define lowercase names of variable
-	Id   string
-	Name string
-	Age  int32
-	Time time.Time
-	Sex  Gender // 注意此处，java enum Object <--> go string
+	Id        string
+	Name      string
+	Age       int32
+	Time      time.Time
+	Sex       Gender
+	IsChinese bool
+	Remarks   string
 }
 
 func (u User) String() string {
 	return fmt.Sprintf(
-		"User{Id:%s, Name:%s, Age:%d, Time:%s, Sex:%s}",
-		u.Id, u.Name, u.Age, u.Time, u.Sex,
+		"User{Id:%s, Name:%s, Age:%d, Time:%s, Sex:%s, Country:%v}",
+		u.Id, u.Name, u.Age, u.Time, u.Sex, u.IsChinese,
 	)
 }
 
-func (User) JavaClassName() string {
+func (u User) JavaClassName() string {
 	return "com.ikurento.user.User"
 }
 
 type UserProvider struct {
-	GetUser  func(ctx context.Context, req []interface{}, rsp *User) error
-	GetUser1 func(ctx context.Context, req []interface{}, rsp *User) error
-	Echo     func(ctx context.Context, req []interface{}, rsp *string) error // Echo represent EchoFilter will be used
+	GetUser func(ctx context.Context, req []interface{}, rsp *User) error
+	Echo    func(req interface{}) (string, error) // Echo represent EchoFilter will be used
 }
 
 func (u *UserProvider) Service() string {

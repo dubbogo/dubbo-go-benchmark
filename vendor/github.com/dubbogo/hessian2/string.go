@@ -1,4 +1,4 @@
-// Copyright (c) 2016 ~ 2019, Alex Stocks.
+// Copyright 2016-2019 Alex Stocks
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ import (
 )
 
 import (
-	jerrors "github.com/juju/errors"
+	"github.com/pkg/errors"
 )
 
 /////////////////////////////////////////
@@ -57,7 +57,7 @@ func encString(b []byte, v string) []byte {
 			for i := 0; i < length; i++ {
 				if r, s, err := vBuf.ReadRune(); s > 0 && err == nil {
 					// b = append(b, []byte(string(r))...)
-					b = append(b, Slice(string(r))...) // 直接基于r的内存空间把它转换为[]byte
+					b = append(b, Slice(string(r))...) // converts it to []byte in memory space of "r"
 				}
 			}
 		}
@@ -115,7 +115,7 @@ func (d *Decoder) getStringLength(tag byte) (int32, error) {
 	case tag >= 0x30 && tag <= 0x33:
 		_, err = io.ReadFull(d.reader, buf[:1])
 		if err != nil {
-			return -1, jerrors.Trace(err)
+			return -1, errors.WithStack(err)
 		}
 
 		length = int32(tag-0x30)<<8 + int32(buf[0])
@@ -124,13 +124,13 @@ func (d *Decoder) getStringLength(tag byte) (int32, error) {
 	case tag == BC_STRING_CHUNK || tag == BC_STRING:
 		_, err = io.ReadFull(d.reader, buf[:2])
 		if err != nil {
-			return -1, jerrors.Trace(err)
+			return -1, errors.WithStack(err)
 		}
 		length = int32(buf[0])<<8 + int32(buf[1])
 		return length, nil
 
 	default:
-		return -1, jerrors.Trace(err)
+		return -1, errors.WithStack(err)
 	}
 }
 
@@ -192,7 +192,7 @@ func (d *Decoder) decString(flag int32) (string, error) {
 		(tag >= 0x38 && tag <= 0x3f) || (tag == BC_LONG_INT) || (tag == BC_LONG):
 		i64, err := d.decInt64(int32(tag))
 		if err != nil {
-			return "", jerrors.Annotatef(err, "tag:%+v", tag)
+			return "", errors.Wrapf(err, "tag:%+v", tag)
 		}
 
 		return strconv.Itoa(int(i64)), nil
@@ -206,7 +206,7 @@ func (d *Decoder) decString(flag int32) (string, error) {
 	case tag == BC_DOUBLE_BYTE || tag == BC_DOUBLE_SHORT:
 		f, err := d.decDouble(int32(tag))
 		if err != nil {
-			return "", jerrors.Annotatef(err, "tag:%+v", tag)
+			return "", errors.Wrapf(err, "tag:%+v", tag)
 		}
 
 		return strconv.FormatFloat(f.(float64), 'E', -1, 64), nil
@@ -224,7 +224,7 @@ func (d *Decoder) decString(flag int32) (string, error) {
 
 		l, err := d.getStringLength(tag)
 		if err != nil {
-			return s, jerrors.Trace(err)
+			return s, errors.WithStack(err)
 		}
 		length = l
 		runeDate := make([]rune, length)
@@ -248,7 +248,7 @@ func (d *Decoder) decString(flag int32) (string, error) {
 
 					l, err := d.getStringLength(b)
 					if err != nil {
-						return s, jerrors.Trace(err)
+						return s, errors.WithStack(err)
 					}
 					length += l
 					bs := make([]rune, length)
@@ -256,13 +256,13 @@ func (d *Decoder) decString(flag int32) (string, error) {
 					runeDate = bs
 
 				default:
-					return s, jerrors.Trace(err)
+					return s, errors.WithStack(err)
 				}
 
 			} else {
 				r, _, err = d.reader.ReadRune()
 				if err != nil {
-					return s, jerrors.Trace(err)
+					return s, errors.WithStack(err)
 				}
 				runeDate[i] = r
 				i++
@@ -273,5 +273,5 @@ func (d *Decoder) decString(flag int32) (string, error) {
 		// return string(runeDate), nil
 	}
 
-	return s, jerrors.Errorf("unknown string tag %#x\n", tag)
+	return s, errors.Errorf("unknown string tag %#x\n", tag)
 }

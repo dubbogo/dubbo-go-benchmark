@@ -1,8 +1,21 @@
+// Copyright 2016-2019 Yincheng Fang, Alex Stocks
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package dubbo
 
 import (
 	"context"
-	"errors"
 	"reflect"
 	"sync"
 	"time"
@@ -12,7 +25,7 @@ import (
 	"github.com/AlexStocks/getty"
 	log "github.com/AlexStocks/log4go"
 	"github.com/dubbogo/hessian2"
-	jerrors "github.com/juju/errors"
+	perrors "github.com/pkg/errors"
 )
 
 import (
@@ -26,7 +39,7 @@ import (
 const WritePkg_Timeout = 5 * time.Second
 
 var (
-	errTooManySessions = jerrors.New("too many sessions")
+	errTooManySessions = perrors.New("too many sessions")
 )
 
 type rpcSession struct {
@@ -95,8 +108,8 @@ func (h *RpcClientHandler) OnMessage(session getty.Session, pkg interface{}) {
 func (h *RpcClientHandler) OnCron(session getty.Session) {
 	rpcSession, err := h.conn.getClientRpcSession(session)
 	if err != nil {
-		log.Error("client.getClientSession(session{%s}) = error{%s}",
-			session.Stat(), jerrors.ErrorStack(err))
+		log.Error("client.getClientSession(session{%s}) = error{%v}",
+			session.Stat(), perrors.WithStack(err))
 		return
 	}
 	if h.conn.pool.rpcClient.conf.sessionTimeout.Nanoseconds() < time.Since(session.GetActive()).Nanoseconds() {
@@ -138,7 +151,7 @@ func (h *RpcServerHandler) OnOpen(session getty.Session) error {
 	}
 	h.rwlock.RUnlock()
 	if err != nil {
-		return jerrors.Trace(err)
+		return perrors.WithStack(err)
 	}
 
 	log.Info("got session:%s", session.Stat())
@@ -183,11 +196,11 @@ func (h *RpcServerHandler) OnMessage(session getty.Session, pkg interface{}) {
 		return
 	}
 
+	twoway := true
 	// not twoway
 	if p.Header.Type&hessian.PackageRequest_TwoWay == 0x00 {
+		twoway = false
 		h.reply(session, p, hessian.PackageResponse)
-		h.callService(p, nil)
-		return
 	}
 
 	invoker := h.exporter.GetInvoker()
@@ -213,6 +226,9 @@ func (h *RpcServerHandler) OnMessage(session getty.Session, pkg interface{}) {
 	}
 
 	h.callService(p, nil)
+	if !twoway {
+		return
+	}
 	h.reply(session, p, hessian.PackageResponse)
 }
 
@@ -250,8 +266,8 @@ func (h *RpcServerHandler) callService(req *DubboPackage, ctx context.Context) {
 				log.Error("callService panic: %#v", err)
 				req.Body = e.(error)
 			} else if err, ok := e.(string); ok {
-				log.Error("callService panic: %#v", jerrors.New(err))
-				req.Body = jerrors.New(err)
+				log.Error("callService panic: %#v", perrors.New(err))
+				req.Body = perrors.New(err)
 			} else {
 				log.Error("callService panic: %#v", e)
 				req.Body = e
@@ -263,7 +279,7 @@ func (h *RpcServerHandler) callService(req *DubboPackage, ctx context.Context) {
 	if svcIf == nil {
 		log.Error("service not found!")
 		req.Header.ResponseStatus = hessian.Response_SERVICE_NOT_FOUND
-		req.Body = errors.New("service not found")
+		req.Body = perrors.New("service not found")
 		return
 	}
 	svc := svcIf.(*common.Service)
@@ -271,40 +287,42 @@ func (h *RpcServerHandler) callService(req *DubboPackage, ctx context.Context) {
 	if method == nil {
 		log.Error("method not found!")
 		req.Header.ResponseStatus = hessian.Response_SERVICE_NOT_FOUND
-		req.Body = errors.New("method not found")
+		req.Body = perrors.New("method not found")
 		return
 	}
 
-	// prepare argv
-	var argv reflect.Value
-	argIsValue := false // if true, need to indirect before calling.
-	if method.ArgType().Kind() == reflect.Ptr {
-		argv = reflect.New(method.ArgType().Elem())
-	} else {
-		argv = reflect.New(method.ArgType())
-		argIsValue = true
-	}
-	argvTmp := argv.Interface()
-	argvTmp = req.Body.(map[string]interface{})["args"] // type is []interface
-	if argIsValue {
-		argv = argv.Elem()
+	in := []reflect.Value{svc.Rcvr()}
+	if method.CtxType() != nil {
+		in = append(in, method.SuiteContext(ctx))
 	}
 
-	// prepare replyv
-	replyv := reflect.New(method.ReplyType().Elem())
-	var returnValues []reflect.Value
-	if method.CtxType() == nil {
-		returnValues = method.Method().Func.Call([]reflect.Value{svc.Rcvr(), reflect.ValueOf(argvTmp), reflect.ValueOf(replyv.Interface())})
+	// prepare argv
+	argv := req.Body.(map[string]interface{})["args"]
+	if (len(method.ArgsType()) == 1 || len(method.ArgsType()) == 2 && method.ReplyType() == nil) && method.ArgsType()[0].String() == "[]interface {}" {
+		in = append(in, reflect.ValueOf(argv))
 	} else {
-		if contextv := reflect.ValueOf(ctx); contextv.IsValid() {
-			returnValues = method.Method().Func.Call([]reflect.Value{svc.Rcvr(), contextv, reflect.ValueOf(argvTmp), reflect.ValueOf(replyv.Interface())})
-		} else {
-			returnValues = method.Method().Func.Call([]reflect.Value{svc.Rcvr(), reflect.Zero(method.CtxType()), reflect.ValueOf(argvTmp), reflect.ValueOf(replyv.Interface())})
+		for i := 0; i < len(argv.([]interface{})); i++ {
+			in = append(in, reflect.ValueOf(argv.([]interface{})[i]))
 		}
 	}
 
-	// The return value for the method is an error.
-	if retErr := returnValues[0].Interface(); retErr != nil {
+	// prepare replyv
+	var replyv reflect.Value
+	if method.ReplyType() == nil {
+		replyv = reflect.New(method.ArgsType()[len(method.ArgsType())-1].Elem())
+		in = append(in, replyv)
+	}
+
+	returnValues := method.Method().Func.Call(in)
+
+	var retErr interface{}
+	if len(returnValues) == 1 {
+		retErr = returnValues[0].Interface()
+	} else {
+		replyv = returnValues[0]
+		retErr = returnValues[1].Interface()
+	}
+	if retErr != nil {
 		req.Header.ResponseStatus = hessian.Response_SERVER_ERROR
 		req.Body = retErr.(error)
 	} else {
@@ -329,6 +347,6 @@ func (h *RpcServerHandler) reply(session getty.Session, req *DubboPackage, tp he
 	}
 
 	if err := session.WritePkg(resp, WritePkg_Timeout); err != nil {
-		log.Error("WritePkg error: %#v, %#v", jerrors.Trace(err), req.Header)
+		log.Error("WritePkg error: %#v, %#v", perrors.WithStack(err), req.Header)
 	}
 }
