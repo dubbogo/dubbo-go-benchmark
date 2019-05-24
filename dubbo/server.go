@@ -9,13 +9,13 @@ import (
 
 import (
 	"github.com/AlexStocks/goext/time"
-	log "github.com/AlexStocks/log4go"
 	"github.com/dubbogo/hessian2"
 )
 
 import (
 	"github.com/dubbo/go-for-apache-dubbo/config"
 
+	"github.com/dubbo/go-for-apache-dubbo/common/logger"
 	_ "github.com/dubbo/go-for-apache-dubbo/protocol/dubbo"
 	_ "github.com/dubbo/go-for-apache-dubbo/registry/protocol"
 
@@ -54,13 +54,13 @@ func initSignal() {
 	signal.Notify(signals, os.Interrupt, os.Kill, syscall.SIGHUP, syscall.SIGQUIT, syscall.SIGTERM, syscall.SIGINT)
 	for {
 		sig := <-signals
-		log.Info("get signal %s", sig.String())
+		logger.Info("get signal %s", sig.String())
 		switch sig {
 		case syscall.SIGHUP:
 			// reload()
 		default:
 			go gxtime.Future(survivalTimeout, func() {
-				log.Warn("app exit now by force...")
+				logger.Warn("app exit now by force...")
 				os.Exit(1)
 			})
 

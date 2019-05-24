@@ -22,7 +22,7 @@ fi
 sh stop.sh
 export -n CONF_CONSUMER_FILE_PATH
 export CONF_PROVIDER_FILE_PATH=$PWD/$popt/server.yml
-export APP_LOG_CONF_FILE=$PWD/$popt/log.xml
+export APP_LOG_CONF_FILE=$PWD/$popt/log.yml
 
 cd ./$popt
 go build .

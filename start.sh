@@ -34,7 +34,7 @@ fi
 
 sh stop.sh
 export CONF_PROVIDER_FILE_PATH=$PWD/$popt/server.yml
-export APP_LOG_CONF_FILE=$PWD/$popt/log.xml
+export APP_LOG_CONF_FILE=$PWD/$popt/log.yml
 
 cd ./$popt
 go build .
@@ -45,7 +45,7 @@ sleep 4
 cd ../
 export -n CONF_PROVIDER_FILE_PATH
 export CONF_CONSUMER_FILE_PATH=$PWD/$popt/client/client.yml
-export APP_LOG_CONF_FILE=$PWD/$popt/client/log.xml
+export APP_LOG_CONF_FILE=$PWD/$popt/client/log.yml
 
 go run ./$popt/client/*.go -c $copt  -n $nopt
 sh stop.sh
