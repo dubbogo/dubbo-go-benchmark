@@ -111,7 +111,7 @@ func main() {
 			for j := 0; j < m; j++ {
 				t := time.Now().UnixNano()
 				user := &User{}
-				err := conMap["com.ikurento.user.UserProvider"].GetRPCService().(*UserProvider).GetUser(context.TODO(), []interface{}{"A003", ARG2}, user)
+				err := conMap["com.ikurento.user.UserProvider"].GetRPCService().(*UserProvider).GetUser(context.TODO(), []interface{}{"A003", ARG}, user)
 
 				t = time.Now().UnixNano() - t
 
