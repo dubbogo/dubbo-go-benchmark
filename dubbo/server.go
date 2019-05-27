@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"net/http"
+	_ "net/http/pprof"
 	"os"
 	"os/signal"
 	"syscall"
@@ -13,6 +15,7 @@ import (
 )
 
 import (
+	"github.com/dubbo/go-for-apache-dubbo/common/utils"
 	"github.com/dubbo/go-for-apache-dubbo/config"
 
 	"github.com/dubbo/go-for-apache-dubbo/common/logger"
@@ -45,7 +48,21 @@ func main() {
 		panic("proMap is nil")
 	}
 
+	initProfiling()
+
 	initSignal()
+}
+
+func initProfiling() {
+
+	ip, err := utils.GetLocalIP()
+	if err != nil {
+		panic("cat not get local ip!")
+	}
+	fmt.Println(ip + ":7070")
+	go func() {
+		logger.Info(http.ListenAndServe(ip+":7070", nil))
+	}()
 }
 
 func initSignal() {

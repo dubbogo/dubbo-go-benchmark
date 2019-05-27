@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"net/http"
+	_ "net/http/pprof"
 	"os"
 	"os/signal"
 	"syscall"
@@ -16,6 +18,7 @@ import (
 	_ "github.com/dubbo/go-for-apache-dubbo/cluster/loadbalance"
 	"github.com/dubbo/go-for-apache-dubbo/common/logger"
 	_ "github.com/dubbo/go-for-apache-dubbo/common/proxy/proxy_factory"
+	"github.com/dubbo/go-for-apache-dubbo/common/utils"
 	"github.com/dubbo/go-for-apache-dubbo/config"
 	_ "github.com/dubbo/go-for-apache-dubbo/filter/impl"
 	_ "github.com/dubbo/go-for-apache-dubbo/protocol/jsonrpc"
@@ -36,7 +39,22 @@ func main() {
 	if proMap == nil {
 		panic("proMap is nil")
 	}
+
+	initProfiling()
+
 	initSignal()
+}
+
+func initProfiling() {
+
+	ip, err := utils.GetLocalIP()
+	if err != nil {
+		panic("cat not get local ip!")
+	}
+	fmt.Println(ip + ":7070")
+	go func() {
+		logger.Info(http.ListenAndServe(ip+":7070", nil))
+	}()
 }
 
 func initSignal() {
