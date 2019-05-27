@@ -1,6 +1,5 @@
 # go-for-apache-dubbo-benchmark
 
-参考自 https://github.com/rpcx-ecosystem/rpcx-benchmark
 
 ## 使用方式
 
