@@ -14,10 +14,8 @@ import (
 
 type Gender hessian.JavaEnum
 
-var userProvider = new(UserProvider)
-
 func init() {
-	config.SetConsumerService(userProvider)
+	config.SetProviderService(new(UserProvider))
 }
 
 const (
@@ -70,8 +68,8 @@ type User struct {
 
 func (u User) String() string {
 	return fmt.Sprintf(
-		"User{Id:%s, Name:%s, Age:%d, Time:%s, Sex:%s, Country:%v}",
-		u.Id, u.Name, u.Age, u.Time, u.Sex, u.IsChinese,
+		"User{Id:%s, Name:%s, Age:%d, Time:%s, Sex:%s, Country:%v, Remarks:%s}",
+		u.Id, u.Name, u.Age, u.Time, u.Sex, u.IsChinese, u.Remarks,
 	)
 }
 
@@ -79,9 +77,20 @@ func (u User) JavaClassName() string {
 	return "com.ikurento.user.User"
 }
 
+// UserProvider -------------------------------------------------
 type UserProvider struct {
-	GetUser func(ctx context.Context, req []interface{}, rsp *User) error
-	Echo    func(req interface{}) (string, error) // Echo represent EchoFilter will be used
+}
+
+func (u *UserProvider) GetUser(ctx context.Context, req []interface{}, rsp *User) error {
+	rsp.Id = req[0].(string)
+	rsp.Name = "name"
+	rsp.Age = 20
+	rsp.Sex = Gender(MAN)
+	rsp.Time = time.Now()
+	rsp.IsChinese = true
+	rsp.Remarks = req[1].(string)
+	fmt.Printf("GetUser")
+	return nil
 }
 
 func (u *UserProvider) Reference() string {

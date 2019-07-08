@@ -7,7 +7,7 @@ import (
 )
 
 import (
-	"github.com/dubbo/go-for-apache-dubbo/config"
+	"github.com/apache/dubbo-go/config"
 )
 
 type Gender int
@@ -56,10 +56,6 @@ func (u *UserProvider) GetUser(ctx context.Context, req []interface{}, rsp *User
 	return nil
 }
 
-func (u *UserProvider) Service() string {
-	return "com.ikurento.user.UserProvider"
-}
-
-func (u *UserProvider) Version() string {
-	return ""
+func (u *UserProvider) Reference() string {
+	return "UserProvider"
 }

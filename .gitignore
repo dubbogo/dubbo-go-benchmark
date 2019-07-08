@@ -21,6 +21,8 @@ jsonrpc/logs/
 
 vendor/
 
-jsonrpc/pid
-dubbo/pid
+jsonrpc/server/pid
+dubbo/server/pid
 *.iml
+jsonrpc/server/server
+dubbo/server/server

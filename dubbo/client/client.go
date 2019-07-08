@@ -2,54 +2,52 @@ package main
 
 import (
 	"context"
-	"errors"
 	"flag"
 	"fmt"
+	_ "net/http/pprof"
 	"sync"
 	"sync/atomic"
 	"time"
 )
 
 import (
+	"github.com/apache/dubbo-go/config"
+	_ "github.com/apache/dubbo-go/filter/impl"
 	"github.com/dubbogo/hessian2"
 	"github.com/montanaflynn/stats"
+
+	_ "github.com/apache/dubbo-go/cluster/cluster_impl"
+	_ "github.com/apache/dubbo-go/cluster/loadbalance"
+	_ "github.com/apache/dubbo-go/common/proxy/proxy_factory"
+
+	_ "github.com/apache/dubbo-go/registry/zookeeper"
+
+	_ "github.com/apache/dubbo-go/protocol/dubbo"
+	_ "github.com/apache/dubbo-go/registry/protocol"
 )
 
 import (
-	"github.com/dubbo/go-for-apache-dubbo/config"
-	_ "github.com/dubbo/go-for-apache-dubbo/filter/impl"
-
-	_ "github.com/dubbo/go-for-apache-dubbo/cluster/cluster_impl"
-	_ "github.com/dubbo/go-for-apache-dubbo/cluster/loadbalance"
-	_ "github.com/dubbo/go-for-apache-dubbo/common/proxy/proxy_factory"
-
-	_ "github.com/dubbo/go-for-apache-dubbo/registry/zookeeper"
-
-	_ "github.com/dubbo/go-for-apache-dubbo/protocol/dubbo"
-	_ "github.com/dubbo/go-for-apache-dubbo/registry/protocol"
+	"github.com/dubbogo/go-for-apache-dubbo-benchmark/common"
 )
 
 // they are necessary:
 // 		export CONF_CONSUMER_FILE_PATH="xxx"
 // 		export APP_LOG_CONF_FILE="xxx"
-var concurrency = flag.Int("c", 1, "concurrency")
-var total = flag.Int("n", 1, "total requests for all clients")
 
-var survivalTimeout int = 10e9
+var (
+	concurrency = flag.Int("c", 1, "concurrency")
+	total       = flag.Int("n", 1, "total requests for all clients")
+	arg         = flag.Int("r", 2, "size of arg(1 = 300B)")
 
-// package 4096(req, max , decide by getty) 4040(rsp)
-const ARG = "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"
-
-// package 1024(req) 996(rsp)
-const ARG1 = "ifififififO/3NNNt0154xVDgt6E+i/zb7OMcLADgAe5UifififififO/3NNNtxVDgt6E+i/zb7OMcLADgAe5UjjSNFifO/3NNNtxVDgt6E+i/zb7OMcLADgAe5UjSNFCgAIBgDCgAIBgDyHy6hN5GkZndiWJ48ERFRFUKqq9iN4/zb7OMc8386x2Al23Z5a3fB5BwT1C4OQKDHRkB6xT+8BDeOUcctcqPdiO/3NNNtxVDgt6E+i/zb7OMcLADgAe5UjSNFCgAIBgDyHy6hN5GkZndiWJ48ERFRFUKqq9iN4/zb7OMc8386x2Al23Z5a3fB5BwT1C4OQKDHRkB6xT+8BDeOUcctcqPdiO/3NNNtxVDgt6E+i/zb7OMcLADgAe5UjSNFCgAIBgDyHy6hN5GkZndiWJ48s9OMVORckH/AABBNuP8fp73U9U8uskqaVta3+wtyPz/ALD3aP4q9eHSbrWsG+oJHH+HA/1ufaj068TTHy6DncThaWdrkaAjNlsbjV6V0qR/gLj+vtYAWBJHSQNpoNVM9MOcnqalXhRBTr4+dDiEViW1B6KLhEBJpnpReEuNViQVAJAjNlsbjV6V0qR/gLj+vtYAWBJHSQNpoNVM9MOcnqa+lXhRBTr4+XUgKLXOkfQkkAg/4Gw9P+8e/Ak9J2SmFB6TOczdDi4JaipmjREViWawSwF78KR/tr+9Enp6O3egJWg6MN8ffjPl+0J6HfPZNBNi9iN46vD7Sqo9J2SmFB6TOczdDi4JaipmjREViWawSwF78KR/tr+9Enp6O3egJWg6MN8ffjPl+0J6HfPZNBNi9iN"
-
-// package 600(req) 574(rsp)
-const ARG2 = "3fB5kijikBwT1C+rfPgPLPC1WioafH0sFDQQR01LTRJDDDDGqRxxxqERFRFUKqqLADgAe5UjSNFCgAIB+rfPgPLPC1WioafH0sFDQQR01LTRJDDDDGqRxxxqERFRFUKqq9iN4/zb7OMc8386x2Al23Z5a3fB5BwT1C4OQKDHRkB6xT+8BDeOUcctcqPdiO/3NNNtxVDgt6E+i/zb7OMcLADgAe5UjSNFCgAIBgDyHy6hN5GkZndiWJ48T/s9OMVORckH/AABBNuP8fp73U9U8uskqaVta3+wtyPz/ALD3aP4q9eHSbrWsG+oJHH+HA/1ufaj068TTHy6DncThaWdrkaAjNlsbjV6V0qR/gLj+vtYAWBJHSQNpoNVM9MOcnqalXhRBTr4+dDiEViW1"
+	Arg             = common.GetString(*arg)
+	survivalTimeout = int(3e9)
+)
 
 func main() {
+	common.InitProfiling("7071")
 	flag.Parse()
 
-	conc, tn, err := checkArgs(*concurrency, *total)
+	conc, tn, err := common.CheckArgs(*concurrency, *total)
 	if err != nil {
 		fmt.Printf("err: %v", err)
 		return
@@ -68,10 +66,7 @@ func main() {
 	hessian.RegisterJavaEnum(Gender(WOMAN))
 	hessian.RegisterPOJO(&User{})
 
-	conMap, _ := config.Load()
-	if conMap == nil {
-		panic("conMap is nil")
-	}
+	config.Load()
 
 	time.Sleep(3e9)
 
@@ -83,7 +78,11 @@ func main() {
 
 	d := make([][]int64, n, n)
 
-	//it contains warmup time but we can ignore it
+	// warnup
+	//warnup()
+
+	time.Sleep(time.Second * 3)
+
 	totalT := time.Now().UnixNano()
 	for i := 0; i < n; i++ {
 		dt := make([]int64, 0, m)
@@ -92,26 +91,14 @@ func main() {
 		go func(i int) {
 			defer func() {
 				if r := recover(); r != nil {
-					fmt.Printf("Recovered in f", r)
+					fmt.Printf("Recovered in %v", r)
 				}
 			}()
-
-			//warmup
-			//for j := 0; j < 5; j++ {
-			//	user := &User{}
-			//	err := conMap["com.ikurento.user.UserProvider"].GetRPCService().(*UserProvider).GetUser(context.TODO(), []interface{}{"A003"}, user)
-			//	if err != nil {
-			//		fmt.Println(err)
-			//	}
-			//}
-
-			//startWg.Done()
-			//startWg.Wait()
 
 			for j := 0; j < m; j++ {
 				t := time.Now().UnixNano()
 				user := &User{}
-				err := conMap["com.ikurento.user.UserProvider"].GetRPCService().(*UserProvider).GetUser(context.TODO(), []interface{}{"A003", ARG}, user)
+				err := userProvider.GetUser(context.TODO(), []interface{}{"A003", Arg}, user)
 
 				t = time.Now().UnixNano() - t
 
@@ -159,20 +146,22 @@ func main() {
 	fmt.Printf("mean: %.f ns, median: %.f ns, max: %.f ns, min: %.f ns, p99.9: %.f ns\n", mean, median, max, min, p99)
 	fmt.Printf("mean: %d ms, median: %d ms, max: %d ms, min: %d ms, p99: %d ms\n", int64(mean/1000000), int64(median/1000000), int64(max/1000000), int64(min/1000000), int64(p99/1000000))
 
+	common.InitSignal(survivalTimeout)
 }
 
-// checkArgs check concurrency and total request count.
-func checkArgs(c, n int) (int, int, error) {
-	if c < 1 {
-		fmt.Printf("c < 1 and reset c = 1")
-		c = 1
+func warnup() {
+	t := time.After(30 * time.Second)
+	for {
+		select {
+		case <-t:
+			fmt.Println("warmup finish!")
+			return
+		default:
+			user := &User{}
+			err := userProvider.GetUser(context.TODO(), []interface{}{"A003", Arg}, user)
+			if err != nil {
+				fmt.Println(err)
+			}
+		}
 	}
-	if n < 1 {
-		fmt.Printf("n < 1 and reset n = 1")
-		n = 1
-	}
-	if c > n {
-		return c, n, errors.New("c must be set <= n")
-	}
-	return c, n, nil
 }

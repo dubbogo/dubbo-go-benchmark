@@ -21,12 +21,12 @@ fi
 
 sh stop.sh
 export -n CONF_CONSUMER_FILE_PATH
-export CONF_PROVIDER_FILE_PATH=$PWD/$popt/server.yml
-export APP_LOG_CONF_FILE=$PWD/$popt/log.yml
+export CONF_PROVIDER_FILE_PATH=$PWD/$popt/server/server.yml
+export APP_LOG_CONF_FILE=$PWD/$popt/server/log.yml
 
-cd ./$popt
+cd ./$popt/server
 go build .
-./$popt &
+./server &
 echo "进程ID:"$!
 echo $!>./pid
 

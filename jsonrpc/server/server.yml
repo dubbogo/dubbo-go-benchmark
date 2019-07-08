@@ -1,16 +1,10 @@
-# dubbo client yaml configure file
-
-check: true
-# client
-request_timeout : "3s"
-# connect timeout
-connect_timeout : "3s"
+# dubbo server yaml configure file
 
 # application config
 application_config:
   organization : "ikurento.com"
-  name  : "BDTService"
-  module : "dubbogo user-info client"
+  name : "BDTService"
+  module : "dubbogo user-info server"
   version : "0.0.1"
   owner : "ZX"
   environment : "dev"
@@ -32,13 +26,25 @@ registries :
     username: ""
     password: ""
 
-references:
+
+services:
   "UserProvider":
     filter: ""
-    registry: "hangzhouzk"
     protocol : "jsonrpc"
+    registry: "hangzhouzk"
+    # equivalent to interface of dubbo.xml
     interface : "com.ikurento.user.UserProvider"
+    loadbalance: "random"
+    warmup: "100"
     cluster: "failover"
-    methods :
+    methods:
     - name: "GetUser"
-      retries: 3
+      retries: 1
+      loadbalance: "random"
+
+protocols:
+  "jsonrpc":
+    name: "jsonrpc"
+    ip : "127.0.0.1"
+    port : 20001
+

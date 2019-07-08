@@ -1,9 +1,9 @@
 # dubbo client yaml configure file
 
 # client
-request_timeout : "100ms"
+request_timeout : "20s"
 # connect timeout
-connect_timeout : "100ms"
+connect_timeout : "3s"
 check: true
 # application config
 application_config:
@@ -15,39 +15,39 @@ application_config:
   environment : "dev"
 
 registries :
-- id: "hangzhouzk"
-  type: "zookeeper"
-  timeout	: "3s"
-  address: "127.0.0.1:2181"
-  username: ""
-  password: ""
 
-- id: "shanghaizk"
-  type: "zookeeper"
-  timeout	: "3s"
-  address: "127.0.0.1:2182"
-  username: ""
-  password: ""
+  "hangzhouzk":
+    id: "hangzhouzk"
+    protocol: "zookeeper"
+    timeout	: "3s"
+    address: "127.0.0.1:2181"
+    username: ""
+    password: ""
+  "shanghaizk":
+    id: "shanghaizk"
+    protocol: "zookeeper"
+    timeout	: "3s"
+    address: "127.0.0.1:2182"
+    username: ""
+    password: ""
 
 references:
-- registries :
-  - "hangzhouzk"
-  - "shanghaizk"
-
-  protocol : "dubbo"
-  interface : "com.ikurento.user.UserProvider"
-  cluster: "failover"
-  methods :
-  - name: "GetUser"
-    retries: 3
+  "UserProvider":
+    filter: ""
+    registry: "hangzhouzk"
+    protocol : "dubbo"
+    interface : "com.ikurento.user.UserProvider"
+    cluster: "failover"
+    methods :
+    - name: "GetUser"
+      retries: 3
 
 protocol_conf:
   dubbo:
-    reconnect_interval: 0
+    reconnect_interval: 100
     connection_number: 2
     heartbeat_period: "5s"
     session_timeout: "20s"
-    fail_fast_timeout: "5s"
     pool_size: 64
     pool_ttl: 600
     getty_session_param:
@@ -59,7 +59,7 @@ protocol_conf:
       tcp_w_buf_size: 65536
       pkg_rq_size: 1024
       pkg_wq_size: 512
-      tcp_read_timeout: "1s"
+      tcp_read_timeout: "5s"
       tcp_write_timeout: "5s"
       wait_timeout: "1s"
       max_msg_len: 10240
