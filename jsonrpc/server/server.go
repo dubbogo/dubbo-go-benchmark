@@ -16,7 +16,7 @@ import (
 )
 
 import (
-	"github.com/dubbogo/go-for-apache-dubbo-benchmark/common"
+	"github.com/dubbogo/dubbo-go-benchmark/common"
 )
 
 var (

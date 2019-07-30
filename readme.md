@@ -1,4 +1,4 @@
-# go-for-apache-dubbo-benchmark
+# dubbo-go-benchmark
 
 
 ## 使用方式

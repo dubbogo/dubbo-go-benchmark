@@ -1,4 +1,4 @@
-module github.com/dubbogo/go-for-apache-dubbo-benchmark
+module github.com/dubbogo/dubbo-go-benchmark
 
 go 1.12
 
