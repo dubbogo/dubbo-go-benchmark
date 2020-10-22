@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # c代表压测并发数，n代表压测总数，p代表协议，r代表参数大小（1等于300B）
-while getopts ":p:n:c:" opt
+while getopts ":p:n:c:r:" opt
 do
     case $opt in
         c)
@@ -37,7 +37,6 @@ fi
 if  [ ! -n "$ropt" ] ;then
     ropt=2
 fi
-
 sh stop.sh
 export CONF_PROVIDER_FILE_PATH=$PWD/$popt/server/server.yml
 export APP_LOG_CONF_FILE=$PWD/$popt/server/log.yml

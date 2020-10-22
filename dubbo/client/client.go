@@ -39,19 +39,23 @@ var (
 	total       = flag.Int("n", 1, "total requests for all clients")
 	arg         = flag.Int("r", 2, "size of arg(1 = 300B)")
 
-	Arg             = common.GetString(*arg)
+	Arg = common.GetString(*arg)
+
 	survivalTimeout = int(3e9)
 )
 
 func main() {
 	common.InitProfiling("7071")
 	flag.Parse()
-
+	Arg := common.GetString(*arg)
 	conc, tn, err := common.CheckArgs(*concurrency, *total)
+	fmt.Println(conc)
+	fmt.Println(tn)
 	if err != nil {
 		fmt.Printf("err: %v", err)
 		return
 	}
+
 	n := conc
 	m := tn / n
 
