@@ -49,8 +49,6 @@ func main() {
 	flag.Parse()
 	Arg := common.GetString(*arg)
 	conc, tn, err := common.CheckArgs(*concurrency, *total)
-	fmt.Println(conc)
-	fmt.Println(tn)
 	if err != nil {
 		fmt.Printf("err: %v", err)
 		return

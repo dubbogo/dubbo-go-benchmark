@@ -47,7 +47,7 @@ var (
 func main() {
 	common.InitProfiling("7071")
 	flag.Parse()
-
+	Arg = common.GetString(*arg)
 	conc, tn, err := common.CheckArgs(*concurrency, *total)
 	if err != nil {
 		fmt.Printf("err: %v", err)
