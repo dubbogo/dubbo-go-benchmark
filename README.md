@@ -2,6 +2,7 @@
 
 ## 1. Repo Structure
 
+```text
 ├── 3.0
 │   ├── dubbo // dubbo stress test with hessian serialization
 │   │   ├── client
@@ -33,6 +34,7 @@
 │           └── main.go
 ├── bugreport // bug report
 │   └── para200-tps5000-client-error.txt 
+```
 
 ## 2. Stress Test Typology
 
