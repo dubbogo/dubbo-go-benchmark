@@ -1,0 +1,23 @@
+dubbo:
+  registries:
+    demoNacos:
+      protocol: nacos
+      address: mse-444fcf60-p.nacos-ans.mse.aliyuncs.com:8848
+  protocols:
+    triple:
+      name: tri
+      port: 20000
+  consumer:
+    registry-ids:
+      - demoNacos
+    references:
+      GreeterClientImpl:
+        protocol: tri
+        interface: com.apache.dubbo.sample.basic.IGreeter # must be compatible with grpc or dubbo-java
+  provider:
+    registry-ids:
+      - demoNacos
+    services:
+      GreeterProvider:
+        protocol-ids: triple
+        interface: com.apache.dubbo.sample.basic.IGreeterProxy # must be compatible with grpc or dubbo-java

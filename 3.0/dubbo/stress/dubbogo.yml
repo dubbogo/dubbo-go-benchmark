@@ -1,0 +1,21 @@
+# dubbo client yaml configure file
+
+dubbo:
+  registries:
+    demoNacos:
+      protocol: nacos
+      address: mse-444fcf60-p.nacos-ans.mse.aliyuncs.com:8848
+  protocols:
+    dubbo:
+      name: dubbo
+      port: 20000
+  consumer:
+    registry-ids:
+      - demoNacos
+    references:
+      "UserProvider":
+        protocol: "dubbo"
+        interface: "org.apache.dubbo.UserProvderProxy"
+  logger:
+    zap-config:
+      level: error
