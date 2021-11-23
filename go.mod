@@ -13,4 +13,5 @@ require (
 require (
 	github.com/apache/dubbo-go-hessian2 v1.9.3
 	github.com/dubbogo/tools v0.0.0-20211030074745-46d14b5573f7
+	github.com/stretchr/testify v1.7.0 // indirect
 )
