@@ -1,0 +1,22 @@
+# dubbo server yaml configure file
+
+dubbo:
+  registries:
+    zk:
+      protocol: zookeeper
+      address: zookeeper-service.dubbogo-adaptivesvc.svc.cluster.local:2181
+  protocols:
+    dubbo:
+      name: dubbo
+      port: 20001
+  provider:
+    registry-ids:
+      - zk
+    adaptive-service-verbose: true
+    services:
+      Provider:
+        protocol: dubbo
+        interface: org.apache.dubbo.Provider
+  logger:
+    zap-config:
+      level: debug
