@@ -1,7 +1,9 @@
 package main
 
-import "context"
+import (
+	"context"
+)
 
 type Provider struct {
-	Fibonacci func(ctx context.Context, n, worker int) (int, error)
+	Fibonacci func(ctx context.Context, n, workerNum int) (int, error)
 }

@@ -6,9 +6,11 @@ metadata:
 spec:
   selector:
     app: zookeeper
+  type: NodePort
   ports:
-  - port: 2181
-    targetPort: 2181
+    - port: 2181
+      targetPort: 2181
+      name: zookeeper
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -28,12 +30,11 @@ spec:
         app: zookeeper
     spec:
       containers:
-      - name: zookeeper
-        image: zookeeper
-        ports:
-        - containerPort: 2181
-        resources:
-          limits:
-            cpu: 1000m
-            memory: 2Gi
-              
+        - name: zookeeper
+          image: zookeeper
+          ports:
+            - containerPort: 2181
+          resources:
+            limits:
+              cpu: 1000m
+              memory: 2Gi
