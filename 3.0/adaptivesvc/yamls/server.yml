@@ -15,11 +15,11 @@ spec:
     spec:
       containers:
         - name: dubbogo-server
-          image: xavierniu/dubbogo-server-adasvc
+          image: laurencelizhixin/dubbogo-server-adasvc:0.0.1
           imagePullPolicy: Always
-          resources:
-            limits:
-              memory: "2Gi"
-              cpu: "2000m"
+#          resources:
+#            limits:
+#              memory: "2Gi"
+#              cpu: "2000m"
           ports:
             - containerPort: 20001

@@ -5,5 +5,5 @@ import (
 )
 
 type Provider struct {
-	Fibonacci func(ctx context.Context, n, workerNum int) (int, error)
+	Fibonacci func(ctx context.Context, n, workerNum int64) (int64, error)
 }

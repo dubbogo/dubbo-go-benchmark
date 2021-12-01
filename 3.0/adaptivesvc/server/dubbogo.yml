@@ -10,8 +10,6 @@ dubbo:
       name: dubbo
       port: 20001
   provider:
-    registry-ids:
-      - zk
     adaptive-service-verbose: true
     services:
       Provider:
@@ -19,4 +17,4 @@ dubbo:
         interface: org.apache.dubbo.Provider
   logger:
     zap-config:
-      level: debug
+      level: info
