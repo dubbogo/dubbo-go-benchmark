@@ -26,13 +26,13 @@ var ErrNShouldGreaterThanZero = fmt.Errorf("n should greater than zero")
 
 type Provider struct{}
 
-func (*Provider) Fibonacci(n, workerNum int) (int, error) {
+func (*Provider) Fibonacci(n, workerNum int64) (int64, error) {
 	var (
-		result int
+		result int64
 		err    error
 		wg     sync.WaitGroup
 	)
-	for i := 0; i < workerNum; i++ {
+	for i := 0; i < int(workerNum); i++ {
 		wg.Add(1)
 		go func() {
 			defer wg.Done()
@@ -50,7 +50,7 @@ func (*Provider) Fibonacci(n, workerNum int) (int, error) {
 	return result, nil
 }
 
-func fibonacci(n int) (int, error) {
+func fibonacci(n int64) (int64, error) {
 	if n < 0 {
 		return 0, ErrNShouldGreaterThanZero
 	}

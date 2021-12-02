@@ -77,7 +77,7 @@ func main() {
 		Start(doInvoke)
 }
 
-func fibonacci(ctx context.Context, provider *Provider) (result int, err error) {
+func fibonacci(ctx context.Context, provider *Provider) (result int64, err error) {
 	var (
 		n, workNum int
 	)
@@ -88,6 +88,6 @@ func fibonacci(ctx context.Context, provider *Provider) (result int, err error) 
 		panic(err)
 	}
 
-	result, err = provider.Fibonacci(ctx, n, workNum)
+	result, err = provider.Fibonacci(ctx, int64(n), int64(workNum))
 	return
 }
