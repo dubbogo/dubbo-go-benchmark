@@ -15,7 +15,7 @@ dubbo:
     references:
       "UserProvider":
         protocol: "dubbo"
-        interface: "org.apache.dubbo.UserProvderProxy"
+        interface: "org.apache.dubbo.UserProviderProxy"
   logger:
     zap-config:
       level: error
