@@ -1,10 +1,18 @@
 # dubbo client yaml configure file
 
 dubbo:
+  protocols:
+    dubbo:
+      name: dubbo
+      params:
+        tcp-read-timeout: 120s
+        tcp-write-timeout: 120s
+        wait-timeout: 120s
   registries:
     zk:
       protocol: zookeeper
-      address: zookeeper-service.dubbogo-adaptivesvc.svc.cluster.local:2181
+#      address: zookeeper-service.dubbogo-adaptivesvc.svc.cluster.local:2181
+      address: 127.0.0.1:2181
   consumer:
     registry-ids:
       - zk

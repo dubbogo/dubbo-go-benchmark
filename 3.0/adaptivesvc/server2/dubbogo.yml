@@ -9,7 +9,7 @@ dubbo:
   protocols:
     dubbo:
       name: dubbo
-      port: 20001
+      port: 20003
   provider:
     registry-ids:
       - zk
