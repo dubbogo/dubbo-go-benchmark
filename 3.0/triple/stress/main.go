@@ -19,11 +19,15 @@ package main
 
 import (
 	"context"
-	"dubbo.apache.org/dubbo-go/v3/config"
-	_ "dubbo.apache.org/dubbo-go/v3/imports"
-	"github.com/dubbogo/tools/pkg/stressTest"
 	"os"
 	"strconv"
+)
+
+import (
+	"dubbo.apache.org/dubbo-go/v3/config"
+	_ "dubbo.apache.org/dubbo-go/v3/imports"
+
+	"github.com/dubbogo/tools/pkg/stressTest"
 )
 
 import (

@@ -28,15 +28,15 @@ type User struct {
 	Age  int32
 }
 
-
 func (u *User) JavaClassName() string {
 	return "org.apache.dubbo.User"
 }
 
-func init(){
+func init() {
 	hessian.RegisterPOJO(&User{})
 	hessian.RegisterPOJO(&Request{})
 }
+
 type Request struct {
 	Name string
 }

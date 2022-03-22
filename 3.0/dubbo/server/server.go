@@ -28,7 +28,5 @@ func main() {
 	if err := config.Load(config.WithPath("./dubbogo.yml")); err != nil {
 		panic(err)
 	}
-	select {
-
-	}
+	select {}
 }

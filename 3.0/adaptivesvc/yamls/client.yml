@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: dubbogo-client
+  namespace: dubbogo-adaptivesvc
+spec:
+  template:
+    spec:
+      containers:
+        - name: dubbogo-client
+          image: xavierniu/dubbogo-client-adasvc
+          env:
+            - name: PARALLEL
+              value: "10"
+      restartPolicy: Never
+  backoffLimit: 4
