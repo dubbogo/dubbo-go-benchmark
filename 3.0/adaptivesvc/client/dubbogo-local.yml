@@ -21,7 +21,7 @@ dubbo:
     adaptive-service: true
     references:
       Provider:
-        protocol: tri
+        protocol: dubbo
         interface: org.apache.dubbo.Provider
   logger:
     zap-config:
