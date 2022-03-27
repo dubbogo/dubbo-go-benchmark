@@ -1,0 +1,21 @@
+# dubbo client yaml configure file
+# ===================
+# use local zookeeper
+# enable adaptive service
+
+dubbo:
+  registries:
+    zk:
+      protocol: zookeeper
+      address: 127.0.0.1:2181
+  consumer:
+    registry-ids:
+      - zk
+    adaptive-service: true
+    references:
+      Provider:
+        protocol: tri
+        interface: org.apache.dubbo.Provider
+  logger:
+    zap-config:
+      level: debug

@@ -18,37 +18,43 @@
 package main
 
 import (
+	"context"
+	"dubbo.apache.org/dubbo-go/v3/config"
+	_ "dubbo.apache.org/dubbo-go/v3/imports"
 	"fmt"
-	"sync"
+	"github.com/dubbogo/dubbo-go-benchmark/3.0/adaptivesvc-triple/api"
 	"time"
 )
 
 var ErrNShouldGreaterThanZero = fmt.Errorf("n should greater than zero")
 
-type Provider struct{}
+func main() {
+	config.SetProviderService(&Provider{})
+	if err := config.Load(); err != nil {
+		panic(err)
+	}
+	select {}
+}
 
-func (*Provider) Fibonacci(n, workerNum int64) (int64, error) {
-	var (
-		result int64
-		err    error
-		wg     sync.WaitGroup
-	)
-	for i := 0; i < int(workerNum); i++ {
-		wg.Add(1)
-		go func() {
-			defer wg.Done()
-			if ret, e := fibonacci(n); e != nil {
-				err = e
-			} else {
-				result = ret
-			}
-		}()
-	}
-	wg.Wait()
+type Provider struct {
+	api.UnimplementedProviderServer
+}
+
+func (p *Provider) Fibonacci(_ context.Context, req *api.FibonacciRequest) (*api.FibonacciResult, error) {
+	ret, err := fibonacci(req.N)
 	if err != nil {
-		return 0, err
+		return nil, err
 	}
-	return result, nil
+	return &api.FibonacciResult{
+		Result: ret,
+	}, nil
+}
+
+func (p *Provider) Sleep(_ context.Context, req *api.SleepRequest) (*api.SleepResult, error) {
+	time.Sleep(time.Duration(req.Time))
+	return &api.SleepResult{
+		Ret: 1,
+	}, nil
 }
 
 func fibonacci(n int64) (int64, error) {
@@ -69,9 +75,4 @@ func fibonacci(n int64) (int64, error) {
 	}
 
 	return f1 + f2, nil
-}
-
-func (*Provider) Sleep(duration int64) (int64, error) {
-	time.Sleep(time.Duration(duration) * time.Millisecond)
-	return 0, nil
 }

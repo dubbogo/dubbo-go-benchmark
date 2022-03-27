@@ -35,14 +35,15 @@ const (
 	SleepDuration = "SLEEP_DURATION"
 )
 
+type Provider struct {
+	Fibonacci func(ctx context.Context, n, workerNum int64) (int64, error)
+	Sleep     func(ctx context.Context, duration int64) (int64, error)
+}
+
 func main() {
 	provider := &Provider{}
 	config.SetConsumerService(provider)
 
-	//if err := config.Load(config.WithPath("./dubbogo.yml")); err != nil {
-	//	panic(err)
-	//}
-	// TODO(justxuewei): remove after test
 	if err := config.Load(); err != nil {
 		panic(err)
 	}
