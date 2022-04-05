@@ -18,8 +18,7 @@ import (
 )
 
 const (
-	Tps      = "TPS"
-	Parallel = "PARALLEL"
+	Tps = "TPS"
 	// Duration should be a string representing a time,
 	// like "1h", "30m", etc.
 	Duration = "DURATION"
@@ -36,21 +35,8 @@ const (
 	SleepDuration = "SLEEP_DURATION"
 )
 
-type Provider struct {
-	api.UnimplementedProviderServer
-	client *api.ProviderClientImpl
-}
-
-func (p *Provider) Fibonacci(ctx context.Context, req *api.FibonacciRequest) (*api.FibonacciResult, error) {
-	return p.client.Fibonacci(ctx, req)
-}
-
-func (p *Provider) Sleep(ctx context.Context, req *api.SleepRequest) (*api.SleepResult, error) {
-	return p.client.Sleep(ctx, req)
-}
-
 func main() {
-	provider := &Provider{}
+	provider := new(api.ProviderClientImpl)
 	config.SetConsumerService(provider)
 
 	if err := config.Load(); err != nil {
@@ -58,7 +44,7 @@ func main() {
 	}
 
 	var (
-		tps, parallel      int
+		tps                int
 		duration, funcName string
 		err                error
 	)
@@ -68,10 +54,6 @@ func main() {
 		panic(fmt.Errorf("env %s is required: %w", Tps, err))
 	}
 	logger.Infof("TPS is set to %d.", tps)
-	if parallel, err = strconv.Atoi(os.Getenv(Parallel)); err != nil {
-		panic(fmt.Errorf("env %s is required: %w", Parallel, err))
-	}
-	logger.Infof("Parallel is set to %d.", parallel)
 	if duration = os.Getenv(Duration); duration == "" {
 		panic(fmt.Errorf("%s is required", Duration))
 	}
@@ -104,15 +86,14 @@ func main() {
 		SetTPS(tps).
 		SetDuration(duration).
 		SetTestFn(doInvoke).
-		SetUserNum(parallel).
 		Run()
 
-	fmt.Printf("Sent request num: %d", tester.GetTransactionNum())
+	fmt.Printf("Sent request num: %d\n", tester.GetTransactionNum())
 	fmt.Printf("TPS: %.2f\n", tester.GetTPS())
 	fmt.Printf("RT: %.2fs\n", tester.GetAverageRTSeconds())
 }
 
-func fibonacci(ctx context.Context, provider *Provider) (result *api.FibonacciResult, err error) {
+func fibonacci(ctx context.Context, provider *api.ProviderClientImpl) (result *api.FibonacciResult, err error) {
 	var n int
 	if n, err = strconv.Atoi(os.Getenv(FibonacciN)); err != nil {
 		return
@@ -125,7 +106,7 @@ func fibonacci(ctx context.Context, provider *Provider) (result *api.FibonacciRe
 	return
 }
 
-func sleep(ctx context.Context, provider *Provider) {
+func sleep(ctx context.Context, provider *api.ProviderClientImpl) {
 	var (
 		duration int
 		err      error

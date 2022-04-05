@@ -13,7 +13,7 @@ dubbo:
       - zk
     adaptive-service: true
     references:
-      Provider:
+      ProviderClientImpl:
         protocol: tri
         interface: org.apache.dubbo.Provider
   logger:
