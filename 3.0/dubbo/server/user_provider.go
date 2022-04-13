@@ -29,15 +29,13 @@ func init() {
 	config.SetProviderService(&UserProvider{})
 }
 
-
-
 type UserProvider struct {
 }
 
 func (u *UserProvider) GetUser(ctx context.Context, userID *Request) (*User, error) {
 	return &User{
-		ID: "12345",
+		ID:   "12345",
 		Name: "Hello " + userID.Name,
-		Age: 21,
+		Age:  21,
 	}, nil
 }

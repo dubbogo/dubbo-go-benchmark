@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dubbogo-server
+  namespace: dubbogo-adaptivesvc
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dubbogo-server
+  template:
+    metadata:
+      labels:
+        app: dubbogo-server
+    spec:
+      containers:
+        - name: dubbogo-server
+          image: xavierniu/dubbogo-server-adasvc
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: "2Gi"
+              cpu: "2000m"
+          ports:
+            - containerPort: 20001

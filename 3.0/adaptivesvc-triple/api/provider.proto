@@ -15,32 +15,28 @@
  * limitations under the License.
  */
 
-package main
+syntax = "proto3";
+package api;
 
-import (
-	hessian "github.com/apache/dubbo-go-hessian2"
-)
+option go_package = "./;api";
 
-type User struct {
-	// !!! Cannot define lowercase names of variable
-	ID   string
-	Name string
-	Age  int32
+service Provider {
+  rpc Fibonacci(FibonacciRequest) returns (FibonacciResult) {}
+  rpc Sleep(SleepRequest) returns (SleepResult) {}
 }
 
-func (u *User) JavaClassName() string {
-	return "org.apache.dubbo.User"
+message FibonacciRequest {
+  int64 n = 1;
 }
 
-func init() {
-	hessian.RegisterPOJO(&User{})
-	hessian.RegisterPOJO(&Request{})
+message FibonacciResult {
+  int64 result = 1;
 }
 
-type Request struct {
-	Name string
+message SleepRequest {
+  int64 time = 1;
 }
 
-func (u *Request) JavaClassName() string {
-	return "org.apache.dubbo.Request"
+message SleepResult {
+  int64 ret = 1;
 }

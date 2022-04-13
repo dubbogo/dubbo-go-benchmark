@@ -19,18 +19,20 @@ package main
 
 import (
 	"context"
-	"dubbo.apache.org/dubbo-go/v3/config"
-	_ "dubbo.apache.org/dubbo-go/v3/imports"
-	"github.com/dubbogo/tools/pkg/stressTest"
 	"os"
 	"strconv"
 )
 
+import (
+	"dubbo.apache.org/dubbo-go/v3/config"
+	_ "dubbo.apache.org/dubbo-go/v3/imports"
+
+	"github.com/dubbogo/tools/pkg/stressTest"
+)
 
 var (
 	userProvider = &UserProvider{}
 )
-
 
 // need to setup environment variable "DUBBO_GO_CONFIG_PATH" to "conf/dubbogo.yml" before run
 func main() {
@@ -39,16 +41,15 @@ func main() {
 		panic(err)
 	}
 
-
 	ctx := context.Background()
 	tpsNum, _ := strconv.Atoi(os.Getenv("tps"))
 	parallel, _ := strconv.Atoi(os.Getenv("parallel"))
 	payloadLen, _ := strconv.Atoi(os.Getenv("payload"))
-	req  := "laurence" + string(make([]byte, payloadLen))
+	req := "laurence" + string(make([]byte, payloadLen))
 	stressTest.NewStressTestConfigBuilder().SetTPS(tpsNum).SetDuration("1h").SetParallel(parallel).Build().Start(func() {
 		if _, err := userProvider.GetUser(ctx, &Request{
 			Name: req,
-		}); err != nil{
+		}); err != nil {
 			panic(err)
 		}
 	})

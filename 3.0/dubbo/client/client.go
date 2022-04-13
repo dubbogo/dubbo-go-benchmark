@@ -19,15 +19,16 @@ package main
 
 import (
 	"context"
+)
+
+import (
 	"dubbo.apache.org/dubbo-go/v3/config"
 	_ "dubbo.apache.org/dubbo-go/v3/imports"
 )
 
-
 var (
 	userProvider = &UserProvider{}
 )
-
 
 type UserProviderProxy struct {
 	userProvider *UserProvider
@@ -42,7 +43,6 @@ func (u *UserProviderProxy) GetUser(ctx context.Context, userID *Request) (*User
 	//}, nil
 }
 
-
 // need to setup environment variable "DUBBO_GO_CONFIG_PATH" to "conf/dubbogo.yml" before run
 func main() {
 	config.SetConsumerService(userProvider)
@@ -54,7 +54,5 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	select {
-
-	}
+	select {}
 }
