@@ -34,6 +34,8 @@ const (
 	SleepDuration = "SLEEP_DURATION"
 )
 
+var ErrConsumerRequestTimeoutStr = "maybe the client read timeout or fail to decode tcp stream in Writer.Write"
+
 type Provider struct {
 	Fibonacci func(ctx context.Context, n, workerNum int64) (int64, error)
 	Sleep     func(ctx context.Context, duration int64) (int64, error)
@@ -71,6 +73,8 @@ func main() {
 			if result, err := fibonacci(ctx, provider); err != nil {
 				if clusterutils.DoesAdaptiveServiceReachLimitation(err) {
 					logger.Infof("Reach Limitation")
+				} else if err.Error() == ErrConsumerRequestTimeoutStr {
+					logger.Warnf("Consumer Request Timeout, err: %v", err)
 				} else {
 					panic(err)
 				}
