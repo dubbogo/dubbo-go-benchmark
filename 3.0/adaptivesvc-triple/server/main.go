@@ -23,12 +23,50 @@ import (
 	_ "dubbo.apache.org/dubbo-go/v3/imports"
 	"fmt"
 	"github.com/dubbogo/dubbo-go-benchmark/3.0/adaptivesvc-triple/api"
+	"math/rand"
+	"os"
+	"strconv"
 	"time"
+)
+
+const (
+	// TimeoutDuration should be a string representing a time,
+	// like "1h", "30m", etc.
+	TimeoutDuration = "TIMEOUT_DURATION"
+	//TimeoutRatio should be a decimal between 0 and 1.
+	TimeoutRatio = "TIMEOUT_RATIO"
+)
+
+var (
+	timeoutRatio    float64
+	timeoutDuration time.Duration
 )
 
 var ErrNShouldGreaterThanZero = fmt.Errorf("n should greater than zero")
 
 func main() {
+
+	var err error
+
+	if timeoutRateStr := os.Getenv(TimeoutRatio); timeoutRateStr != "" {
+		timeoutRatio, err = strconv.ParseFloat(timeoutRateStr, 64)
+		if err != nil {
+			panic(fmt.Errorf("%s should be a decimal", TimeoutRatio))
+		}
+		if timeoutRatio > 1 || timeoutRatio < 0 {
+			panic(fmt.Errorf("%s should be a decimal between 0 and 1 ", TimeoutRatio))
+		}
+	}
+
+	if timeoutDurationStr := os.Getenv(TimeoutDuration); timeoutDurationStr == "" && timeoutRatio > 0 {
+		panic(fmt.Errorf("%s is required", TimeoutDuration))
+	} else {
+		timeoutDuration, err = time.ParseDuration(timeoutDurationStr)
+		if err != nil {
+			panic(fmt.Errorf("%s should be a string representing a time, like \"1h\", \"30m\", etc", TimeoutDuration))
+		}
+	}
+
 	config.SetProviderService(&Provider{})
 	if err := config.Load(); err != nil {
 		panic(err)
@@ -41,6 +79,9 @@ type Provider struct {
 }
 
 func (p *Provider) Fibonacci(_ context.Context, req *api.FibonacciRequest) (*api.FibonacciResult, error) {
+	if rand.Float64() < timeoutRatio {
+		time.Sleep(timeoutDuration)
+	}
 	ret, err := fibonacci(req.N)
 	if err != nil {
 		return nil, err
