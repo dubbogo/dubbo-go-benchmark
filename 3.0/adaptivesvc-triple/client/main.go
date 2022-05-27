@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/dubbogo/dubbo-go-benchmark/3.0/adaptivesvc-triple/api"
 	"os"
 	"strconv"
 )
@@ -15,6 +14,10 @@ import (
 	_ "dubbo.apache.org/dubbo-go/v3/imports"
 
 	testerpkg "github.com/dubbogo/tools/pkg/tester"
+)
+
+import (
+	"github.com/dubbogo/dubbo-go-benchmark/3.0/adaptivesvc-triple/api"
 )
 
 const (

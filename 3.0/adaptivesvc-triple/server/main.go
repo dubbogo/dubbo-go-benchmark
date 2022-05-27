@@ -19,14 +19,20 @@ package main
 
 import (
 	"context"
-	"dubbo.apache.org/dubbo-go/v3/config"
-	_ "dubbo.apache.org/dubbo-go/v3/imports"
 	"fmt"
-	"github.com/dubbogo/dubbo-go-benchmark/3.0/adaptivesvc-triple/api"
 	"math/rand"
 	"os"
 	"strconv"
 	"time"
+)
+
+import (
+	"dubbo.apache.org/dubbo-go/v3/config"
+	_ "dubbo.apache.org/dubbo-go/v3/imports"
+)
+
+import (
+	"github.com/dubbogo/dubbo-go-benchmark/3.0/adaptivesvc-triple/api"
 )
 
 const (
