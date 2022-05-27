@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/dubbogo/dubbo-go-benchmark/3.0/adaptivesvc-triple/api"
 	"os"
 	"strconv"
 )
@@ -15,6 +14,10 @@ import (
 	_ "dubbo.apache.org/dubbo-go/v3/imports"
 
 	testerpkg "github.com/dubbogo/tools/pkg/tester"
+)
+
+import (
+	"github.com/dubbogo/dubbo-go-benchmark/3.0/adaptivesvc-triple/api"
 )
 
 const (
@@ -67,6 +70,8 @@ func main() {
 			if result, err := fibonacci(ctx, provider); err != nil {
 				if clusterutils.DoesAdaptiveServiceReachLimitation(err) {
 					logger.Infof("Reach Limitation")
+				} else if err.Error() == context.DeadlineExceeded.Error() {
+					logger.Warnf("Consumer Request Timeout, err: %v", err)
 				} else {
 					panic(err)
 				}
