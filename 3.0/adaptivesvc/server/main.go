@@ -41,6 +41,7 @@ const (
 	TimeoutDuration = "TIMEOUT_DURATION"
 	//TimeoutRatio should be a decimal between 0 and 1.
 	TimeoutRatio = "TIMEOUT_RATIO"
+	RandSeed     = "RAND_SEED"
 )
 
 var (
@@ -108,7 +109,19 @@ func (*Provider) Sleep(duration int64) (int64, error) {
 
 func main() {
 
-	var err error
+	var (
+		err      error
+		randSeed int64
+	)
+	if randSeedStr := os.Getenv(RandSeed); randSeedStr != "" {
+		randSeed, err = strconv.ParseInt(randSeedStr, 10, 64)
+		if err != nil {
+			panic(fmt.Errorf("%s should be a integer", RandSeed))
+		}
+	} else {
+		randSeed = time.Now().Unix()
+	}
+	rand.Seed(randSeed)
 
 	if timeoutRateStr := os.Getenv(TimeoutRatio); timeoutRateStr != "" {
 		timeoutRatio, err = strconv.ParseFloat(timeoutRateStr, 64)
