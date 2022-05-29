@@ -12,8 +12,11 @@ import (
 	"dubbo.apache.org/dubbo-go/v3/common/logger"
 	"dubbo.apache.org/dubbo-go/v3/config"
 	_ "dubbo.apache.org/dubbo-go/v3/imports"
-
 	testerpkg "github.com/dubbogo/tools/pkg/tester"
+)
+
+import (
+	"github.com/dubbogo/dubbo-go-benchmark/3.0/filters/offline_simulator"
 )
 
 const (
@@ -75,6 +78,8 @@ func main() {
 					logger.Infof("Reach Limitation")
 				} else if err.Error() == ErrConsumerRequestTimeoutStr {
 					logger.Warnf("Consumer Request Timeout, err: %v", err)
+				} else if offline_simulator.IsServerOffline(err) {
+					logger.Warnf("Server offline, err: %v", err)
 				} else {
 					panic(err)
 				}

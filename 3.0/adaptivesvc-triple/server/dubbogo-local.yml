@@ -20,6 +20,7 @@ dubbo:
     adaptive-service-verbose: true
     services:
       Provider:
+        filter: offlineSimulator
         protocol: my-protocol
         interface: org.apache.dubbo.Provider
   # If you want to debug adaptive service, please uncomment the following codes.

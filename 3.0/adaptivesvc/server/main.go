@@ -31,6 +31,10 @@ import (
 	_ "dubbo.apache.org/dubbo-go/v3/imports"
 )
 
+import (
+	_ "github.com/dubbogo/dubbo-go-benchmark/3.0/filters/offline_simulator"
+)
+
 const (
 	// TimeoutDuration should be a string representing a time,
 	// like "1h", "30m", etc.

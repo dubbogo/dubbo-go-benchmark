@@ -33,6 +33,7 @@ import (
 
 import (
 	"github.com/dubbogo/dubbo-go-benchmark/3.0/adaptivesvc-triple/api"
+	_ "github.com/dubbogo/dubbo-go-benchmark/3.0/filters/offline_simulator"
 )
 
 const (
