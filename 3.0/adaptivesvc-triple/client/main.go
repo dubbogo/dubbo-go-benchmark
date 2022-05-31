@@ -72,7 +72,7 @@ func main() {
 					logger.Infof("Reach Limitation")
 				} else if err.Error() == context.DeadlineExceeded.Error() {
 					logger.Warnf("Consumer Request Timeout, err: %v", err)
-				} else if offline_simulator.IsServerOffline(err) {
+				} else if offline_simulator.IsServerOfflineErr(err) {
 					logger.Warnf("Server offline, err: %v", err)
 				} else {
 					panic(err)

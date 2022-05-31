@@ -53,9 +53,9 @@ var ErrServerOffline = fmt.Errorf("server is offline")
 type OfflineSimulator struct {
 	State              ServerState
 	OfflineRatio       float64
-	MinOnlineDuration  time.Duration
+	MinOnlineDuration  time.Duration  //default is about 1s
 	MaxOnlineDuration  *time.Duration //optional
-	MinOfflineDuration time.Duration
+	MinOfflineDuration time.Duration  //default is about 1s
 	MaxOfflineDuration *time.Duration //optional
 	LastTransferTime   time.Time
 }
@@ -84,18 +84,22 @@ func NewOfflineSimulator() filter.Filter {
 		}
 	}
 
-	if minOnlineDurationStr := os.Getenv(MinOnlineDuration); minOnlineDurationStr == "" && offlineRatio > 0 {
-		panic(fmt.Errorf("%s is required", MinOnlineDuration))
-	} else {
+	if minOnlineDurationStr := os.Getenv(MinOnlineDuration); minOnlineDurationStr != "" {
 		minOnlineDuration, err = time.ParseDuration(minOnlineDurationStr)
 		if err != nil {
 			panic(fmt.Errorf("%s should be a string representing a time, like \"1h\", \"30m\", etc", MinOnlineDuration))
 		}
 	}
 
-	if minOfflineDurationStr := os.Getenv(MinOfflineDuration); minOfflineDurationStr == "" && offlineRatio > 0 {
-		panic(fmt.Errorf("%s is required", MinOfflineDuration))
-	} else {
+	if maxOnlineDurationStr := os.Getenv(MaxOnlineDuration); maxOnlineDurationStr != "" {
+		duration, err := time.ParseDuration(maxOnlineDurationStr)
+		if err != nil {
+			panic(fmt.Errorf("%s should be a string representing a time, like \"1h\", \"30m\", etc", MaxOnlineDuration))
+		}
+		maxOnlineDuration = &duration
+	}
+
+	if minOfflineDurationStr := os.Getenv(MinOfflineDuration); minOfflineDurationStr != "" {
 		minOfflineDuration, err = time.ParseDuration(minOfflineDurationStr)
 		if err != nil {
 			panic(fmt.Errorf("%s should be a string representing a time, like \"1h\", \"30m\", etc", MinOfflineDuration))
@@ -108,14 +112,6 @@ func NewOfflineSimulator() filter.Filter {
 			panic(fmt.Errorf("%s should be a string representing a time, like \"1h\", \"30m\", etc", MaxOfflineDuration))
 		}
 		maxOfflineDuration = &duration
-	}
-
-	if maxOnlineDurationStr := os.Getenv(MaxOnlineDuration); maxOnlineDurationStr != "" {
-		duration, err := time.ParseDuration(maxOnlineDurationStr)
-		if err != nil {
-			panic(fmt.Errorf("%s should be a string representing a time, like \"1h\", \"30m\", etc", MaxOnlineDuration))
-		}
-		maxOnlineDuration = &duration
 	}
 
 	s := &OfflineSimulator{
@@ -136,6 +132,9 @@ func NewOfflineSimulator() filter.Filter {
 //2. if the duration is greater than the maximum limit (if set), switch the state immediately;
 //3. otherwise, switch the state with a certain probability every second.
 func (f *OfflineSimulator) Run() {
+	if f.OfflineRatio <= 0 {
+		return
+	}
 	for {
 		now := time.Now()
 		switch f.State {
@@ -161,7 +160,7 @@ func (f *OfflineSimulator) Run() {
 	}
 }
 
-func IsServerOffline(err error) bool {
+func IsServerOfflineErr(err error) bool {
 	if err == nil {
 		return false
 	}
