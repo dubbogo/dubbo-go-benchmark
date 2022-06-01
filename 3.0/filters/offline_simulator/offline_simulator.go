@@ -178,7 +178,7 @@ func (f *OfflineSimulator) Invoke(ctx context.Context, invoker protocol.Invoker,
 	return invoker.Invoke(ctx, invocation)
 }
 
-func (f *OfflineSimulator) OnResponse(ctx context.Context, result protocol.Result, invoker protocol.Invoker, invocation protocol.Invocation) protocol.Result {
+func (f *OfflineSimulator) OnResponse(_ context.Context, result protocol.Result, _ protocol.Invoker, _ protocol.Invocation) protocol.Result {
 	if f.State == ServerStateOffline {
 		return &protocol.RPCResult{
 			Attrs: nil,
