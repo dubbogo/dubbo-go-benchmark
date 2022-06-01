@@ -141,7 +141,7 @@ func (f *OfflineSimulator) Run() {
 		case ServerStateOnline:
 			if duration := now.Sub(f.LastTransferTime); duration < f.MinOnlineDuration {
 				time.Sleep(f.MinOnlineDuration - duration + time.Second)
-			} else if f.MaxOnlineDuration != nil && duration > *f.MaxOnlineDuration || rand.Float64() < f.OfflineRatio {
+			} else if (f.MaxOnlineDuration != nil && duration > *f.MaxOnlineDuration) || rand.Float64() < f.OfflineRatio {
 				f.State = ServerStateOffline
 				f.LastTransferTime = time.Now()
 			} else {
@@ -150,7 +150,7 @@ func (f *OfflineSimulator) Run() {
 		case ServerStateOffline:
 			if duration := now.Sub(f.LastTransferTime); duration < f.MinOfflineDuration {
 				time.Sleep(f.MinOfflineDuration - duration + time.Second)
-			} else if f.MaxOfflineDuration != nil && duration > *f.MaxOfflineDuration || rand.Float64() > f.OfflineRatio {
+			} else if (f.MaxOfflineDuration != nil && duration > *f.MaxOfflineDuration) || rand.Float64() > f.OfflineRatio {
 				f.State = ServerStateOnline
 				f.LastTransferTime = time.Now()
 			} else {
@@ -178,6 +178,13 @@ func (f *OfflineSimulator) Invoke(ctx context.Context, invoker protocol.Invoker,
 	return invoker.Invoke(ctx, invocation)
 }
 
-func (f *OfflineSimulator) OnResponse(ctx context.Context, result protocol.Result, invoker protocol.Invoker, protocol protocol.Invocation) protocol.Result {
+func (f *OfflineSimulator) OnResponse(ctx context.Context, result protocol.Result, invoker protocol.Invoker, invocation protocol.Invocation) protocol.Result {
+	if f.State == ServerStateOffline {
+		return &protocol.RPCResult{
+			Attrs: nil,
+			Err:   ErrServerOffline,
+			Rest:  nil,
+		}
+	}
 	return result
 }
