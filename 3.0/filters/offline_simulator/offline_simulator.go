@@ -138,16 +138,19 @@ func (f *OfflineSimulator) Run() {
 		return
 	}
 	for {
+		f.mutex.RLock()
 		now := time.Now()
 		switch f.State {
 		case ServerStateOnline:
 			if duration := now.Sub(f.LastTransferTime); duration < f.MinOnlineDuration {
 				time.Sleep(f.MinOnlineDuration - duration + time.Second)
 			} else if (f.MaxOnlineDuration != nil && duration > *f.MaxOnlineDuration) || rand.Float64() < f.OfflineRatio {
+				f.mutex.RUnlock()
 				f.mutex.Lock()
 				f.State = ServerStateOffline
 				f.LastTransferTime = time.Now()
 				f.mutex.Unlock()
+				f.mutex.RLock()
 			} else {
 				time.Sleep(time.Second)
 			}
@@ -155,14 +158,17 @@ func (f *OfflineSimulator) Run() {
 			if duration := now.Sub(f.LastTransferTime); duration < f.MinOfflineDuration {
 				time.Sleep(f.MinOfflineDuration - duration + time.Second)
 			} else if (f.MaxOfflineDuration != nil && duration > *f.MaxOfflineDuration) || rand.Float64() > f.OfflineRatio {
+				f.mutex.RUnlock()
 				f.mutex.Lock()
 				f.State = ServerStateOnline
 				f.LastTransferTime = time.Now()
 				f.mutex.Unlock()
+				f.mutex.RLock()
 			} else {
 				time.Sleep(time.Second)
 			}
 		}
+		f.mutex.RUnlock()
 	}
 }
 
