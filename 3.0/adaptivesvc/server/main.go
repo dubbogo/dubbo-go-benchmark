@@ -135,7 +135,7 @@ func main() {
 
 	if timeoutDurationStr := os.Getenv(TimeoutDuration); timeoutDurationStr == "" && timeoutRatio > 0 {
 		panic(fmt.Errorf("%s is required", TimeoutDuration))
-	} else {
+	} else if timeoutDurationStr != "" {
 		timeoutDuration, err = time.ParseDuration(timeoutDurationStr)
 		if err != nil {
 			panic(fmt.Errorf("%s should be a string representing a time, like \"1h\", \"30m\", etc", TimeoutDuration))

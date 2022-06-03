@@ -68,15 +68,7 @@ func main() {
 		switch funcName {
 		case Fibonacci:
 			if result, err := fibonacci(ctx, provider); err != nil {
-				if clusterutils.DoesAdaptiveServiceReachLimitation(err) {
-					logger.Infof("Reach Limitation")
-				} else if err.Error() == context.DeadlineExceeded.Error() {
-					logger.Warnf("Consumer Request Timeout, err: %v", err)
-				} else if offline_simulator.IsServerOfflineErr(err) {
-					logger.Warnf("Server offline, err: %v", err)
-				} else {
-					panic(err)
-				}
+				handleErr(err)
 			} else {
 				fmt.Printf("%s result: %d\n", Fibonacci, result.Result)
 			}
@@ -126,4 +118,16 @@ func sleep(ctx context.Context, provider *api.ProviderClientImpl) {
 		Time: int64(duration),
 	}
 	_, _ = provider.Sleep(ctx, req)
+}
+
+func handleErr(err error) {
+	if clusterutils.DoesAdaptiveServiceReachLimitation(err) {
+		logger.Infof("Reach Limitation")
+	} else if err.Error() == context.DeadlineExceeded.Error() {
+		logger.Warnf("Consumer Request Timeout, err: %v", err)
+	} else if offline_simulator.IsServerOfflineErr(err) {
+		logger.Warnf("Server offline, err: %v", err)
+	} else {
+		panic(err)
+	}
 }

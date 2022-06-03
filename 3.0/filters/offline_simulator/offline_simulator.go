@@ -23,6 +23,7 @@ import (
 	"math/rand"
 	"os"
 	"strconv"
+	"sync"
 	"time"
 )
 
@@ -51,6 +52,7 @@ const (
 var ErrServerOffline = fmt.Errorf("server is offline")
 
 type OfflineSimulator struct {
+	mutex              sync.RWMutex
 	State              ServerState
 	OfflineRatio       float64
 	MinOnlineDuration  time.Duration  //default is about 1s
@@ -142,8 +144,10 @@ func (f *OfflineSimulator) Run() {
 			if duration := now.Sub(f.LastTransferTime); duration < f.MinOnlineDuration {
 				time.Sleep(f.MinOnlineDuration - duration + time.Second)
 			} else if (f.MaxOnlineDuration != nil && duration > *f.MaxOnlineDuration) || rand.Float64() < f.OfflineRatio {
+				f.mutex.Lock()
 				f.State = ServerStateOffline
 				f.LastTransferTime = time.Now()
+				f.mutex.Unlock()
 			} else {
 				time.Sleep(time.Second)
 			}
@@ -151,8 +155,10 @@ func (f *OfflineSimulator) Run() {
 			if duration := now.Sub(f.LastTransferTime); duration < f.MinOfflineDuration {
 				time.Sleep(f.MinOfflineDuration - duration + time.Second)
 			} else if (f.MaxOfflineDuration != nil && duration > *f.MaxOfflineDuration) || rand.Float64() > f.OfflineRatio {
+				f.mutex.Lock()
 				f.State = ServerStateOnline
 				f.LastTransferTime = time.Now()
+				f.mutex.Unlock()
 			} else {
 				time.Sleep(time.Second)
 			}
@@ -168,6 +174,8 @@ func IsServerOfflineErr(err error) bool {
 }
 
 func (f *OfflineSimulator) Invoke(ctx context.Context, invoker protocol.Invoker, invocation protocol.Invocation) protocol.Result {
+	f.mutex.RLock()
+	defer f.mutex.RUnlock()
 	if f.State == ServerStateOffline {
 		return &protocol.RPCResult{
 			Attrs: nil,
@@ -179,6 +187,8 @@ func (f *OfflineSimulator) Invoke(ctx context.Context, invoker protocol.Invoker,
 }
 
 func (f *OfflineSimulator) OnResponse(_ context.Context, result protocol.Result, _ protocol.Invoker, _ protocol.Invocation) protocol.Result {
+	f.mutex.RLock()
+	defer f.mutex.RUnlock()
 	if f.State == ServerStateOffline {
 		return &protocol.RPCResult{
 			Attrs: nil,
