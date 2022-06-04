@@ -55,3 +55,15 @@ First, you should have 3 cloud server, under same local network. Build `stress` 
 
 Pay attention that sometime the parallel is too small to meet your expect tps, for example, with 4c8g machine, you set parallel to 1 and set tps to 5000, the result tps is not as you expected, and you should increase parallel to 10 or other larger number.
 
+## 4. Environments in AdaptiveService Benchmark
+1. Random Timeout
+   - export RAND_SEED=3             # random seed
+   - export TIMEOUT_RATIO=0.05      # your expected timeout ratio
+   - export TIMEOUT_DURATION=5s     # your expected timeout duration
+2. Random Offline
+   - export RAND_SEED=3             # random seed
+   - export OFFLINE_RATIO=0.05      # your expected server offline ratio
+   - export MIN_ONLINE_DURATION=5s  # your expected minimum online duration
+   - export MAX_ONLINE_DURATION=10s # your expected maximum online duration (optional)
+   - export MIN_OFFLINE_DURATION=3s # your expected minimum offline duration
+   - export MAX_OFFLINE_DURATION=8s # your expected maximum offline duration (optional)
