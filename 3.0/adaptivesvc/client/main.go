@@ -16,6 +16,7 @@ import (
 )
 
 import (
+	_ "github.com/dubbogo/dubbo-go-benchmark/3.0/filters/metrics_collector"
 	"github.com/dubbogo/dubbo-go-benchmark/3.0/filters/offline_simulator"
 )
 
