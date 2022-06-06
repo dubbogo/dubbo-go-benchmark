@@ -2,11 +2,13 @@ package metrics_collector
 
 import (
 	"context"
+	"strconv"
 	"time"
 )
 
 import (
 	clusterutils "dubbo.apache.org/dubbo-go/v3/cluster/utils"
+	"dubbo.apache.org/dubbo-go/v3/common/constant"
 	"dubbo.apache.org/dubbo-go/v3/common/extension"
 	"dubbo.apache.org/dubbo-go/v3/common/logger"
 	"dubbo.apache.org/dubbo-go/v3/filter"
@@ -27,6 +29,8 @@ const (
 	RequestTimeoutCounter         = "request_timeout"
 	RequestOfflineDroppedCounter  = "request_offline_dropped"
 	RequestReachLimitationCounter = "request_reach_limitation"
+	AdaptiveServiceRemainingGauge = "adaptive_service_remaining"
+	AdaptiveServiceInflightGauge  = "adaptive_service_inflight"
 	LabelProtocol                 = "protocol"
 	LabelMethod                   = "method"
 )
@@ -62,6 +66,28 @@ func (f *MetricsCollector) OnResponse(_ context.Context, result protocol.Result,
 		prometheus.IncSummaryWithLabel(RequestDurationSummary, float64(time.Now().Sub(startTime).Nanoseconds()), labels)
 	} else {
 		logger.Warnf("StartTime is not a time.Time: %v", startTimeIFace)
+	}
+
+	remainingIFace := result.Attachment(constant.AdaptiveServiceRemainingKey, "")
+	if remainingStr, ok := remainingIFace.(string); ok {
+		if remaining, err := strconv.ParseInt(remainingStr, 10, 64); err == nil {
+			prometheus.SetGaugeWithLabel(AdaptiveServiceRemainingGauge, float64(remaining), labels)
+		} else {
+			logger.Warnf("parse remaining error: %v", err)
+		}
+	} else {
+		logger.Warnf("RemainingAttachment is not a string: %v", startTimeIFace)
+	}
+
+	inflightIFace := result.Attachment(constant.AdaptiveServiceInflightKey, "")
+	if inflightStr, ok := inflightIFace.(string); ok {
+		if remaining, err := strconv.ParseInt(inflightStr, 10, 64); err == nil {
+			prometheus.SetGaugeWithLabel(AdaptiveServiceInflightGauge, float64(remaining), labels)
+		} else {
+			logger.Warnf("parse inflight error: %v", err)
+		}
+	} else {
+		logger.Warnf("InflightAttachment is not a string: %v", startTimeIFace)
 	}
 
 	if result.Error() == nil {
