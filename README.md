@@ -67,3 +67,25 @@ Pay attention that sometime the parallel is too small to meet your expect tps, f
    - export MAX_ONLINE_DURATION=10s # your expected maximum online duration (optional)
    - export MIN_OFFLINE_DURATION=3s # your expected minimum offline duration
    - export MAX_OFFLINE_DURATION=8s # your expected maximum offline duration (optional)
+## 5. Collect Metrics
+First, you should change `your-computer-ip` in `/3.0/deploy/docker/prometheus/prometheus.yml` to your computer's real ip, e.g. 192.168.1.40
+
+Then, switch to the directory `/3.0/deploy/docker/` and run the following command:
+```shell
+docker compose -f docker-compose.yml up -d
+```
+Finally, run server and client with `dubbogo-local.yml`. You can login to the prometheus with `localhost:9090` and check the metrics.
+
+The metrics beginning with **dubbo_go_benchmark_consumer** is collected on client side, while beginning with **dubbo_go_benchmark_provider** is on server side. You can also filter metrics of specific instances or protocols or methods using label `instance`, `protocol` and `method`.
+
+#### Some Important Expression or Metrics
+- Remaining capacity (predicted): `dubbo_go_benchmark_consumer_adaptive_service_remaining`
+- Number of inflight: `dubbo_go_benchmark_provider_adaptive_service_inflight`
+- TPS: `rate(dubbo_go_benchmark_consumer_request_count[1s])`
+- QPS: `rate(dubbo_go_benchmark_provider_request_count[1s])`
+- RT at 99.9%: `dubbo_go_benchmark_consumer_request_duration_ns{quantile="0.999"}` (Nano seconds)
+- Duration of processing ***Fibonacci*** using ***Triple*** at 99.9%: `dubbo_go_benchmark_provider_request_duration_ns{quantile="0.999", method="Fibonacci", protocol="tri"}` (Nano seconds)
+- Number of successful requests every 3 second: `rate(dubbo_go_benchmark_consumer_request_success[3s])` or `rate(dubbo_go_benchmark_provider_request_success[3s])`
+- - Number of timeout requests every 5 second: `rate(dubbo_go_benchmark_consumer_request_timeout[5s])`
+- Number of requests dropped due to reach limitation: `dubbo_go_benchmark_consumer_request_reach_limitation` or `dubbo_go_benchmark_provider_request_reach_limitation`
+- Number of requests dropped due to server offline: `dubbo_go_benchmark_consumer_request_offline_dropped` or `dubbo_go_benchmark_provider_request_offline_dropped`
