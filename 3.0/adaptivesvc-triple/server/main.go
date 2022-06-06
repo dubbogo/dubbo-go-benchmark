@@ -33,6 +33,7 @@ import (
 
 import (
 	"github.com/dubbogo/dubbo-go-benchmark/3.0/adaptivesvc-triple/api"
+	_ "github.com/dubbogo/dubbo-go-benchmark/3.0/filters/offline_simulator"
 )
 
 const (
@@ -41,6 +42,7 @@ const (
 	TimeoutDuration = "TIMEOUT_DURATION"
 	//TimeoutRatio should be a decimal between 0 and 1.
 	TimeoutRatio = "TIMEOUT_RATIO"
+	RandSeed     = "RAND_SEED"
 )
 
 var (
@@ -52,7 +54,19 @@ var ErrNShouldGreaterThanZero = fmt.Errorf("n should greater than zero")
 
 func main() {
 
-	var err error
+	var (
+		err      error
+		randSeed int64
+	)
+	if randSeedStr := os.Getenv(RandSeed); randSeedStr != "" {
+		randSeed, err = strconv.ParseInt(randSeedStr, 10, 64)
+		if err != nil {
+			panic(fmt.Errorf("%s should be a integer", RandSeed))
+		}
+	} else {
+		randSeed = time.Now().Unix()
+	}
+	rand.Seed(randSeed)
 
 	if timeoutRateStr := os.Getenv(TimeoutRatio); timeoutRateStr != "" {
 		timeoutRatio, err = strconv.ParseFloat(timeoutRateStr, 64)
@@ -66,7 +80,7 @@ func main() {
 
 	if timeoutDurationStr := os.Getenv(TimeoutDuration); timeoutDurationStr == "" && timeoutRatio > 0 {
 		panic(fmt.Errorf("%s is required", TimeoutDuration))
-	} else {
+	} else if timeoutDurationStr != "" {
 		timeoutDuration, err = time.ParseDuration(timeoutDurationStr)
 		if err != nil {
 			panic(fmt.Errorf("%s should be a string representing a time, like \"1h\", \"30m\", etc", TimeoutDuration))
