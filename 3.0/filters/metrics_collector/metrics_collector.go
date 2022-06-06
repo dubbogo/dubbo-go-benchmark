@@ -2,7 +2,6 @@ package metrics_collector
 
 import (
 	"context"
-	"os"
 	"time"
 )
 
@@ -28,55 +27,61 @@ const (
 	RequestTimeoutCounter         = "request_timeout"
 	RequestOfflineDroppedCounter  = "request_offline_dropped"
 	RequestReachLimitationCounter = "request_reach_limitation"
+	LabelProtocol                 = "protocol"
+	LabelMethod                   = "method"
 )
 
-type ConsumerMetricsCollector struct{}
+type MetricsCollector struct{}
 
 var ErrConsumerRequestTimeoutStr = "maybe the client read timeout or fail to decode tcp stream in Writer.Write"
 
 func init() {
-	extension.SetFilter("consumerMetricsCollector", NewConsumerMetricsCollector)
+	extension.SetFilter("metricsCollector", NewMetricsCollector)
 }
 
-func NewConsumerMetricsCollector() filter.Filter {
-	return &ConsumerMetricsCollector{}
+func NewMetricsCollector() filter.Filter {
+	return &MetricsCollector{}
 }
 
-func (f *ConsumerMetricsCollector) Invoke(ctx context.Context, invoker protocol.Invoker, invocation protocol.Invocation) protocol.Result {
-	prometheus.IncCounterWithLabel(RequestCounter, ConsumerLabelMap())
+func (f *MetricsCollector) Invoke(ctx context.Context, invoker protocol.Invoker, invocation protocol.Invocation) protocol.Result {
+	labels := LabelMap(invoker.GetURL().Protocol, invocation.MethodName())
+	prometheus.IncCounterWithLabel(RequestCounter, labels)
+
 	startTime := time.Now()
 	result := invoker.Invoke(ctx, invocation)
 	result.AddAttachment(StartTimeAttachment, startTime)
+
 	return result
 }
 
-func (f *ConsumerMetricsCollector) OnResponse(_ context.Context, result protocol.Result, _ protocol.Invoker, _ protocol.Invocation) protocol.Result {
+func (f *MetricsCollector) OnResponse(_ context.Context, result protocol.Result, invoker protocol.Invoker, invocation protocol.Invocation) protocol.Result {
+	labels := LabelMap(invoker.GetURL().Protocol, invocation.MethodName())
+
 	startTimeIFace := result.Attachment(StartTimeAttachment, "")
 	if startTime, ok := startTimeIFace.(time.Time); ok {
-		prometheus.IncSummaryWithLabel(RequestDurationSummary, float64(time.Now().Sub(startTime).Nanoseconds()), ConsumerLabelMap())
+		prometheus.IncSummaryWithLabel(RequestDurationSummary, float64(time.Now().Sub(startTime).Nanoseconds()), labels)
 	} else {
 		logger.Warnf("StartTime is not a time.Time: %v", startTimeIFace)
 	}
 
 	if result.Error() == nil {
-		prometheus.IncCounterWithLabel(RequestSuccessCounter, ConsumerLabelMap())
+		prometheus.IncCounterWithLabel(RequestSuccessCounter, labels)
 	} else if clusterutils.DoesAdaptiveServiceReachLimitation(result.Error()) {
-		prometheus.IncCounterWithLabel(RequestReachLimitationCounter, ConsumerLabelMap())
+		prometheus.IncCounterWithLabel(RequestReachLimitationCounter, labels)
 	} else if offline_simulator.IsServerOfflineErr(result.Error()) {
-		prometheus.IncCounterWithLabel(RequestOfflineDroppedCounter, ConsumerLabelMap())
+		prometheus.IncCounterWithLabel(RequestOfflineDroppedCounter, labels)
 	} else if context.DeadlineExceeded.Error() == result.Error().Error() || ErrConsumerRequestTimeoutStr == result.Error().Error() {
-		prometheus.IncCounterWithLabel(RequestTimeoutCounter, ConsumerLabelMap())
+		prometheus.IncCounterWithLabel(RequestTimeoutCounter, labels)
 	} else {
-		prometheus.IncCounterWithLabel(RequestUnknownErrorCounter, ConsumerLabelMap())
+		prometheus.IncCounterWithLabel(RequestUnknownErrorCounter, labels)
 	}
+
 	return result
 }
 
-func ConsumerLabelMap() map[string]string {
+func LabelMap(protocol, method string) map[string]string {
 	return map[string]string{
-		"tps":          os.Getenv("TPS"),
-		"duration":     os.Getenv("DURATION"),
-		"func_name":    os.Getenv("FUNC_NAME"),
-		"service_type": "consumer",
+		LabelProtocol: protocol,
+		LabelMethod:   method,
 	}
 }
