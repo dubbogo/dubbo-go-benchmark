@@ -3,6 +3,7 @@ version: '3'
 services:
   prometheus:
     image: prom/prometheus
+    container_name: prometheus
     volumes:
       - ./prometheus:/etc/prometheus
     command:
