@@ -2,3 +2,4 @@
 .idea
 .vscode
 .DS_Store
+/3.0/deploy/docker/prometheus/prometheus.yml

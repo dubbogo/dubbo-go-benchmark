@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - ./prometheus:/etc/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    restart: on-failure
+    ports:
+      - target: 9090
+        published: 9090
+        protocol: tcp
+        mode: host
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - target: 3000
+        published: 3000
+        protocol: tcp
+        mode: host
+    labels:
+      org.label-schema.group: "monitoring"
