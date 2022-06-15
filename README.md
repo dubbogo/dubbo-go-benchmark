@@ -68,7 +68,7 @@ Pay attention that sometime the parallel is too small to meet your expect tps, f
    - export MIN_OFFLINE_DURATION=3s # your expected minimum offline duration
    - export MAX_OFFLINE_DURATION=8s # your expected maximum offline duration (optional)
 ## 5. Collect Metrics
-First, you should change `your-computer-ip` in `/3.0/deploy/docker/prometheus/prometheus.yml` to your computer's real ip, e.g. 192.168.1.40
+First, you should copy a file `prometheus.yml` from `/3.0/deploy/docker/prometheus/prometheus.yml.example` and change `your-computer-ip` to your computer's real ip, e.g. 192.168.1.40
 
 Then, switch to the directory `/3.0/deploy/docker/` and run the following command:
 ```shell
