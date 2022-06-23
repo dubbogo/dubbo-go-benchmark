@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: dubbogo-server
-          image: zhangyepeng/dubbogo-triple-server-adasvc
+          image: xavierniu/dubbogo-triple-server-adasvc
           env:
           - name: MIN_OFFLINE_DURATION
             value: "5s"
