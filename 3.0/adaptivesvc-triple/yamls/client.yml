@@ -5,10 +5,15 @@ metadata:
   namespace: dubbogo-adaptivesvc
 spec:
   template:
+    metadata:
+      annotations:
+        prometheus.io/path: /metrics
+        prometheus.io/port: "9090"
+        prometheus.io/scrape: "true"
     spec:
       containers:
         - name: dubbogo-client
-          image: xavierniu/dubbogo-client-adasvc
+          image: xavierniu/dubbogo-triple-client-adasvc
           env:
             - name: PARALLEL
               value: "10"

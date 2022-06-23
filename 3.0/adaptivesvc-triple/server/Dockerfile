@@ -4,22 +4,18 @@ WORKDIR /dubbogo
 
 COPY ./ ./
 
-RUN go mod init "github.com/dubbogo/dubbo-go-benchmark/apasvc-server" \
-    && go mod tidy \
-    # TODO(justxuewei): remove the below two lines if  \
-    #   feat/adasvc branch was merged
-    && go get dubbo.apache.org/dubbo-go/v3@feat-adasvc \
+RUN  go mod init "github.com/dubbogo/dubbo-go-benchmark/adasvc-server" \
     && go mod tidy \
     && go build -a -o dubbogo-server
 
 FROM golang:1.16
 
-LABEL MAINTAINER="justxuewei"
-
 WORKDIR /dubbogo
 
 COPY --from=builder /dubbogo/dubbogo-server ./
-COPY dubbogo.yml ./
+COPY dubbogo.yml ./conf/dubbogo.yaml
+
+ENV DUBBO_GO_CONFIG_PATH="./conf/dubbogo.yaml"
 
 RUN chmod +x ./dubbogo-server
 

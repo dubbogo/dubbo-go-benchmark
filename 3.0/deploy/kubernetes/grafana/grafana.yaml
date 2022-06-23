@@ -1,0 +1,96 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: grafana
+  name: grafana
+  namespace: dubbogo-adaptivesvc
+spec:
+  selector:
+    matchLabels:
+      app: grafana
+  template:
+    metadata:
+      labels:
+        app: grafana
+    spec:
+      securityContext:
+        fsGroup: 472
+        supplementalGroups:
+          - 0
+      containers:
+      - name: grafana-image-renderer
+        env:
+        - name: ENABLE_METRICS
+          value: "true"
+        image: grafana/grafana-image-renderer:3.3.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8081
+          name: http-renderer
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      - name: grafana
+        image: grafana/grafana:8.3.4
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: GF_RENDERING_SERVER_URL
+          value: http://grafana:8081/render
+        - name: GF_RENDERING_CALLBACK_URL
+          value: http://grafana:3000/
+        - name: GF_LOG_FILTERS
+          value: rendering:debug
+        ports:
+          - containerPort: 3000
+            name: http-grafana
+            protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /robots.txt
+            port: 3000
+            scheme: HTTP
+          initialDelaySeconds: 10
+          periodSeconds: 30
+          successThreshold: 1
+          timeoutSeconds: 2
+        livenessProbe:
+          failureThreshold: 3
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          successThreshold: 1
+          tcpSocket:
+            port: 3000
+          timeoutSeconds: 1
+        resources:
+          requests:
+            cpu: 250m
+            memory: 750Mi
+        volumeMounts:
+          - mountPath: /var/lib/grafana
+            name: grafana-data
+      volumes:
+        - name: grafana-data
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana
+  namespace: dubbogo-adaptivesvc
+spec:
+  ports:
+    - name: http-grafana
+      port: 3000
+      protocol: TCP
+      targetPort: http-grafana
+    - name: http-renderer
+      port: 8081
+      protocol: TCP
+      targetPort: 8081
+  selector:
+    app: grafana
+  sessionAffinity: None
+  type: LoadBalancer
