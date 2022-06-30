@@ -10,12 +10,27 @@ spec:
       app: dubbogo-server
   template:
     metadata:
+      annotations:
+        prometheus.io/path: /metrics
+        prometheus.io/port: "9090"
+        prometheus.io/scrape: "true"
       labels:
         app: dubbogo-server
     spec:
       containers:
         - name: dubbogo-server
           image: xavierniu/dubbogo-server-adasvc
+          env:
+          - name: MIN_OFFLINE_DURATION
+            value: "5s"
+          - name: MIN_ONLINE_DURATION
+            value: "20s"
+          - name: OFFLINE_RATIO
+            value: "0.2"
+          - name: TIMEOUT_DURATION
+            value: "10s"
+          - name: TIMEOUT_RATIO
+            value: "0.5"
           imagePullPolicy: Always
           resources:
             limits:

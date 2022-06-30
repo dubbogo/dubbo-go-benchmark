@@ -4,11 +4,16 @@
 # enable adaptive service
 
 dubbo:
+  metrics:
+    enable: true # default is true
+    port: 9090 # default is 9090
+    namespace: dubbo_go_benchmark_consumer
   registries:
     zk:
       protocol: zookeeper
       address: zookeeper-service.dubbogo-adaptivesvc.svc.cluster.local:2181
   consumer:
+    filter: metricsCollector
     registry-ids:
       - zk
     adaptive-service: true

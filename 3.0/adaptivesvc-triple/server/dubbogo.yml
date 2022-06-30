@@ -4,6 +4,10 @@
 # enable adaptive service
 
 dubbo:
+  metrics:
+    enable: true # default is true
+    port: 9090 # default is 9090
+    namespace: dubbo_go_benchmark_provider # default is dubbo 作为数据上报 metrics_collector 的前缀
   registries:
     zk:
       protocol: zookeeper
@@ -20,6 +24,7 @@ dubbo:
     adaptive-service-verbose: true
     services:
       Provider:
+        filter: metricsCollector,offlineSimulator
         protocol: my-protocol
         interface: org.apache.dubbo.Provider
   # If you want to debug adaptive service, please uncomment the following codes.

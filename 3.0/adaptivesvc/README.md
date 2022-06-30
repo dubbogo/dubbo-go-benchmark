@@ -51,7 +51,7 @@ docker push xavierniu/dubbogo-client-adasvc
 > - dubbogo-client: xavierniu/dubbogo-client-adasvc
 > - dubbogo-server: xavierniu/dubbogo-server-adasvc
 
-You may change the images as required.
+You may change the images and envs as required.
 
 ```shell
 # Go to `yamls` directory.
@@ -113,3 +113,7 @@ kubectl rollout restart deployment dubbogo-server -n dubbogo-adaptivesvc
 # Update dubbogo-client
 docker pull xavierniu/dubbogo-client-adasvc
 ```
+
+### Visualize
+
+> If you want to visualize your test results using tools like grafana, you need to deploy prometheus inside the cluster. You can refer to the directory `3.0/deploy/kubernetes` for deployment and configuration.
