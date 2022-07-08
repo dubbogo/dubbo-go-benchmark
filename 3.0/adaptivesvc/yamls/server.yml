@@ -38,3 +38,11 @@ spec:
               cpu: "2000m"
           ports:
             - containerPort: 20001
+            - containerPort: 9090
+          volumeMounts:
+            - mountPath: /dubbogo/conf
+              name: dubbogo-conf
+      volumes:
+        - configMap:
+            name: dubbogo-server-conf
+          name: dubbogo-conf

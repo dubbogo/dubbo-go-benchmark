@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dubbogo-triple-client-conf
+  namespace: dubbogo-adaptivesvc
+data:
+  dubbogo.yaml: |
+    # dubbo client yaml configure file
+    dubbo:
+      metrics:
+        enable: true # default is true
+        port: 9090 # default is 9090
+        namespace: dubbo_go_benchmark_consumer
+      registries:
+        zk:
+          protocol: zookeeper
+          address: zookeeper-service.dubbogo-adaptivesvc.svc.cluster.local:2181
+      consumer:
+        filter: metricsCollector
+        registry-ids:
+          - zk
+        adaptive-service: false
+        references:
+          ProviderClientImpl:
+            protocol: tri
+            interface: org.apache.dubbo.Provider
+            loadbalance: roundrobin
+      logger:
+        zap-config:
+          level: error
