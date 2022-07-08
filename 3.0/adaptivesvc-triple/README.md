@@ -63,8 +63,16 @@ kubectl apply -f namespace.yml
 # Install ZooKeeper.
 kubectl apply -f zookeeper.yml
 
+# Create Server Config
+kubectl apply -f server_conf.yaml
+
 # Install dubbogo-server.
 kubectl apply -f server.yml
+# If you want to create servers of different configs, run
+kubectl apply -f servers
+
+# Create Client Config
+kubectl apply -f client_conf.yaml
 
 # Install dubbogo-client.
 kubectl apply -f client.yml
@@ -113,6 +121,10 @@ kubectl rollout restart deployment dubbogo-server -n dubbogo-adaptivesvc
 # Update dubbogo-client
 docker pull xavierniu/dubbogo-client-adasvc
 ```
+
+Update Configs.
+> If you want to update dubbogo'config, just update in client_conf.yaml or server_conf.yaml and apply them.
+> Besides, you should delete recreate the servers and clients
 
 ### Visualize
 
