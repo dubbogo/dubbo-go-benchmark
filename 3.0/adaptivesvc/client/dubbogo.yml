@@ -4,6 +4,10 @@
 # enable adaptive service
 
 dubbo:
+  metrics:
+    enable: true # default is true
+    port: 9090 # default is 9090
+    namespace: dubbo_go_benchmark_consumer
   protocols:
     dubbo:
       name: dubbo

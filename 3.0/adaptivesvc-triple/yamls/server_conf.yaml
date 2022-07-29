@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dubbogo-triple-server-conf
+  namespace: dubbogo-adaptivesvc
+data:
+  dubbogo.yaml: |
+    # dubbo server yaml configure file
+    # ===================
+    # use k8s zookeeper
+    # enable adaptive service
+
+    dubbo:
+      metrics:
+        enable: true # default is true
+        port: 9090 # default is 9090
+        summary-max-age: 60000000000 # 1 minute, default is 10min
+        namespace: dubbo_go_benchmark_provider # default is dubbo 作为数据上报 metrics_collector 的前缀
+      registries:
+        zk:
+          protocol: zookeeper
+          address: zookeeper-service.dubbogo-adaptivesvc.svc.cluster.local:2181
+      protocols:
+        my-protocol:
+          name: tri
+          port: 20001
+      provider:
+        registry-ids:
+          - zk
+        adaptive-service: false
+        # If you want to debug adaptive service, please uncomment the following codes.
+        adaptive-service-verbose: false
+        services:
+          Provider:
+            filter: metricsCollector,offlineSimulator
+            protocol: my-protocol
+            interface: org.apache.dubbo.Provider
+      # If you want to debug adaptive service, please uncomment the following codes.
+      logger:
+        zap-config:
+          level: error

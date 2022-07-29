@@ -33,6 +33,7 @@ const (
 	AdaptiveServiceInflightGauge  = "adaptive_service_inflight"
 	LabelProtocol                 = "protocol"
 	LabelMethod                   = "method"
+	LabelTargetIP                 = "target_ip"
 )
 
 type MetricsCollector struct{}
@@ -48,7 +49,7 @@ func NewMetricsCollector() filter.Filter {
 }
 
 func (f *MetricsCollector) Invoke(ctx context.Context, invoker protocol.Invoker, invocation protocol.Invocation) protocol.Result {
-	labels := LabelMap(invoker.GetURL().Protocol, invocation.MethodName())
+	labels := LabelMap(invoker.GetURL().Protocol, invocation.MethodName(), invoker.GetURL().Ip)
 	prometheus.IncCounterWithLabel(RequestCounter, labels)
 
 	startTime := time.Now()
@@ -59,8 +60,7 @@ func (f *MetricsCollector) Invoke(ctx context.Context, invoker protocol.Invoker,
 }
 
 func (f *MetricsCollector) OnResponse(_ context.Context, result protocol.Result, invoker protocol.Invoker, invocation protocol.Invocation) protocol.Result {
-	labels := LabelMap(invoker.GetURL().Protocol, invocation.MethodName())
-
+	labels := LabelMap(invoker.GetURL().Protocol, invocation.MethodName(), invoker.GetURL().Ip)
 	startTimeIFace := result.Attachment(StartTimeAttachment, "")
 	if startTime, ok := startTimeIFace.(time.Time); ok {
 		prometheus.IncSummaryWithLabel(RequestDurationSummary, float64(time.Now().Sub(startTime).Nanoseconds()), labels)
@@ -76,18 +76,18 @@ func (f *MetricsCollector) OnResponse(_ context.Context, result protocol.Result,
 			logger.Warnf("parse remaining error: %v", err)
 		}
 	} else {
-		logger.Warnf("RemainingAttachment is not a string: %v", startTimeIFace)
+		logger.Warnf("RemainingAttachment is not a string: %v", remainingIFace)
 	}
 
 	inflightIFace := result.Attachment(constant.AdaptiveServiceInflightKey, "")
 	if inflightStr, ok := inflightIFace.(string); ok {
-		if remaining, err := strconv.ParseInt(inflightStr, 10, 64); err == nil {
-			prometheus.SetGaugeWithLabel(AdaptiveServiceInflightGauge, float64(remaining), labels)
+		if inflight, err := strconv.ParseInt(inflightStr, 10, 64); err == nil {
+			prometheus.SetGaugeWithLabel(AdaptiveServiceInflightGauge, float64(inflight), labels)
 		} else {
 			logger.Warnf("parse inflight error: %v", err)
 		}
 	} else {
-		logger.Warnf("InflightAttachment is not a string: %v", startTimeIFace)
+		logger.Warnf("InflightAttachment is not a string: %v", inflightIFace)
 	}
 
 	if result.Error() == nil {
@@ -105,9 +105,10 @@ func (f *MetricsCollector) OnResponse(_ context.Context, result protocol.Result,
 	return result
 }
 
-func LabelMap(protocol, method string) map[string]string {
+func LabelMap(protocol, method, ip string) map[string]string {
 	return map[string]string{
 		LabelProtocol: protocol,
 		LabelMethod:   method,
+		LabelTargetIP: ip,
 	}
 }

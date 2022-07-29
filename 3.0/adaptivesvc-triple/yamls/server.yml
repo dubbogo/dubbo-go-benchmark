@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dubbogo-server
+  name: dubbogo-triple-server
   namespace: dubbogo-adaptivesvc
 spec:
   replicas: 3
@@ -35,6 +35,18 @@ spec:
           resources:
             limits:
               memory: "2Gi"
-              cpu: "2000m"
+              cpu: "2"
+            requests:
+              cpu: "2"
+              memory: 2Gi
           ports:
             - containerPort: 20001
+            - containerPort: 9090
+          volumeMounts:
+            - mountPath: /dubbogo/conf
+              name: dubbogo-conf
+      volumes:
+        - configMap:
+            name: dubbogo-triple-server-conf
+          name: dubbogo-conf
+

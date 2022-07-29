@@ -1,9 +1,11 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: dubbogo-client
+  name: dubbogo-triple-client
   namespace: dubbogo-adaptivesvc
 spec:
+  parallelism: 2
+  completions: 2
   template:
     metadata:
       annotations:
@@ -15,8 +17,17 @@ spec:
         - name: dubbogo-client
           image: xavierniu/dubbogo-triple-client-adasvc
           imagePullPolicy: Always
+          volumeMounts:
+            - mountPath: /dubbogo/conf
+              name: dubbogo-conf
           env:
             - name: PARALLEL
               value: "10"
+          ports:
+            - containerPort: 9090
       restartPolicy: Never
+      volumes:
+      - configMap:
+          name: dubbogo-triple-client-conf
+        name: dubbogo-conf
   backoffLimit: 4

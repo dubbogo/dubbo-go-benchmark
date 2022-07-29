@@ -4,6 +4,8 @@ metadata:
   name: dubbogo-client
   namespace: dubbogo-adaptivesvc
 spec:
+  parallelism: 2
+  completions: 2
   template:
     metadata:
       annotations:
@@ -15,8 +17,23 @@ spec:
         - name: dubbogo-client
           image: xavierniu/dubbogo-client-adasvc
           imagePullPolicy: Always
+          volumeMounts:
+            - mountPath: /dubbogo/conf
+              name: dubbogo-conf
           env:
             - name: PARALLEL
-              value: "10"
+              value: "30"
+            - name: TPS
+              value: "3000"
+            - name: DURATION
+              value: "15m"
+            - name: FIBONACCI_N
+              value: "1"
+            - name: FIBONACCI_WORKER_NUM
+              value: "1"
       restartPolicy: Never
+      volumes:
+      - configMap:
+          name: dubbogo-client-conf
+        name: dubbogo-conf
   backoffLimit: 4
